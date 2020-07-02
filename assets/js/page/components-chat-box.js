@@ -36,13 +36,13 @@ for(var i = 0; i < chats.length; i++) {
 $("#chat-form").submit(function() {
   var me = $(this);
 
-  if(me.find('input').val().trim().length > 0) {      
+  if(me.find('input').val().trim().length > 0) {
     $.chatCtrl('#mychatbox', {
       text: me.find('input').val(),
       picture: '../assets/img/avatar/avatar-2.png',
     });
     me.find('input').val('');
-  } 
+  }
   return false;
 });
 
@@ -109,12 +109,12 @@ for(var i = 0; i < chats.length; i++) {
 $("#chat-form2").submit(function() {
   var me = $(this);
 
-  if(me.find('input').val().trim().length > 0) {      
+  if(me.find('input').val().trim().length > 0) {
     $.chatCtrl('#mychatbox2', {
       text: me.find('input').val(),
       picture: '../assets/img/avatar/avatar-2.png',
     });
     me.find('input').val('');
-  } 
+  }
   return false;
 });
