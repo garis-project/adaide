@@ -26,5 +26,6 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url('assets'); ?>/js/page/index-0.js"></script>
+  <script src="<?= base_url('assets'); ?>/js/page/modules-datatables.js"></script>
 </body>
 </html>

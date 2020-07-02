@@ -13,7 +13,7 @@ class Auth extends CI_Controller {
     public function login() {
         $email=$this->input->post('email');
         $password=$this->input->post('password');
-        $password=$this->kriptografi->enkripsi($password);
+        $password=base64_encode($password);
         $user=$this->db->get_where('user',['email'=>$email,'password'=>$password,'id_role'=>1])->row_array();
         if($user){
             $data=[

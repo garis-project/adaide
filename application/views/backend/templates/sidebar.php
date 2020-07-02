@@ -12,13 +12,12 @@
                 <a href="#" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
          
-              <li class="menu-header">Stisla</li>
+              <li class="menu-header">Master</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="components-article.html">Article</a></li>
-                  <li><a class="nav-link beep beep-sidebar" href="components-avatar.html">Avatar</a></li>
-                  
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('events'); ?>">List Events</a></li>
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('events/add'); ?>">Add New Events</a></li>
                 </ul>
               </li>
               <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
