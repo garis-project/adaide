@@ -18,7 +18,7 @@
                     <h4>List Events</h4>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="">
                       <table class="table table-striped" id="table_data">
                         <thead>
                           <tr class="text-center">
@@ -26,41 +26,60 @@
                               No
                             </th>
                             <th>Events Name</th>
-                            <th>Due Date</th>
-                            <th>Time</th>
+                            <th>Start Date</th>
+                            <th>Finish Date</th>
+                            <th>Location</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php 
+                          $no=$this->uri->segment('3')+1;
+                          foreach($events as $value){ 
+                          ?>
                           <tr>
+                            <td><?= $no ?> </td>
+                            <td><?= $value['nama_event']; ?> </td>
+                            <td><?= date("d/m/Y",strtotime($value['tanggal_mulai'])); ?> </td>
+                            <td><?= date("d/m/Y",strtotime($value['tanggal_selesai'])); ?> </td>
+                            <td><?= $value['lokasi']; ?> </td>
                             <td>
-                              1
+                              <div class="badge <?php if($value['status']=='completed'){
+                                  echo 'badge-success';
+                                  }elseif($value['status']=='Onprogress'){
+                                    echo 'badge-info';
+                                  }elseif($value['status']=='Processed'){
+                                    echo 'badge-warning';
+                                }?>">
+                                <?= $value['status']; ?> 
+                              </div>
                             </td>
-                            <td>Wedding</td>
-                            <td class="text-center">2018-01-16</td>
-                            <td class="text-center">08.00-17.00</td>
-                            <td class="text-center"><div class="badge badge-success">Completed</div></td>
                             <td>
                                 <div class="form-inline">
                                     <form role="form" action='<?= base_url('events/view') ?>' method='POST'>
-                                    <button type="submit" class="btn btn-outline-info btn-sm">
+                                      <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">
+                                      <button type="submit" class="btn btn-outline-info btn-sm">
                                         <i class="nav-icon fas fa-eye fa-xs"></i>
-                                    </button>
+                                      </button>
                                   </form>
                                     <form role="form" action='<?= base_url('events/update') ?>' method='POST'>
-                                        <button type="submit" class="btn btn-outline-info btn-sm">
-                                            <i class="nav-icon fas fa-edit fa-xs"></i>
-                                        </button>
+                                      <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">    
+                                      <button type="submit" class="btn btn-outline-info btn-sm">
+                                        <i class="nav-icon fas fa-edit fa-xs"></i>
+                                      </button>
                                     </form>
                                     <form role="form" action='<?= base_url('events/delete') ?>' method='POST'>
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" onclick="hapus_data()">
+                                      <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">
+                                      <button type="submit" class="btn btn-outline-danger btn-sm" onclick="hapus_data()">
                                         <i class="nav-icon fas fa-trash fa-xs"></i>
-                                        </button>
+                                      </button>
                                     </form>
                                 </div>
                             </td>
+                            <?php $no ++ ?>
                           </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
                     </div>
