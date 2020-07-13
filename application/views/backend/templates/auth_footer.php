@@ -12,6 +12,8 @@
   <!-- Template JS File -->
   <script src="<?= base_url('assets/'); ?>js/scripts.js"></script>
   <script src="<?= base_url('assets/'); ?>js/custom.js"></script>
+  <script src="<?= base_url('assets/'); ?>plugins/select2/js/select2.js"></script>
+  <script src="<?= base_url('assets/'); ?>js/page/register.js"></script>
   <!-- Page Specific JS File -->
 </body>
 </html>

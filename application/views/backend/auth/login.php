@@ -5,13 +5,12 @@
             <img src="<?= base_url('assets'); ?>/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">ADAIDE</span></h4>
             <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
-            <form method="POST" action="<?= base_url('auth/login') ?>" class="needs-validation" novalidate="">
+            <?= $this->session->flashdata('message'); ?>
+            <form method="POST" action="<?= base_url('auth') ?>" class="needs-validation" novalidate="">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
-                <div class="invalid-feedback">
-                  Please fill in your email
-                </div>
+                <input id="email" type="email" class="form-control" name="email" tabindex="1" value="<?= set_value('email') ?>" autofocus>
+                <?= form_error('email','<small class="text-danger pl-3">', '</small>'); ?>
               </div>
 
               <div class="form-group">
@@ -19,18 +18,8 @@
                   <label for="password" class="control-label">Password</label>
                 </div>
                 <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                <div class="invalid-feedback">
-                  please fill in your password
-                </div>
+                <?= form_error('password','<small class="text-danger pl-3">', '</small>'); ?>
               </div>
-
-              <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                  <label class="custom-control-label" for="remember-me">Remember Me</label>
-                </div>
-              </div>
-
               <div class="form-group text-right">
                 <a href="auth-forgot-password.html" class="float-left mt-3">
                   Forgot Password?

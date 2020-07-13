@@ -1,0 +1,225 @@
+ Font */ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+ @font-face {
+     font-family: "gloss";
+     src: url("../font/Gloss_And_Bloom.ttf") format('truetype');
+ }
+ 
+ html {
+     font-size: 16px !important;
+     background-color: #020202;
+ }
+ 
+ body {
+     font-family: 'Poppins', sans-serif !important;
+     color: #fff !important;
+     line-height: 1.7;
+     letter-spacing: 0.3px;
+ }
+ 
+ a {
+     color: #fff;
+ }
+ 
+ a:hover {
+     color: yellow! important;
+     text-decoration: none !important;
+ }
+ 
+ .wrapper {
+     background-color: #020202;
+     height: 100vh;
+ }
+ 
+ .full {
+     max-width: 1200px;
+ }
+ 
+ .header {
+     height: 100vh;
+     background-image: linear-gradient( to right bottom, rgba(2, 2, 2, 0.8) 0%, rgba(46, 46, 46, 0.8)), url(../img/gambar.png);
+     background-size: cover;
+     background-position: top;
+     position: relative;
+ }
+ 
+ .logo-box {
+     display: flex;
+     position: fixed;
+     top: 80px;
+     right: 80px;
+ }
+ 
+ .logo {
+     height: 98px;
+     color: white;
+ }
+ 
+ .logos {
+     height: 28px;
+     color: white;
+ }
+ 
+ .fixed {
+     position: fixed;
+     z-index: 100;
+ }
+ 
+ .text-box {
+     position: absolute;
+     top: 270px;
+     left: 45%;
+ }
+ 
+ .heading-primary {
+     text-transform: capitalize;
+ }
+ 
+ .heading-primary-text {
+     display: block;
+     font-size: 4.815rem;
+     font-weight: 600;
+     letter-spacing: 1.7 !important;
+     font-family: 'Kaushan Script', cursive;
+ }
+ 
+ .btn-text-nav {
+     border: 0;
+     color: #fff;
+     letter-spacing: 1.2px;
+     font-size: 1rem;
+     margin: 0 20px;
+ }
+ 
+ .btn-text {
+     border: 0;
+     color: #fff;
+     font-size: 1rem;
+ }
+ 
+ .btn-circle {
+     width: 30px;
+     height: 30px;
+     padding: 6px 0px;
+     border-radius: 15px;
+     text-align: center;
+     font-size: 12px;
+     line-height: 1.42857;
+ }
+ 
+ .btn-text-nav:hover {
+     border: 0;
+     color: #999;
+     letter-spacing: 1.2px;
+     font-size: 1rem;
+     margin: 0 20px;
+ }
+ 
+ .login {
+     font-size: 1.25rem;
+     margin-right: 1.25rem;
+ }
+ 
+ .pangkat {
+     height: 0.5rem;
+     position: absolute;
+     bottom: 25px;
+     margin-left: 0.2rem;
+ }
+ 
+ .pangkat img {
+     height: 0.5rem;
+ }
+ 
+ .header-social {
+     width: 90%;
+     margin: auto;
+     display: flex;
+     justify-content: space-between;
+     position: fixed;
+     left: 6%;
+     bottom: 5%;
+ }
+ 
+ .header-social-logo {
+     text-transform: uppercase;
+     font-weight: 400;
+ }
+ 
+ .header-social-text {
+     font-family: 'Poppins', sans-serif;
+     text-transform: uppercase;
+     font-weight: 600;
+ }
+ 
+ .logo-text {
+     width: 120px;
+     font-size: 1rem;
+     font-weight: 600;
+ }
+ /* main */
+ 
+ .main-content {
+     height: 95vh;
+ }
+ 
+ .slogan {
+     display: flex;
+     padding: 72px 0;
+     align-items: center;
+     letter-spacing: 1.3px;
+     font-size: 1.25rem;
+     justify-content: space-between;
+     max-width: 215px;
+     min-width: 215px;
+ }
+ /*.content-para {
+	height: 85vh;
+	width: 100%;
+}*/
+ 
+ .content-para p {
+     max-width: 599px;
+     font-size: 1.4rem;
+ }
+ 
+ .line-vertical {
+     border-left: 2px solid white;
+     height: 40px;
+     margin-right: 15px
+ }
+ 
+ .grid-image {
+     width: 100%;
+     object-fit: cover;
+     opacity: 0.6;
+ }
+ 
+ .wallpaper {
+     background: url('../img/gambar.png') no-repeat center center;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     background-size: cover;
+     -o-background-size: cover;
+ }
+ 
+ .footer {
+     margin: 10rem 0;
+     font-size: 1rem;
+ }
+ 
+ .footer-title {
+     font-size: 1.25rem;
+     font-weight: 600;
+     text-transform: uppercase;
+ }
+ 
+ .footer-subtitle {
+     font-size: 1rem;
+     font-weight: 600;
+     text-transform: uppercase;
+ }
+ 
+ .footer-address {
+     font-size: 0.8rem;
+ }

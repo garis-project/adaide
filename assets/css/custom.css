@@ -4,5 +4,7 @@
  * because it will make it harder for you to update.
  * 
  */
-
+ .table-responsive {
+    display: table;
+}
 /*# sourceMappingURL=custom.css.map */

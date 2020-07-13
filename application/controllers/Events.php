@@ -6,6 +6,8 @@ class Events extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Events_model','events');
+        // $this->load->model('Stage_model','stage');
+       
     }
     public function index() {
         $data['title'] ="Events Page";
@@ -19,6 +21,10 @@ class Events extends CI_Controller {
 
     public function add() {
         $data['title'] ="New Events";
+        $this->load->model('TicketType_model','ticket');
+        $this->load->model('Stage_model','stage');
+        $data['stage']=$this->stage->viewAll();
+        $data['ticket']=$this->ticket->viewType();
         $this->form_validation-> set_rules('events_name','Events Name','required|trim');
         if($this->form_validation->run()==false){
             $this->load->view('backend/templates/header', $data);
@@ -42,12 +48,12 @@ class Events extends CI_Controller {
                 'nama_event'=>$this->input->post('events_name'),
                 'tanggal_mulai'=>$this->input->post('startdate'),
                 'tanggal_selesai'=>$this->input->post('enddate'),
-                'lokasi'=>$this->input->post('location'),
-                'status'=>$this->input->post('events_status'),
+                'id_stage'=>$this->input->post('id_stage'),
+                'status_event'=>$this->input->post('events_status'),
                 'deskripsi'=>$this->input->post('description'),
                 'banner'=>$fileName
             ];
-            $this->db->insert('event',$data_events);
+            $this->db->insert('tb_event',$data_events);
             redirect('events');
         }
     }
@@ -102,7 +108,54 @@ class Events extends CI_Controller {
 
     public function delete(){
         $id_event=$this->input->post('id_event');
-        $this->db->delete("event",['id_event'=>$id_event]);
+        $this->db->delete("tb_event",['id_event'=>$id_event]);
         redirect('events');
     }  
+
+    public function insertTicket(){
+        $data_ticket=[
+            'id_jenis_tiket'=>$this->input->post('id_type'),
+            'harga_tiket'=>$this->input->post('price'),
+            'stok_tiket'=>$this->input->post('stock'),
+        ];
+        if($this->db->insert('tb_tmp_detail_event',$data_ticket)){
+            $res="y";
+        }else{
+            $res="n";
+        }
+        echo json_encode($res);
+    }
+
+    public function ticket_list() {
+        {
+            $list = $this->events->get_datatables();
+            $data_ticket= array();
+            $no = $_POST['start'];
+            foreach ($list as $value) {
+                $no++;
+                $row = array();
+                $row[] = $no;
+                $row[] = $value->jenis_tiket;
+                $row[] = $value->harga_tiket;
+                $row[] = $value->stok_tiket;
+                $row[] = "
+                <button type='button' class='btn btn-outline-info btn-sm' onclick='editTagihan("."\"".$value->jenis_tiket."\")'>
+                  <i class='nav-icon fas fa-edit fa-xs'></i>
+                </button>
+                <button type='button' class='btn btn-outline-danger btn-sm' onclick='hapusTagihan("."\"".$value->jenis_tiket."\")' >
+                    <i class='nav-icon fas fa-trash fa-xs'></i>
+                </button>";
+                $data_ticket[] = $row;
+            }
+     
+            $output = array(
+                            "draw" => $_POST['draw'],
+                            "recordsTotal" => $this->events->count_all(),
+                            "recordsFiltered" => $this->events->count_filtered(),
+                            "data" => $data_ticket,
+                    );
+            //output to json format
+            echo json_encode($output);
+        }
+    }
 }

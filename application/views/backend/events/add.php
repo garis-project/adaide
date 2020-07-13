@@ -9,7 +9,6 @@
               <div class="breadcrumb-item">Add</div>
             </div>
           </div>
-
           <div class="section-body">
             <form role="form" action='<?= base_url('events/add') ?>' method='POST' enctype="multipart/form-data">
               <div class="row">
@@ -19,10 +18,8 @@
                         <h4>Advertise</h4>
                       </div>
                       <div class="card-body">
-                          <div class="form-group">
-                            <div class="float-center">
-                              <img src="<?= base_url('assets/img/events/')."default.png"; ?> " class="img-fluid" id="banner-img"alt="Responsive image">
-                            </div>
+                          <div class="mx-auto">
+                              <img src="<?= base_url('assets/img/events/')."default.png"; ?> "id="banner-img" width="40%" height="50%">
                           </div>
                           <div class="form-group">
                             <label>Banner</label>
@@ -42,9 +39,19 @@
                         <h4>Events Detail</h4>
                     </div>
                     <div class="card-body">
+                      <div class="form-group">
+                      <label>Events ID</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Vendor Initial (3 Character)" maxlength="3" minlength="3">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><?= date("dmY"); ?></span>
+                        </div>
+                      </div>
+                      </div>
                         <div class="form-group">
                           <label>Events Name</label>
                           <input type="text" class="form-control" id="events_name" name="events_name">
+                          <?= form_error('events_name','<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                           <label>Due Date</label>
@@ -57,17 +64,24 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label>Location</label>
-                          <input type="text" class="form-control" placeholder="Address Of Events" id="location" name="location" />
+                          <label>Stage</label>
+                          <select class="form-control" name="id_stage">
+                            <option value="default">Choose Stage</option>
+                            <?php foreach($stage as $st){ ?>
+                              <option value="<?= $st['id_stage']?>"><?= $st['nama_stage'].", ".$st['alamat_stage'].", ".$st['kota_stage']?></option>
+                            <?php } ?>
+                          </select>
+                          <?= form_error('id_stage','<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                           <label>Status</label>
-                          <select class="custom-select" id="events_status" name="events_status">
+                          <select class="form-control" id="events_status" name="events_status">
                             <option selected>Choose Status Of Events</option>
                             <option value="Onprogress">On Progress</option>
                             <option value="Processed">Processed</option>
                             <option value="Completed">Completed</option>
                           </select>
+                          <?= form_error('events_status','<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group mb-0">
                           <label>Description</label>
@@ -79,7 +93,52 @@
                     </div>
                   </div>
                 </div>
-                
+                <div class="row"></div>
+                <div class="col-12">
+                  <div class="card">
+                      <div class="card-header">
+                        <h4>Ticket</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <label for="id_type" class="col-sm-2 my-auto">Ticket Type</label>
+                          <div class="col-sm-3">
+                          <select class="form-control" name="id_type" id="id_type">
+                            <option value="">Choose Ticket Type</option>
+                            <?php foreach($ticket as $data){ ?>
+                              <option value="<?= $data['id_jenis_tiket']?>"><?= $data['jenis_tiket']?></option>
+                            <?php } ?>
+                          </select>
+                          </div>
+                        
+                          <label class="col-sm-1 my-auto">Price</label>
+                          <input class="form-control col-sm-2" type="number" name="price" id="price"/>
+                          <label class="col-sm-1 my-auto">Stok</label>
+                          <input class="form-control col-sm-1" type="number" name="stock" id="stock"/> 
+                          <div class="col-sm-2">
+                            <button type="button" class="btn btn-info sm-6 float-right" onclick="addTicket()">Add</button>   
+                          </div>                    
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table  class="table table-striped" id="ticketTable">
+                            <thead>
+                              <tr class="text-center">
+                                <th>No</th>
+                                <th>Ticket Type</th>
+                                <th>Price</th>
+                                <th>Stok</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
+                </div>   
               </div>
             </form>
           </div>
