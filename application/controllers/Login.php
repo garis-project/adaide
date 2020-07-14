@@ -6,8 +6,7 @@ class Login extends CI_Controller
 	public function index()
 	{
 		$data['title'] = "ADAIDE";
-		$this->load->view('frontend/templates/header', $data);
-		$this->load->view('frontend/home/login');
+		$this->load->view('frontend/auth/login');
 		$this->load->view('frontend/templates/footer');
 	}
 }

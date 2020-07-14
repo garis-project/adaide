@@ -1,41 +1,10 @@
-<div class="nav navbar">
-	<div class="justify-content-start">
-		<a href="<?= base_url('tiket') ?>" class="btn btn-outline-light mr-4">Ticket</a>
-		<a href="<?= base_url('login') ?>" class="btn btn-outline-light mr-4">Login</a>
-	</div>
-	<div class="display-4 d-flex justify-content-end">
-		<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
-	</div>
-</div>
+
 <div class="col-md-12">
 	<div class="d-flex justify-content-end">
 		<h1 class="position-fixed judul mt-5 display-3 text-uppercase font-weight-bold">Creative takes</h1>
 	</div>
 </div>
-<div class="container">
-	<nav class="navbar navbar-light fixed-bottom mb-5 container-xl">
-		<a class="navbar-brand">ADAIDE<sup class="font-weight-bold">TM</sup></a>
-		<div class="form-inline">
-			<nav class="nav justify-content-end text-uppercase">
-				<a class="nav-link h5" href="#">Youtube
-					<span class="pangkat">
-						<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-					</span>
-				</a>
-				<a class="nav-link h5" href="#">Instagram
-					<span class="pangkat">
-						<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-					</span>
-				</a>
-				<a class="nav-link h5" href="#">Behance
-					<span class="pangkat">
-						<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-					</span>
-				</a>
-			</nav>
-		</div>
-	</nav>
-</div>
+
 </div>
 </div>
 <!-- MAIN -->
@@ -102,79 +71,4 @@
 			<p>Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
 		</div>
 	</section>
-</div>
-<!-- modal -->
-<div class="modal swing-in-top-bck" id="modalMenu" tabindex="-1" role="dialog" aria-labelledby="modalMenu" aria-hidden="true">
-	<div class="modal-dialog costum-modal ">
-		<div class="modal-content bg-black">
-			<div class="modal-body container-xl height-full">
-				<div class="nav navbar">
-					<div class="justify-content-start">
-						<h4 class="h4"></h4>
-					</div>
-					<div class="display-4 d-flex justify-content-end ">
-						<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
-					</div>
-				</div>
-				<div class="col-md-12 d-flex align-middle justify-content-center mx-auto my-auto">
-					<div class="text-center w-75 header-text">
-						<nav class="nav display-4 mt-5 text-uppercase font-weight-bold justify-content-end position-absolute">
-							<a class="nav-link" href="index.html">creative
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a> /
-							<a class="nav-link" href="bicara.html">bicara
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a> /
-							<a class="nav-link" href="wedo.html">kita bukan bayangan
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a> /
-							<a class="nav-link" href="about.html">about us
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a> /
-							<a class="nav-link" href="#">merch
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a> /
-							<a class="nav-link" href="#">gallery
-								<sup>
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="sup" id="logo-image">
-								</sup>
-							</a>
-						</nav>
-					</div>
-				</div>
-				<div class="container">
-					<nav class="navbar navbar-light fixed-bottom mb-5 container-xl">
-						<a class="navbar-brand">ADAIDE<sup class="font-weight-bold">TM</sup></a>
-						<nav class="nav justify-content-end text-uppercase">
-							<a class="nav-link h4" href="#">Youtube
-								<span class="pangkat">
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-								</span>
-							</a>
-							<a class="nav-link h4" href="#">Instagram
-								<span class="pangkat">
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-								</span>
-							</a>
-							<a class="nav-link h4" href="#">Behance
-								<span class="pangkat">
-									<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo" id="logo-image">
-								</span>
-							</a>
-						</nav>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>

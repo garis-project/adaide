@@ -1,0 +1,19 @@
+{
+ "extends": "rallycoding",
+ "rules": {
+     "semi": 0,
+     "react/require-extension": "off",
+     "arrow-body-style": 0,
+     "no-undef": 0,
+     "no-unused-vars": 1,
+     "object-curly-spacing": 0,
+     "brace-style": 0,
+     global-require: 0,
+     "prefer-const": 0,
+     "prefer-template": 0,
+     "jsx-a11y/img-has-alt": [0],
+     "jsx-a11y/no-marquee": [0],
+     "import/no-extraneous-dependencies": [0],
+     "max-len": [2, {"code": 150, "tabWidth": 2, "ignoreUrls": true}]
+ }
+}
