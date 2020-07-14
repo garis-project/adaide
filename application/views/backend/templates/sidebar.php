@@ -14,10 +14,10 @@
          
               <li class="menu-header">Data Master</li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+                <a href="" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('events'); ?>">List Events</a></li>
-                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('events/add'); ?>">Add New Events</a></li>
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/events'); ?>">List Events</a></li>
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/events/add'); ?>">Add New Events</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
