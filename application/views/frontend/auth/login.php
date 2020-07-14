@@ -4,7 +4,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/image/logo-merah.png">
+	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/img/logo-merah.png">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<?= base_url('/assets/frontend/') ?>css/main.css">
 	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/bootstrap.css">
