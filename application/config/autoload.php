@@ -89,7 +89,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< .merge_file_a01584
 $autoload['helper'] = array('url','adaide');
+=======
+$autoload['helper'] = array('url');
+>>>>>>> .merge_file_a14708
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +136,8 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
+<<<<<<< .merge_file_a01584
 $autoload['model'] = array('Events_model'=>'events','Stage_model'=>'stage','TicketType_model'=>'ticket','User_model'=>'user');
+=======
+$autoload['model'] = array();
+>>>>>>> .merge_file_a14708
