@@ -36,7 +36,7 @@
                               $no=$this->uri->segment('3')+1;
                               foreach($events as $value){ 
                               ?>
-                              <tr>
+                              <tr class="text-center">
                                 <td><?= $no ?> </td>
                                 <td><?= $value['nama_event']; ?> </td>
                                 <td><?= date("d/m/Y",strtotime($value['tanggal_mulai'])); ?> </td>
@@ -55,21 +55,27 @@
                                 </td>
                                 <td>
                                     <div class="form-inline">
-                                        <form role="form" action='<?= base_url('events/view') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">
+                                        <form role="form" action='<?= base_url('admin/events/view') ?>' method='POST'>
+                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
                                           <button type="submit" class="btn btn-outline-info btn-sm">
                                             <i class="nav-icon fas fa-eye fa-xs"></i>
                                           </button>
-                                      </form>
+                                        </form>
+                                        <form>
+                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
+                                          <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ticketModal" onclick="loadDetailEvent()">
+                                            <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
+                                          </button>
+                                        </form>
                                         <form role="form" action='<?= base_url('events/update') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">    
-                                          <button type="submit" class="btn btn-outline-info btn-sm">
+                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">    
+                                          <button type="submit" class="btn btn-outline-warning btn-sm">
                                             <i class="nav-icon fas fa-edit fa-xs"></i>
                                           </button>
                                         </form>
-                                        <form role="form" action='<?= base_url('events/delete') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" id="id_events" value="<?= $value['id_event']; ?>">
-                                          <button type="submit" class="btn btn-outline-danger btn-sm" onclick="hapus_data()">
+                                        <form role="form" action='<?= base_url('admin/events/delete') ?>' method='POST'>
+                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
+                                          <button type="submit" class="btn btn-outline-danger btn-sm">
                                             <i class="nav-icon fas fa-trash fa-xs"></i>
                                           </button>
                                         </form>
@@ -85,4 +91,37 @@
             </div>
           </div>
         </section>
+      </div>
+
+      <div class="modal fade" id="ticketModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Ticket Information</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table  class="table table-striped" id="ticketTable" width="100%">
+                  <thead>
+                    <tr class="text-center">
+                      <th rowspan="2">No</th>
+                      <th rowspan="2">Ticket Type</th>
+                      <th colspan="2">Price</th>
+                      <th rowspan="2">Stok</th>
+                      <th rowspan="2">Action</th>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>

@@ -38,13 +38,14 @@
     $(document).ready(function(){
       $("select").select2(); 
       $("#table_data").DataTable();
+      loadTmpEvents();
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
       });
       $('#startdate').datetimepicker({modal: true, footer: true, format: 'yyyy-mm-dd HH:MM' });
       $('#enddate').datetimepicker({modal: true, footer: true, format: 'yyyy-mm-dd HH:MM' });
       $("#banner-input").change(function() {
-        $("#banner-name").text(this.files[0].name);
+      $("#banner-name").text(this.files[0].name);
         readURL(this);
       });
     })
@@ -62,12 +63,74 @@
       reader.readAsDataURL(input.files[0]); // convert to base64 string
       }
     }
-    function addTicket(){
+
+    function changeDate() {
+      var now=$('#startdate').val();
+      var y= now.substr(0,4);
+      var m= now.substr(5,2);
+      var d= now.substr(8,2);
+      $('#date_tmp').text(d+m+y);
+      $('#date_events').val(d+m+y);
+
+    }
+    function loadTmpEvents(){
+      $('#tmpTicketTable').DataTable({ 
+        "processing": true, 
+        "serverSide": true, 
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "retrieve": true,
+        "searching": false,
+        "ajax": {
+          "url": "<?= base_url('admin/events/ticket_tmp')?>",
+          "type": "POST"
+        },
+        "columnDefs": [
+          {
+            "targets": [0,5],
+            "className": "text-center"
+          },
+          {
+            "targets": [3,4],
+            "className": "text-right"
+          },
+        ],
+      }).ajax.reload();
+    }
+
+    function loadDetailEvents(){
+      $('#ticketTable').DataTable({ 
+        "processing": true, 
+        "serverSide": true, 
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "retrieve": true,
+        "searching": false,
+        "ajax": {
+          "url": "<?= base_url('admin/events/ticket_list')?>",
+          "type": "POST"
+        },
+        "columnDefs": [
+          {
+            "targets": [0,5],
+            "className": "text-center"
+          },
+          {
+            "targets": [3,4],
+            "className": "text-right"
+          },
+        ],
+      }).ajax.reload();
+    }
+    
+    function addTmpTicket(){
       var id_type=$('#id_type').val();
       var price=$('#price').val();
       var stock=$('#stock').val();
       $.ajax({
-        url:"<?= base_url('events/insertTicket') ?>",
+        url:"<?= base_url('admin/events/insertTicket') ?>",
         type:'post',
         dataType:"json",
         data:{
@@ -76,26 +139,49 @@
           stock:stock
         },
         success:function(data){
-          $('#ticketTable').DataTable({ 
-          "processing": true, 
-          "serverSide": true, 
-          "order": [], 
-          "ajax": {
-            "url": "<?= base_url('events/ticket_list')?>",
-            "type": "POST"
-          },
-          "columnDefs": [
-            { 
-              "targets": [ 0,4], //first column / numbering column
-              "orderable": false, //set not orderable
-            },
-          ],
-        }).ajax.reload();
+          if ($('#tmpTicketTable').is(":hidden")){
+            $('#tmpTicketTable').show();
+          }
+          loadTmpEvents();
+          $('#id_type').val('default');
+          $('#id_type').trigger('change');
+          $('#price').val(null);
+          $('#stock').val(null);
         },error:function(error){
           console.log(error);
         }
       });
-}
+    }
+
+    function editTmpTicket(id){
+      $.ajax({
+        url:"<?= base_url('admin/events/getTmpTicket') ?>",
+        type:'post',
+        dataType:"json",
+        data:{
+          id:id
+        },success : function (data) {
+          $('#id_type').val(data['id_jenis_tiket']);
+          $('#id_type').trigger('change');
+          $('#price').val(data['harga_tiket']);
+          $('#stock').val(data['stok_tiket']);
+        }
+      });
+    }
+    
+    function deleteTmpTicket(id){
+      $.ajax({
+        url:"<?= base_url('admin/events/deleteTmpTicket') ?>",
+        type:'post',
+        dataType:"json",
+        data:{
+          id:id
+        }, success : function(data){
+          loadTmpEvents();
+        }
+      });
+      
+    }
   </script>
 </body>
 </html>
