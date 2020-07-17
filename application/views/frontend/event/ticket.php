@@ -83,5 +83,12 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
-
+	<!-- Footer -->
+	<section class="container-fluid mt-5">
+		<div class="footer container-xl">
+			<h1 class="display-5 text-uppercase">find us</h1>
+			<h2 class="display-5 text-uppercase">ada ide HQ</h2>
+			<p>Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
+		</div>
+	</section>
+</div>
