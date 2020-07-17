@@ -23,7 +23,9 @@ class Events extends CI_Controller {
             $this->db->truncate('tb_tmp_detail_event');
             templates('events/add',$data);
         }else{
-            $fileName=uploadBanner();
+            if($this->input->post('banner-name')){
+                $fileName=uploadBanner();
+            }
             $id_events=$this->input->post('id_events').$this->input->post('date_events');
             $data_events=[
                 'id_event'=>$id_events,
@@ -51,18 +53,23 @@ class Events extends CI_Controller {
     public function update() {
         $data['title'] ="Update Events";
         $id_event=$this->input->post('id_events');
-        $data['event']=$this->events->getEvent($id_event);
+        $data['event']=$this->events->getEventDetail($id_event);
+        $data['stage']=$this->stage->viewAll();
         $this->form_validation-> set_rules('events_name','Events Name','required|trim');
         if($this->form_validation->run()==false){
             templates('events/update',$data);
         }else{
-            $fileName=uploadBanner();
+            if($this->input->post('image-check')){
+                $fileName=uploadBanner();
+            }else{
+                $fileName=$this->input->post('image-default');
+            }
             $data_events=[
                 'nama_event'=>$this->input->post('events_name'),
                 'tanggal_mulai'=>$this->input->post('startdate'),
                 'tanggal_selesai'=>$this->input->post('enddate'),
-                'lokasi'=>$this->input->post('location'),
-                'status'=>$this->input->post('events_status'),
+                'id_stage'=>$this->input->post('id_stage'),
+                'status_event'=>$this->input->post('events_status'),
                 'deskripsi'=>$this->input->post('description'),
                 'banner'=>$fileName
             ];

@@ -67,7 +67,7 @@
                                         <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
                                       </button>
                                     </form>
-                                    <form role="form" action='<?= base_url('events/update') ?>' method='POST'>
+                                    <form role="form" action='<?= base_url('admin/events/update') ?>' method='POST'>
                                       <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">    
                                       <button type="submit" class="btn btn-outline-warning btn-sm">
                                         <i class="nav-icon fas fa-edit fa-xs"></i>

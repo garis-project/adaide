@@ -49,7 +49,8 @@
       $('#startdate').datetimepicker({modal: true, footer: true, format: 'yyyy-mm-dd HH:MM' });
       $('#enddate').datetimepicker({modal: true, footer: true, format: 'yyyy-mm-dd HH:MM' });
       $("#banner-input").change(function() {
-      $("#banner-name").text(this.files[0].name);
+        $("#banner-name").text(this.files[0].name);
+        $('#image-check').val(this.files[0].name);
         readURL(this);
       });
     })
@@ -68,6 +69,11 @@
       }
     }
 
+    function checkImg(){
+      let name=$('#banner-name').text();
+      console.log(name);
+      $('#image-check').val(name);
+    }
     function changeDate() {
       let now=$('#startdate').val();
       let y= now.substr(0,4);
