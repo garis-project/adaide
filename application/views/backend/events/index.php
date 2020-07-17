@@ -53,33 +53,33 @@
                                     <?= $value['status_event']; ?> 
                                   </div>
                                 </td>
-                                <td>
-                                    <div class="form-inline">
-                                        <form role="form" action='<?= base_url('admin/events/view') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
-                                          <button type="submit" class="btn btn-outline-info btn-sm">
-                                            <i class="nav-icon fas fa-eye fa-xs"></i>
-                                          </button>
-                                        </form>
-                                        <form>
-                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
-                                          <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ticketModal" onclick="loadDetailEvent()">
-                                            <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
-                                          </button>
-                                        </form>
-                                        <form role="form" action='<?= base_url('events/update') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">    
-                                          <button type="submit" class="btn btn-outline-warning btn-sm">
-                                            <i class="nav-icon fas fa-edit fa-xs"></i>
-                                          </button>
-                                        </form>
-                                        <form role="form" action='<?= base_url('admin/events/delete') ?>' method='POST'>
-                                          <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
-                                          <button type="submit" class="btn btn-outline-danger btn-sm">
-                                            <i class="nav-icon fas fa-trash fa-xs"></i>
-                                          </button>
-                                        </form>
-                                    </div>
+                                <td class="text-center">
+                                  <div class="form-inline">
+                                    <form role="form" action='<?= base_url('admin/events/view') ?>' method='POST'>
+                                      <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
+                                      <button type="submit" class="btn btn-outline-info btn-sm">
+                                        <i class="nav-icon fas fa-eye fa-xs"></i>
+                                      </button>
+                                    </form>
+                                    <form>
+                                    <?php $id_event= "'".$value['id_event']."'"; ?>
+                                      <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ticketModal" onclick="loadDetailEvents(<?= $id_event ?>)">
+                                        <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
+                                      </button>
+                                    </form>
+                                    <form role="form" action='<?= base_url('events/update') ?>' method='POST'>
+                                      <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">    
+                                      <button type="submit" class="btn btn-outline-warning btn-sm">
+                                        <i class="nav-icon fas fa-edit fa-xs"></i>
+                                      </button>
+                                    </form>
+                                    <form role="form" action='<?= base_url('admin/events/delete') ?>' method='POST'>
+                                      <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
+                                      <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="nav-icon fas fa-trash fa-xs"></i>
+                                      </button>
+                                    </form>
+                                  </div>
                                 </td>
                                 <?php $no ++ ?>
                               </tr>

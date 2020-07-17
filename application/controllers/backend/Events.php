@@ -118,10 +118,10 @@ class Events extends CI_Controller {
             $row[] = number_format($value->harga_tiket,0,",",".");
             $row[] = $value->stok_tiket;
             $row[] = "
-            <button type='button' class='btn btn-outline-info btn-sm' onclick='editTicket("."\"".$value->id_jenis_tiket."\")'>
+            <button type='button' class='btn btn-outline-info btn-sm' onclick='editTmpTicket("."\"".$value->id_jenis_tiket."\")'>
               <i class='nav-icon fas fa-edit fa-xs'></i>
             </button>
-            <button type='button' class='btn btn-outline-danger btn-sm' onclick='deleteTicket("."\"".$value->id_jenis_tiket."\")' >
+            <button type='button' class='btn btn-outline-danger btn-sm' onclick='deleteTmpTicket("."\"".$value->id_jenis_tiket."\")' >
                 <i class='nav-icon fas fa-trash fa-xs'></i>
             </button>";
             $data_ticket[] = $row;
@@ -135,7 +135,8 @@ class Events extends CI_Controller {
     }
     
     public function ticket_list() {
-        $list = $this->ticket->get_datatables(0);
+        $id=$this->input->post('id');
+        $list = $this->ticket->get_datatables($id);
         $data_ticket= array();
         $no = $_POST['start'];
         foreach ($list as $value) {
@@ -155,7 +156,6 @@ class Events extends CI_Controller {
             </button>";
             $data_ticket[] = $row;
         }
-     
         $output = array(
                         "draw" => $_POST['draw'],
                         "data" => $data_ticket

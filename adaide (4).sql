@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2020 at 03:49 PM
+-- Generation Time: Jul 17, 2020 at 09:16 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `adaide`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_detail_event`
+--
+
+CREATE TABLE `tb_detail_event` (
+  `id_event` varchar(15) NOT NULL,
+  `id_jenis_tiket` int(11) DEFAULT NULL,
+  `harga_tiket` int(11) DEFAULT NULL,
+  `stok_tiket` int(11) DEFAULT NULL,
+  `status_tiket` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_detail_event`
+--
+
+INSERT INTO `tb_detail_event` (`id_event`, `id_jenis_tiket`, `harga_tiket`, `stok_tiket`, `status_tiket`) VALUES
+('TOF24072020', 3, 75000, 1000, 1),
+('TOF24072020', 2, 5000, 100, 1),
+('DJR31072020', 1, 50000, 1000, 1),
+('DJR31072020', 2, 60000, 2000, 1),
+('DJR31072020', 3, 70000, 3000, 1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +83,9 @@ CREATE TABLE `tb_event` (
 --
 
 INSERT INTO `tb_event` (`id_event`, `nama_event`, `jenis_event`, `tanggal_mulai`, `tanggal_selesai`, `stok_tiket`, `status_event`, `banner`, `deskripsi`, `id_stage`) VALUES
-('', 'Tasik October Festival', NULL, '2020-07-01 08:00:00', '2020-07-14 08:00:00', NULL, 'Onprogress', '1594513309summer.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 2);
+('DJR31072020', 'Djarum Kopi Asyik', NULL, '2020-07-31 22:20:00', '2020-07-31 22:20:00', NULL, 'Completed', '1594912866events.jpg', 'Loremmmmmmm ', 2),
+('TOF24072020', 'Tasik October Festival', NULL, '2020-07-24 06:56:00', '2020-07-08 14:56:00', NULL, 'Processed', '1594886306summer.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2),
+('TOF25072020', 'Tasik October Festival', NULL, '2020-07-25 06:00:00', '2020-07-23 07:22:00', NULL, 'Onprogress', '1594859040events.jpg', 'knock out', 2);
 
 -- --------------------------------------------------------
 
@@ -76,14 +103,9 @@ CREATE TABLE `tb_jenis_tiket` (
 --
 
 INSERT INTO `tb_jenis_tiket` (`id_jenis_tiket`, `jenis_tiket`) VALUES
-(1, 'EKONOMI'),
-(2, 'VIP'),
-(3, 'VVIP'),
-(4, 'TENGAH'),
-(5, 'KANAN'),
-(6, 'KIRI'),
-(7, 'DEPAN'),
-(8, 'BELAKANG');
+(1, 'Early Bird'),
+(2, 'Pre Sale'),
+(3, 'On The Spot');
 
 -- --------------------------------------------------------
 
@@ -189,88 +211,6 @@ CREATE TABLE `tb_tmp_detail_event` (
   `harga_tiket` int(11) DEFAULT NULL,
   `stok_tiket` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_tmp_detail_event`
---
-
-INSERT INTO `tb_tmp_detail_event` (`id_event`, `id_jenis_tiket`, `harga_tiket`, `stok_tiket`) VALUES
-(NULL, 2, 5000, NULL),
-(NULL, 1, 6000, NULL),
-(NULL, 1, 6000, NULL),
-(NULL, 2, 5000, NULL),
-(NULL, 2, 60, NULL),
-(NULL, 2, 60, NULL),
-(NULL, 3, 50, NULL),
-(NULL, 2, 60, 70),
-(NULL, 1, 5000, 70),
-(NULL, 1, 60000, -16700),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 23, 60),
-(NULL, 1, 50, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 29, 78),
-(NULL, 1, 5666, 89),
-(NULL, 1, 50000, 70),
-(NULL, 0, 50000, 70),
-(NULL, 2, 60, 70),
-(NULL, 1, 344, -1445),
-(NULL, 1, 40, 50),
-(NULL, 1, 40, 50),
-(NULL, 1, 50, 70),
-(NULL, 1, 5000, 70),
-(NULL, 1, 5, 7),
-(NULL, 1, 60, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 60, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 1, 5, 7),
-(NULL, 1, 67, 21),
-(NULL, 1, 67, 21),
-(NULL, 1, 76, 0),
-(NULL, 1, 70000, 70),
-(NULL, 1, 70, 21),
-(NULL, 1, 70, 21),
-(NULL, 1, 20, 60),
-(NULL, 1, 50, 70),
-(NULL, 1, 50, 70),
-(NULL, 2, 70, 80),
-(NULL, 1, 7, 8),
-(NULL, 2, 70, 0),
-(NULL, 1, 70, 21),
-(NULL, 1, 20, 21),
-(NULL, 1, 20, 21),
-(NULL, 1, 20, 31),
-(NULL, 1, 20, 31),
-(NULL, 1, 5000, 20);
 
 -- --------------------------------------------------------
 
@@ -906,4 +846,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-adaideadaideadaideadaideadaideadaideadaide

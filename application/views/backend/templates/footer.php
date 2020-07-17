@@ -31,13 +31,17 @@
 
   <script src="<?= base_url('assets/backend/'); ?>plugins/select2/js/select2.js"></script>
   <script src="<?= base_url('assets/backend/'); ?>js/stage.js"></script>
-  <?php if(($this->uri->segment(2)=="stage")&&($this->uri->segment(3)=="add")){ echo "<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyA4JBMFGxGOzT49oFyOuqCDER6yZMwDtak&&callback=myMap'></script>";}?>
-  <?php //if(($this->uri->segment(1)=="events")&&($this->uri->segment(2)=="add")){ echo "<script src='".base_url('assets/').'js/events.js'."'></script>";}?>
   
   <script>
     $(document).ready(function(){
       $("select").select2(); 
-      $("#table_data").DataTable();
+      $("#table_data").DataTable({
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "retrieve": true,
+        "searching": false
+      });
       loadTmpEvents();
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
@@ -65,10 +69,10 @@
     }
 
     function changeDate() {
-      var now=$('#startdate').val();
-      var y= now.substr(0,4);
-      var m= now.substr(5,2);
-      var d= now.substr(8,2);
+      let now=$('#startdate').val();
+      let y= now.substr(0,4);
+      let m= now.substr(5,2);
+      let d= now.substr(8,2);
       $('#date_tmp').text(d+m+y);
       $('#date_events').val(d+m+y);
 
@@ -99,7 +103,9 @@
       }).ajax.reload();
     }
 
-    function loadDetailEvents(){
+    function loadDetailEvents(id){
+      let id_event;
+      id_event=id;
       $('#ticketTable').DataTable({ 
         "processing": true, 
         "serverSide": true, 
@@ -110,7 +116,10 @@
         "searching": false,
         "ajax": {
           "url": "<?= base_url('admin/events/ticket_list')?>",
-          "type": "POST"
+          "type": "POST",
+          "data":{
+            id:function(){ return id_event;}
+          },
         },
         "columnDefs": [
           {
@@ -130,7 +139,7 @@
       var price=$('#price').val();
       var stock=$('#stock').val();
       $.ajax({
-        url:"<?= base_url('admin/events/insertTicket') ?>",
+        url:"<?= base_url('admin/events/insertTmpTicket') ?>",
         type:'post',
         dataType:"json",
         data:{
@@ -154,12 +163,13 @@
     }
 
     function editTmpTicket(id){
+      let id_event=id;
       $.ajax({
         url:"<?= base_url('admin/events/getTmpTicket') ?>",
         type:'post',
         dataType:"json",
         data:{
-          id:id
+          id:id_event
         },success : function (data) {
           $('#id_type').val(data['id_jenis_tiket']);
           $('#id_type').trigger('change');
@@ -170,12 +180,13 @@
     }
     
     function deleteTmpTicket(id){
+      let id_event=id;
       $.ajax({
         url:"<?= base_url('admin/events/deleteTmpTicket') ?>",
         type:'post',
         dataType:"json",
         data:{
-          id:id
+          id:id_event
         }, success : function(data){
           loadTmpEvents();
         }
