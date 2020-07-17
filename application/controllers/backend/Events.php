@@ -25,6 +25,7 @@ class Events extends CI_Controller {
         }else{
             if($this->input->post('banner-name')){
                 $fileName=uploadBanner();
+
             }
             $id_events=$this->input->post('id_events').$this->input->post('date_events');
             $data_events=[
@@ -83,7 +84,7 @@ class Events extends CI_Controller {
         $this->db->delete("tb_event",['id_event'=>$id_event]);
         $this->db->delete("tb_detail_event",['id_event'=>$id_event]);
         redirect('admin/events');
-    }  
+    }
 
     public function insertTmpTicket(){
         $data_ticket=[

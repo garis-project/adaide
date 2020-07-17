@@ -8,6 +8,10 @@ class Dashboard extends CI_Controller {
     }
     public function index() {
         $data['title'] ="Admin Page";
-        templates('admin/index',$data);
+        $this->load->view('backend/templates/header', $data);
+        $this->load->view('backend/templates/navbar');
+        $this->load->view('backend/templates/sidebar');
+        $this->load->view('backend/admin/index');
+        $this->load->view('backend/templates/footer');
     }
 }
