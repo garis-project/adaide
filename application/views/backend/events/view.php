@@ -5,7 +5,7 @@
             <h1>Add New Events</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?= base_url('admin'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="<?= base_url('events'); ?>">Events</a></div>
+              <div class="breadcrumb-item"><a href="<?= base_url('admin/events'); ?>">Events</a></div>
               <div class="breadcrumb-item">View</div>
             </div>
           </div>
@@ -19,14 +19,14 @@
                         <h4>Advertise</h4>
                       </div>
                       <div class="card-body">
-                          <div class="form-group">
-                              <div class=" float-center">
-                                <img src="<?= base_url('assets/img/events/').$event['banner']; ?> " class="img-fluid" id="banner-img"alt="Responsive image">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <label>Description</label>
-                            <blockquote class="blockquote"><?= $event['deskripsi']; ?></blockquote>
+                        <div class="form-group">
+                            <div class=" float-center">
+                              <img src="<?= base_url('assets/backend/img/events/').$event['banner']; ?> " class="img-fluid" id="banner-img"alt="Responsive image">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Description</label>
+                          <blockquote class="blockquote"><?= $event['deskripsi']; ?></blockquote>
                         </div>
                       </div>
                     </div>
@@ -52,12 +52,16 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label>Location</label>
-                          <input type="text" class="form-control" placeholder="Address Of Events" value="<?= $event['lokasi']; ?>" readonly/>
+                          <label>Stage</label>
+                          <input type="text" class="form-control" placeholder="Stage Of Events" value="<?= $event['nama_stage']; ?>" readonly/>
+                        </div>
+                        <div class="form-group">
+                          <label>Address</label>
+                          <input type="text" class="form-control" placeholder="Address Of Events" value="<?= $event['alamat_stage'].", ". $event['kota_stage']; ?>" readonly/>
                         </div>
                         <div class="form-group">
                           <label>Status</label>
-                          <input class="form-control" id="events_status" name="events_status" value="<?= $event['status']; ?>" readonly/>
+                          <input class="form-control" id="events_status" name="events_status" value="<?= $event['status_event']; ?>" readonly/>
                         </div>
                         
                     </div>

@@ -19,7 +19,36 @@
                         <h4>Map</h4>
                       </div>
                       <div class="card-body">
-                        <div id="googleMap" style="width:100%;height:300px;"></div> 
+                        <div id='map' style='width: 400px; height: 300px;'></div>
+                        <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
+                          var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+                          mapboxClient.geocoding
+                          .forwardGeocode({
+                          query: 'Tasikmalaya, Indonesia',
+                          autocomplete: false,
+                          limit: 1
+                          })
+                          .send()
+                          .then(function(response) {
+                          if (
+                          response &&
+                          response.body &&
+                          response.body.features &&
+                          response.body.features.length
+                          ) {
+                          var feature = response.body.features[0];
+                          
+                          var map = new mapboxgl.Map({
+                          container: 'map',
+                          style: 'mapbox://styles/mapbox/streets-v11',
+                          center: feature.center,
+                          zoom: 10
+                          });
+                          new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+                          }
+                          });
+                        </script> 
                       </div>
                     </div>
                 </div>
