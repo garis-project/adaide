@@ -13,7 +13,10 @@
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
   <!-- <link href="<?= base_url('assets/'); ?>css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"> -->
   <!-- CSS Libraries -->
-
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+<script src="https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js"></script>
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
