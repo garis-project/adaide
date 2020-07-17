@@ -1,7 +1,7 @@
 
 <div class="col-md-12">
 	<div class="d-flex justify-content-end">
-		<h1 class="position-fixed judul mt-5 display-3 text-uppercase font-weight-bold">Get Your Podcast</h1>
+		<h1 class="position-fixed judul display-3 text-uppercase font-weight-bold">Get Your Podcast</h1>
 	</div>
 </div>
 

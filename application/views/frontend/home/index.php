@@ -1,7 +1,7 @@
 
 <div class="col-md-12">
 	<div class="d-flex justify-content-end">
-		<h1 class="position-fixed judul mt-5 display-3 text-uppercase font-weight-bold">Creative takes</h1>
+		<h1 class="position-fixed judul text-right display-3 text-uppercase font-weight-bold">Creative takes</h1>
 	</div>
 </div>
 

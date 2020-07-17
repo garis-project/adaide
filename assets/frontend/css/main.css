@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,900;1,700&display=swap");
 .bg-header {
 	background-image: linear-gradient(
-			to right bottom,
-			rgba(2, 2, 2, 0.8) 0%,
-			rgba(46, 46, 46, 0.8)
+		to right bottom,
+		rgba(2, 2, 2, 0.8) 0%,
+		rgba(46, 46, 46, 0.8)
 		),
-		url(../img/bicara.jpg);
+	url(../img/bicara.jpg);
 	background-size: cover;
 	background-position: top;
-	height: 820px;
+	min-height: 820px;
+	height: 100vh;
 }
 
 .bg-black {
@@ -55,18 +56,6 @@ a:hover {
 	margin-top: 8rem;
 }
 
-.text-header-fixed {
-	position: fixed;
-	left: 31%;
-	top: 33%;
-}
-
-.text-header-right {
-	position: fixed;
-	left: 45%;
-	top: 33%;
-}
-
 .rotate {
 	transform: rotate(-10deg);
 }
@@ -77,9 +66,10 @@ a:hover {
 }
 
 .judul {
-	top: 300px;
-	/* width: inherit; */
+	top: 40%;
+	text-align: right;
 	z-index: 2;
+
 }
 
 .abs {

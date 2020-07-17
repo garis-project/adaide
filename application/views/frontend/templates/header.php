@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/image/logo-merah.png">
+	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/img/logo-putih.png">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<?= base_url('/assets/frontend/') ?>css/main.css">
 	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/bootstrap.css">
@@ -27,7 +26,7 @@
 						<h4 class="h4"></h4>
 					</div>
 					<div class="display-4 d-flex justify-content-end ">
-						<img src="<?= base_url('assets/frontend/')?>/image/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
+						<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
 					</div>
 				</div>
 				<div class="col-md-12 d-flex align-middle justify-content-center mx-auto my-auto">
@@ -35,17 +34,17 @@
 						<nav class="nav display-4 mt-5 text-uppercase font-weight-bold justify-content-end position-absolute">
 							<a class="nav-link" href="home">creative
 								<sup>
-									<img src="<?= base_url('assets/frontend/')?>/image/logo-putih.png" class="sup" id="logo-image">
+									<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="sup" id="logo-image">
 								</sup>
 							</a> /
 							<a class="nav-link" href="bicara">bicara
 								<sup>
-									<img src="<?= base_url('assets/frontend/')?>/image/logo-putih.png" class="sup" id="logo-image">
+									<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="sup" id="logo-image">
 								</sup>
 							</a> /
 							<a class="nav-link" href="about">kita bukan bayangan
 								<sup>
-									<img src="<?= base_url('assets/frontend/')?>/image/logo-putih.png" class="sup" id="logo-image">
+									<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="sup" id="logo-image">
 								</sup>
 							</a> /
 							<a class="nav-link" href="wedo">about us
