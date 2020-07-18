@@ -41,19 +41,19 @@
                                 <td><?= $value['geocode']; ?> </td>
                                 <td>
                                     <div class="form-inline">
-                                        <form role="form" action='<?= base_url('stage/view') ?>' method='POST'>
+                                        <form role="form" action='<?= base_url('admin/stage/view') ?>' method='POST'>
                                           <input type="hidden" name="id_stage" value="<?= $value['id_stage']; ?>">
                                           <button type="submit" class="btn btn-outline-info btn-sm">
                                             <i class="nav-icon fas fa-eye fa-xs"></i>
                                           </button>
                                       </form>
-                                        <form role="form" action='<?= base_url('stage/update') ?>' method='POST'>
+                                        <form role="form" action='<?= base_url('admin/stage/update') ?>' method='POST'>
                                           <input type="hidden" name="id_stage" value="<?= $value['id_stage']; ?>">    
                                           <button type="submit" class="btn btn-outline-info btn-sm">
                                             <i class="nav-icon fas fa-edit fa-xs"></i>
                                           </button>
                                         </form>
-                                        <form role="form" action='<?= base_url('stage/delete') ?>' method='POST'>
+                                        <form role="form" action='<?= base_url('admin/stage/delete') ?>' method='POST'>
                                           <input type="hidden" name="id_stage" value="<?= $value['id_stage']; ?>">
                                           <button type="submit" class="btn btn-outline-danger btn-sm" onclick="hapus_data()">
                                             <i class="nav-icon fas fa-trash fa-xs"></i>
