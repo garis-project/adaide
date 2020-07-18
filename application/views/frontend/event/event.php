@@ -1,22 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/image/logo-merah.png">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="<?= base_url('/assets/frontend/') ?>css/main.css">
-	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/bootstrap.css">
-	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/grid-gallery.css">
-	<!-- font awesome -->
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>/fontawesome/css/all.css">
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>fontawesome/css/brands.css">
-	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-	<title>Ada Ide</title>
-</head>
 <body class="bg-black">
-	<div style="" class="bg-cover page-holder">
+	<div class="bg-cover page-holder">
 		<div class="container-xl py-4">
 			<div class="nav navbar">
 				<div class="justify-content-start">
@@ -120,9 +103,4 @@
 				</div>
 			</div>
 			<!-- form pengisian data diri -->
-
 		</div>
-		<script src="assets/js/jquery.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-		<script src="assets/js/bootstrap.js"></script>
-	</body>

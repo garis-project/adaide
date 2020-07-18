@@ -42,6 +42,7 @@
         "retrieve": true,
         "searching": false
       });
+      //Event Js
       loadTmpEvents();
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
@@ -53,9 +54,26 @@
         $('#image-check').val(this.files[0].name);
         readURL(this);
       });
+
+// Map View JS
+      let geo=$('#geocode').val();
+      geo = geo.split(",",2);
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [geo[1],geo[0]],
+        zoom: 13
+      });
+      var marker = new mapboxgl.Marker({
+        draggable: false,
+        color:'red'
+      })
+      .setLngLat([geo[1],geo[0]])
+      .addTo(map);
     })
   </script>
-
+  
 <script>
     function readURL(input) {
       if (input.files && input.files[0]) {

@@ -5,18 +5,12 @@ class Stage extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Stage_model','stage');
+        check_login();
     }
     public function index() {
         $data['title'] ="Stage Page";
         $data['stage']=$this->stage->viewAll();
-        <<<<<<< .merge_file_a12740
         templates('stage/index',$data);
-        $this->load->view('backend/templates/header', $data);
-        $this->load->view('backend/templates/navbar');
-        $this->load->view('backend/templates/sidebar');
-        $this->load->view('backend/stage/index');
-        $this->load->view('backend/templates/footer');
     }
 
     public function add() {
@@ -28,13 +22,7 @@ class Stage extends CI_Controller {
         $this->form_validation-> set_rules('city','City','required|trim');
         $this->form_validation-> set_rules('geocode','Geocode','required|trim');
         if($this->form_validation->run()==false){
-
             templates('stage/add',$data);
-            $this->load->view('backend/templates/header', $data);
-            $this->load->view('backend/templates/navbar');
-            $this->load->view('backend/templates/sidebar');
-            $this->load->view('backend/stage/add');
-            $this->load->view('backend/templates/footer');
         }else{
             $data_stage=[
                 'nama_stage'=>$this->input->post('stage_name'),
@@ -43,9 +31,38 @@ class Stage extends CI_Controller {
                 'geocode'=>$this->input->post('geocode'),
             ];
             $this->db->insert('tb_stage',$data_stage);
-
             redirect('admin/stage');
         }
+    }
+    public function update() {
+        $data['title'] ="Update Stage";
+        $data['area']=$this->stage->viewArea();
+        $id=$this->input->post('id_stage');
+        $data['stage']=$this->stage->getStage($id);
+
+        $this->form_validation-> set_rules('stage_name','Stage Name','required|trim');
+        $this->form_validation-> set_rules('address','Address','required|trim');
+        $this->form_validation-> set_rules('city','City','required|trim');
+        $this->form_validation-> set_rules('geocode','Geocode','required|trim');
+        if($this->form_validation->run()==false){
+            templates('stage/update',$data);
+        }else{
+            $data_stage=[
+                'nama_stage'=>$this->input->post('stage_name'),
+                'alamat_stage'=>$this->input->post('address'),
+                'kota_stage'=>$this->input->post('city'),
+                'geocode'=>$this->input->post('geocode'),
+            ];
+            $this->db->updateStage($data_stage,$id);
+            redirect('admin/stage');
+        }
+    }
+
+    public function view() {
+        $id=$this->input->post('id_stage');
+        $data['title'] ="View Stage";
+        $data['stage']=$this->stage->getStage($id);
+        templates('stage/view',$data);
     }
 
     public function delete(){
