@@ -30,7 +30,7 @@ class Auth extends CI_Controller
 		    ];
 		    if($user['id_status']==1||$user['id_status']==2){
 		        $this->session->set_userdata($data);
-		        redirect('user');
+		        redirect('home');
 		    }elseif($user['id_status']==3){
 		        $message = "Your Account is Online";
 		        echo "<script type='text/javascript'>alert('$message');";
