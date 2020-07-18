@@ -1,12 +1,7 @@
-<nav class="mt-n5">
-	<ol class="breadcrumb bg-transparent">
-		<!-- <li class="btn btn-danger" aria-current="page" id="btnLogin">login</li> -->
-	</ol>
-</nav>
 
 <div class="col-md-12">
 	<div class="d-flex justify-content-end">
-		<h1 class="position-fixed judul text-right display-3 text-uppercase font-weight-bold">Creative takes</h1>
+		<h1 class="position-fixed w-50 judul text-right display-4 text-uppercase font-weight-bold">PHOTOGRAPHY IS A WAY OF FEELING</h1>
 	</div>
 </div>
 
@@ -34,19 +29,19 @@
 	<div class="container-fluid bg-black">
 		<div class="row h-25 opacity">
 			<div class="col-md-4 item p-2 box">
-				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/lukis.jpg">
+				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/working-group.jpg">
 			</div>
 			<div class="col-md-8 item p-2 box">
-				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/gitar.jpg">
+				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/concert-malam.jpg">
 			</div>
 			<div class="col-md-12 item p-2 box">
-				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/tangan.jpg">
+				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/lukis-pencil.jpg">
 			</div>
 			<div class="col-md-4 item p-2 box">
-				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/gambar.jpg">
+				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/idefest.jpg">
 			</div>
 			<div class="col-md-8 item p-2 box">
-				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/nongkrong.jpg">
+				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/nyanyi.jpg">
 			</div>
 			<div class="col-md-7 item p-2 box">
 				<img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/') ?>/img/nyanyi.jpg">

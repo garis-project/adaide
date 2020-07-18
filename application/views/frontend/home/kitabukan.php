@@ -1,4 +1,10 @@
+<nav class="mt-n4">
+  <ol class="breadcrumb bg-transparent">
+    <li class="lead text-uppercase" aria-current="page">/kita bukan bayangan</li>
+  </ol>
+</nav>
 
+<!-- breadcumb -->
 <div class="col-md-12 d-flex justify-content-center">
   <div class="text-center w-100 header-text">
     <h1 class=" display-3 text-uppercase">Family is More</h1>
@@ -29,13 +35,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 p-2">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/lukis.png">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/lukis.jpg">
         </div>
         <div class="col-md-4 p-2 h-25">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/gambar.png">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/pamungkas.jpg">
         </div>
         <div class="col-md-4 p-2 h-25">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/5.jpg">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/bicara-x.jpg">
         </div>
       </div>
       <div class="row">
@@ -46,13 +52,13 @@
       <!-- bagian 2 -->
       <div class="row">
         <div class="col-md-4 p-2">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/gitar.png">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/podcast.jpg">
         </div>
         <div class="col-md-4 p-2 h-25">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/pamungkas.jpg">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/gambar.jpg">
         </div>
         <div class="col-md-4 p-2 h-25">
-          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/nyanyi.png">
+          <img class="img-fluid image scale-on-hover" src="<?= base_url('assets/frontend/')?>/img/pandemi.jpg">
         </div>
       </div>
       <div class="row">

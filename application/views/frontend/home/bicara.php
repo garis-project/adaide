@@ -1,3 +1,17 @@
+<style type="text/css">
+	.bg-header {
+		background-image: linear-gradient(
+			to right bottom,
+			rgba(2, 2, 2, 0.8) 0%,
+			rgba(46, 46, 46, 0.8)
+			),
+		url("<?= base_url('assets/frontend/')?>/img/bicara-x.jpg");
+		background-size: cover;
+		background-position: top;
+		min-height: 820px;
+		height: 100vh;
+	}
+</style>
 
 <div class="col-md-12">
 	<div class="d-flex justify-content-end">
@@ -22,7 +36,7 @@
 		<div class="row">
 			<div class="col-md-4 height-100 d-flex align-items-center align-text-bottom">
 				<div class="w-100">
-					<img src="<?= base_url('assets/frontend/') ?>/img/podcast.png" class="w-100">
+					<img src="<?= base_url('assets/frontend/') ?>/img/podcast.jpg" class="w-100">
 					<p class="lead position-absolute mt-n5">
 						Get Your Podcast Passion On
 					</p>
@@ -43,7 +57,7 @@
 					<h1 class="h1 text-uppercase">
 						Band tasik, ngaku band bandung!!! gengsi?
 					</h1>
-					<img src="<?= base_url('assets/frontend/') ?>/img/TL-AIB-PART-1-TGL-1-MEI_28.png" class="w-100">
+					<img src="<?= base_url('assets/frontend/') ?>/img/TL-AIB-PART-1-TGL-1-MEI_28.jpg" class="w-100">
 					<p class="lead position-absolute mt-n5">
 						Get Your Podcast Passion On
 					</p>

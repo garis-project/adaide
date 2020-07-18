@@ -1,9 +1,9 @@
 <body class="bg-black height-full">
 	<div class="pt-5">
-		<div class="container-xl pt-5">
+		<div class="container-xl">
 			<div class="col-md-6 mx-auto my-auto ">
 				<h1 class="text-header text-center">
-					<img src="<?= base_url('assets/frontend/') ?>/image/logo-putih.png" class="logo mt-3">
+					<img src="<?= base_url('assets/frontend/') ?>/img/logo-putih.png" class="logo mt-3">
 				</h1>
 				<div class="card bg-transparent">
 					<p class="lead text-center p-4">Sign up for your account</p>

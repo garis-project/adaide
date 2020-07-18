@@ -20,4 +20,16 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/home/bicara');
 		$this->load->view('frontend/templates/footer');
 	}
+	public function kitabukan() {
+		$data['title'] = "ADAIDE";
+		$this->load->view('frontend/templates/header', $data);
+		$this->load->view('frontend/home/kitabukan');
+		$this->load->view('frontend/templates/footer');
+	}
+	public function photo() {
+		$data['title'] = "ADAIDE";
+		$this->load->view('frontend/templates/header', $data);
+		$this->load->view('frontend/home/photo');
+		$this->load->view('frontend/templates/footer');
+	}
 }
