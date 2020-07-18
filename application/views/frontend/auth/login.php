@@ -13,21 +13,23 @@
 							</h3>
 							<p>Please login to your account. or <a href="<?= base_url('home') ?>">latter</a></p>
 						</div>
-						<form class="mt-5">
+						<form class="mt-5" method="POST" action="<?= base_url('auth') ?>">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Email address</label>
-								<input type="email" class="form-control form-control-sx bg-transparent text-white" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<input type="email" name="email" class="form-control form-control-sx bg-transparent text-white" id="exampleInputEmail1" aria-describedby="emailHelp">
 								<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+								<?= form_error('email','<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control form-control text-white bg-transparent" id="exampleInputPassword1">
+								<input type="password" name="password" class="form-control form-control text-white bg-transparent" id="exampleInputPassword1">
+								<?= form_error('password','<small class="text-danger pl-3">', '</small>'); ?>
 							</div>
 							<div class="mx-auto text-center">
 								<button type="submit" class="btn btn-danger text-center w-50 py-2 mt-3">Login</button>
 								<p id="emailHelp" class="form-text text-muted mt-5">New in adaide? please <a href="<?= base_url('auth/register') ?>">Sign Up</a></p>
 							</div>
-						</form>
+						</method=>
 					</div>
 				</div>
 			</div>
