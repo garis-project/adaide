@@ -11,7 +11,7 @@
           </div>
 
           <div class="section-body">
-            <form role="form" action='<?= base_url('admin/stage/add') ?>' method='POST'>
+            <form>
               <div class="row">
                 <div class="col-12 col-sm-6 col-lg-6">
                     <div class="card">
@@ -88,7 +88,6 @@
                     </div>
                   </div>
                 </div>
-                
               </div>
             </form>
           </div>

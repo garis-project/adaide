@@ -20,9 +20,7 @@
                           <table class="table table-striped" id="table_data">
                             <thead>
                               <tr class="text-center">
-                                <th >
-                                  No
-                                </th>
+                                <th>No</th>
                                 <th>Stage Name</th>
                                 <th>Address</th>
                                 <th>City</th>
@@ -35,7 +33,7 @@
                               $no=$this->uri->segment('3')+1;
                               foreach($stage as $value){ 
                               ?>
-                              <tr>
+                              <tr class="text-center">
                                 <td><?= $no ?> </td>
                                 <td><?= $value['nama_stage']; ?> </td>
                                 <td><?= $value['alamat_stage']; ?> </td>

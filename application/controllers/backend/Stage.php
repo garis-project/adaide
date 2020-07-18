@@ -10,13 +10,7 @@ class Stage extends CI_Controller {
     public function index() {
         $data['title'] ="Stage Page";
         $data['stage']=$this->stage->viewAll();
-        <<<<<<< .merge_file_a12740
         templates('stage/index',$data);
-        $this->load->view('backend/templates/header', $data);
-        $this->load->view('backend/templates/navbar');
-        $this->load->view('backend/templates/sidebar');
-        $this->load->view('backend/stage/index');
-        $this->load->view('backend/templates/footer');
     }
 
     public function add() {
@@ -28,13 +22,7 @@ class Stage extends CI_Controller {
         $this->form_validation-> set_rules('city','City','required|trim');
         $this->form_validation-> set_rules('geocode','Geocode','required|trim');
         if($this->form_validation->run()==false){
-
             templates('stage/add',$data);
-            $this->load->view('backend/templates/header', $data);
-            $this->load->view('backend/templates/navbar');
-            $this->load->view('backend/templates/sidebar');
-            $this->load->view('backend/stage/add');
-            $this->load->view('backend/templates/footer');
         }else{
             $data_stage=[
                 'nama_stage'=>$this->input->post('stage_name'),
@@ -43,7 +31,6 @@ class Stage extends CI_Controller {
                 'geocode'=>$this->input->post('geocode'),
             ];
             $this->db->insert('tb_stage',$data_stage);
-
             redirect('admin/stage');
         }
     }
