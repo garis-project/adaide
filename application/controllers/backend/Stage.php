@@ -10,7 +10,6 @@ class Stage extends CI_Controller {
     public function index() {
         $data['title'] ="Stage Page";
         $data['stage']=$this->stage->viewAll();
-        <<<<<<< .merge_file_a12740
         templates('stage/index',$data);
         $this->load->view('backend/templates/header', $data);
         $this->load->view('backend/templates/navbar');
