@@ -79,7 +79,7 @@ class Auth extends CI_Controller
                 'gender_user'=>htmlspecialchars($this->input->post('gender')),
                 'kontak'=>htmlspecialchars("0".$this->input->post('phone')),
                 'email_user'=>htmlspecialchars($this->input->post('email')),
-                'password'=>base64_encode($this->input->post('password')),
+                'password'=>base64_encode($this->input->post('password1')),
                 'alamat'=>htmlspecialchars($this->input->post('address')),
                 'id_role'=>2,
                 'id_status'=>1

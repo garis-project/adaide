@@ -56,21 +56,23 @@
       });
 
 // Map View JS
-      let geo=$('#geocode').val();
-      geo = geo.split(",",2);
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [geo[1],geo[0]],
-        zoom: 13
-      });
-      var marker = new mapboxgl.Marker({
-        draggable: false,
-        color:'red'
-      })
-      .setLngLat([geo[1],geo[0]])
-      .addTo(map);
+      if (document.URL=="<?= base_url('admin/stage/view') ?>"){
+        let geo=$('#geocode').val();
+        geo = geo.split(",",2);
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [geo[0],geo[1]],
+          zoom: 13
+        });
+        var marker = new mapboxgl.Marker({
+          draggable: false,
+          color:'red'
+        })
+        .setLngLat([geo[0],geo[1]])
+        .addTo(map);
+      }
     })
   </script>
   
@@ -128,9 +130,7 @@
     }
 
     function loadDetailEvents(id){
-      let id_event;
-      id_event=id;
-      $('#ticketTable').DataTable({ 
+      var tes= $('#ticketTable').DataTable({ 
         "processing": true, 
         "serverSide": true, 
         "paging": false,
@@ -141,13 +141,13 @@
         "ajax": {
           "url": "<?= base_url('admin/events/ticket_list')?>",
           "type": "POST",
-          "data":{
-            id:function(){ return id_event;}
-          },
+          "data": function (d) {
+            d.id = id;
+          }
         },
         "columnDefs": [
           {
-            "targets": [0,5],
+            "targets": [0,5,6],
             "className": "text-center"
           },
           {

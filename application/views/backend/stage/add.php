@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                           <label>Geocode</label>
-                          <input type="text" class="form-control" placeholder="Latitude,Longitude" name="geocode" id="geocode" />
+                          <input type="text" class="form-control" placeholder="Latitude,Longitude" name="geocode" id="geocode" readonly />
                           <?= form_error('geocode','<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
@@ -56,73 +56,46 @@
                         <h4>Map</h4>
                       </div>
                       <div class="card-body">
-                        <div id='map' style='width: 100%; height: 460px;'></div>
+                        <div id='mapSearch' style='width: 100%; height: 460px;'></div>
                         <script>
                           mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
-                          var map = new mapboxgl.Map({
-                            container: 'map',
+                          var mapSearch = new mapboxgl.Map({
+                            container: 'mapSearch',
                             style: 'mapbox://styles/mapbox/streets-v11',
                             center: [108.2236116,-7.3488505],
                             zoom: 10
                           });
 
-
                           var geocoder = new MapboxGeocoder({
                             accessToken: mapboxgl.accessToken,
-                            marker: {
-                              draggable: true,
-                              color: 'blue'
+                            marker:{
+                              color:'transparent'
                             },
                             mapboxgl: mapboxgl
                           });
+                          
+                          var markerPick = new mapboxgl.Marker({
+                              draggable: true,
+                          })
+                          .setLngLat([108.2236116,-7.3488505])
+                          .addTo(mapSearch);
 
-                          map.addControl(geocoder);
+                          mapSearch.addControl(geocoder);
 
-                          var coordinatesGeocoder = function(query) {
-                            var matches = query.match(
-                            /^[ ](?:Lat: )?(-?\d+\.?\d)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
-                            );
-                            if (!matches) {
-                              return null;
-                            }
- 
-                            function coordinateFeature(lng, lat) {
-                              return {
-                                center: [lng, lat],
-                                geometry: {
-                                type: 'Point',
-                                coordinates: [lng, lat]
-                              },
-                              place_name: 'Lat: ' + lat + ' Lng: ' + lng,
-                              place_type: ['coordinate'],
-                              properties: {},
-                              type: 'Feature'
-                              };
+                          geocoder.on('result', function(e) {
+                            let lat=e.result.center[1];
+                            let lng=e.result.center[0];
+                            markerPick.setLngLat([lng,lat]);
+                            markerPick.addTo(mapSearch);
+                            $('#geocode').val(lng+","+lat);
+                          })
+                          
+                            function onDragEnd() {
+                              var lngLat = markerPick.getLngLat();
+                              $('#geocode').val(lngLat.lng+","+lngLat.lat);
                             }
 
-                            var coord1 = Number(matches[1]);
-                            var coord2 = Number(matches[2]);
-                            var geocodes = [];
-
-                            if (coord1 < -90 || coord1 > 90) {
-                              geocodes.push(coordinateFeature(coord1, coord2));
-                            }
-                            if (coord2 < -90 || coord2 > 90) {
-                              geocodes.push(coordinateFeature(coord2, coord1));
-                            }
-                            if (geocodes.length === 0) {
-                              geocodes.push(coordinateFeature(coord1, coord2));
-                              geocodes.push(coordinateFeature(coord2, coord1));
-                            }
-                            console.log(geocodes);
-                            return geocodes;
-                          };
-                          // function onDragEnd() {
-                          //     var lngLat = marker.getLngLat();
-                          //     $('#geocode').val(lngLat.lng+","+lngLat.lat);
-                          // }
-
-                          // marker.on('dragend', onDragEnd);
+                            markerPick.on('dragend', onDragEnd);
                         </script>
                       </div>
                     </div>

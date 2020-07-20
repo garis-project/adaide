@@ -20,9 +20,7 @@
                           <table class="table table-striped" width=100%  id="table_data">
                             <thead>
                               <tr class="text-center">
-                                <th >
-                                  No
-                                </th>
+                                <th>No</th>
                                 <th>Events Name</th>
                                 <th>Start Date</th>
                                 <th>Finish Date</th>
@@ -43,7 +41,7 @@
                                 <td><?= date("d/m/Y",strtotime($value['tanggal_selesai'])); ?> </td>
                                 <td><?= $value['nama_stage']; ?> </td>
                                 <td>
-                                  <div class="badge <?php if($value['status_event']=='completed'){
+                                  <div class="badge <?php if($value['status_event']=='Completed'){
                                       echo 'badge-success';
                                       }elseif($value['status_event']=='Onprogress'){
                                         echo 'badge-info';
@@ -108,6 +106,7 @@
                       <th rowspan="2">Ticket Type</th>
                       <th colspan="2">Price</th>
                       <th rowspan="2">Stok</th>
+                      <th rowspan="2">Status</th>
                       <th rowspan="2">Action</th>
                     </tr>
                     <tr>
