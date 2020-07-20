@@ -11,10 +11,9 @@
           </div>
 
           <div class="section-body">
-            <form role="form" action='<?= base_url('admin/stage/add') ?>' method='POST'>
+            <form role="form" action='<?= base_url('stage/add') ?>' method='POST' enctype="multipart/form-data">
               <div class="row">
-                
-                <div class="col-4">
+                <div class="col-4 col-sm-6 col-lg-6">
                   <div class="card">
                     <div class="card-header">
                         <h4>Stage Detail</h4>

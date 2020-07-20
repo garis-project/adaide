@@ -53,6 +53,7 @@
                     <div class="form-group col-6">
                       <label for="password2" class="d-block">Password Confirmation</label>
                       <input id="password2" type="password" class="form-control" name="password2">
+                     
                     </div>
                   </div>
 
