@@ -10,6 +10,13 @@ class Events_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    function viewActive(){
+        $this->db->select('*');
+        $this->db->from('tb_event e');
+        $this->db->join('tb_stage s','s.id_stage=e.id_stage','left');
+        return $this->db->get()->result_array();
+    }
+
     function getEvent($id){
         $this->db->select('*');
         $this->db->from('tb_event');

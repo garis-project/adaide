@@ -26,7 +26,9 @@
                             <div class="input-group">
                                 <div class="custom-file">
                                   <input type="file" class="custom-file-input" id="banner-input" name="banner-input">
-                                  <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name"></label>
+                                  <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name" onchange="checkImg()"></label>
+                                  <input type="hidden" id="image-check" name="image-check"/>
+                                  <input type="hidden" name="image-default" value="default.png" />
                                 </div>
                             </div>
                           </div>

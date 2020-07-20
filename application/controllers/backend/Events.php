@@ -23,9 +23,10 @@ class Events extends CI_Controller {
             $this->db->truncate('tb_tmp_detail_event');
             templates('events/add',$data);
         }else{
-            if($this->input->post('banner-name')){
+            if($this->input->post('image-check')){
                 $fileName=uploadBanner();
-
+            }else{
+                $fileName=$this->input->post('image-default');
             }
             $id_events=$this->input->post('id_events').$this->input->post('date_events');
             $data_events=[
@@ -146,6 +147,8 @@ class Events extends CI_Controller {
         $id=$this->input->post('id');
         $list = $this->ticket->get_datatables($id);
         $data_ticket= array();
+        $status_ticket="";
+        $action="";
         $no = $_POST['start'];
         foreach ($list as $value) {
             $no++;
@@ -155,13 +158,24 @@ class Events extends CI_Controller {
             $row[] = "Rp.";
             $row[] = number_format($value->harga_tiket,0,",",".");
             $row[] = $value->stok_tiket;
-            $row[] = "
-            <button type='button' class='btn btn-outline-info btn-sm' onclick='editTmpTicket("."\"".$value->id_jenis_tiket."\")'>
-              <i class='nav-icon fas fa-edit fa-xs'></i>
-            </button>
-            <button type='button' class='btn btn-outline-danger btn-sm' onclick='deleteTmpTicket("."\"".$value->id_jenis_tiket."\")' >
-                <i class='nav-icon fas fa-trash fa-xs'></i>
-            </button>";
+            if($value->status_tiket==1){
+                $status_ticket="ON";
+            }elseif($value->status_tiket==0){
+                $status_ticket="OFF";
+            }
+            if($status_ticket=="ON"){ 
+                $badge="<div class='badge badge-success'>".$status_ticket."</div>";
+                $action="<button type='button' class='btn btn-outline-danger btn-sm' onclick='editTmpTicket("."\"".$value->id_jenis_tiket."\")'>
+                            <i class='nav-icon fas fa-stop-circle fa-xs'></i>
+                        </button>";
+            }elseif($status_ticket=="OFF"){
+                $badge="<div class='badge badge-warning'>".$status_ticket."</div>";
+                $action="<button type='button' class='btn btn-outline-info btn-sm' onclick='deleteTmpTicket("."\"".$value->id_jenis_tiket."\")' >
+                            <i class='nav-icon fas fa-check-circle fa-xs'></i>
+                        </button>";
+            }
+            $row[] =$badge;
+            $row[] = $action;
             $data_ticket[] = $row;
         }
         $output = array(
