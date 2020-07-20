@@ -5,17 +5,17 @@ class Stage_model extends CI_Model
 {
     function viewAll(){
         $this->db->select('*');
-        return $this->db->get('tb_stage')->result_array();
+        $this->db->from('tb_stage');
+        return $this->db->get()->result_array();
     }
-
-    function getStage($id){
+    function getEvent($id){
         $this->db->select('*');
         $this->db->from('tb_stage');
         $this->db->where(['id_stage'=>$id]);
         return $this->db->get()->row_array();
     }
 
-    function updateStage($data,$id){
+    function updateEvents($data,$id){
         $this->db->where('id_stage', $id);
         $this->db->update('tb_stage', $data);
     } 

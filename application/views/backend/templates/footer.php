@@ -42,7 +42,6 @@
         "retrieve": true,
         "searching": false
       });
-      //Event Js
       loadTmpEvents();
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
@@ -54,7 +53,6 @@
         $('#image-check').val(this.files[0].name);
         readURL(this);
       });
-
 // Map View JS
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
         let geo=$('#geocode').val();
@@ -75,7 +73,7 @@
       }
     })
   </script>
-  
+
 <script>
     function readURL(input) {
       if (input.files && input.files[0]) {
