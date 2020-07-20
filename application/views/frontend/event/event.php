@@ -73,3 +73,7 @@
 			<!-- form pengisian data diri -->
 		</div>
 		<?php }?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6ec56cf0073c8e98b5b4b5d9e93df5bfb7883ce2
