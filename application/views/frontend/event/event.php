@@ -31,7 +31,9 @@
 							</div>
 							<div class="">
 								<p class="lead pr-5"><small>Available only :</small> 500 Ticket</p>
-								<a class="btn btn-danger px-5 py-3 text-uppercase font-weight-bold" href="ticket">get ticket</a>
+								<form action="<?= base_url('ticket') ?>" method="post">
+									<input type="hidden" name="id_event" value="<?= $value['id_event'] ?>" />
+									<button class="btn btn-danger px-5 py-3 text-uppercase font-weight-bold" type="submit">get ticket</button>
 							</div>
 						</div>
 					</div>
@@ -73,7 +75,3 @@
 			<!-- form pengisian data diri -->
 		</div>
 		<?php }?>
-<<<<<<< HEAD
-=======
-
->>>>>>> 6ec56cf0073c8e98b5b4b5d9e93df5bfb7883ce2
