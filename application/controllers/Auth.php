@@ -4,10 +4,17 @@ class Auth extends CI_Controller
 {
 	public function index()
 	{
-		$data['title'] = "ADAIDE";
-		$this->load->view('frontend/templates/auth_header');
-		$this->load->view('frontend/auth/login');
-		$this->load->view('frontend/templates/footer');
+		$data['title'] = "Login User";
+		
+		$this->form_validation->set_rules('email','Email','required|trim|valid_email');
+        $this->form_validation->set_rules('password','Password','trim|required');
+        if ($this->form_validation->run()==false){
+			$this->load->view('frontend/templates/auth_header',$data);
+			$this->load->view('frontend/auth/login');
+			$this->load->view('frontend/templates/footer');
+        }else{
+            $this->_login();
+        }
 	}
 
 	public function _login() {
@@ -80,5 +87,14 @@ class Auth extends CI_Controller
             $this->db->insert('tb_user',$data);
             redirect('auth');
         }
-
+	}
+	
+	public function logout()
+    {
+        $data=['id_login','nama_user','id_role'];
+        $this->session->unset_userdata($data);
+        redirect('auth');
+    }
+    
+    
 }
