@@ -44,6 +44,7 @@
       });
       //Event Js
       loadTmpEvents();
+      loadOrder();
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
       });
@@ -114,6 +115,28 @@
         "searching": false,
         "ajax": {
           "url": "<?= base_url('admin/events/ticket_tmp')?>",
+          "type": "POST"
+        },
+        "columnDefs": [
+          {
+            "targets": [0,5],
+            "className": "text-center"
+          },
+          {
+            "targets": [3,4],
+            "className": "text-right"
+          },
+        ],
+      }).ajax.reload();
+    }
+
+    function loadOrder(){
+      $('#orderTable').DataTable({ 
+        "processing": true, 
+        "serverSide": true, 
+        "retrieve": true,
+        "ajax": {
+          "url": "<?= base_url('admin/order/order_list')?>",
           "type": "POST"
         },
         "columnDefs": [
@@ -216,6 +239,244 @@
         }
       });
       
+    }
+
+
+  //event main
+    function deleteEvent(id){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/events/delete'); ?>",
+            data: {id_event:id},
+            success: function(){
+              Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/events') ?>";
+              })
+            }
+          }); 
+        }
+    }) 
+    }
+    //stage main
+    function deleteStage(id){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/stage/delete'); ?>",
+            data: {id_event:id},
+            success: function(){
+              Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/stage') ?>";
+              })
+            }
+          }); 
+        }
+      }) 
+    }
+
+    //ticket type
+
+    function editTicketType(id,name){
+      swal.fire({
+        title: 'Enter New Name',
+        input: 'text',
+        inputValue:name,
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Change'
+      }).then((result) => {
+        if (result.value) {
+          let newName = JSON.stringify(result.value);
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/ticket/edit'); ?>",
+            data: {id:id,name:newName},
+            success: function(){
+              Swal.fire(
+              'Updated',
+              'Ticket Has Been Updated',
+              'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/ticket') ?>";
+              })
+            }
+          }); 
+        }
+      })
+    }
+
+    function createTicketType(){
+      swal.fire({
+        title: 'Enter New Name',
+        input: 'text',
+        inputPlaceholder: 'Enter Ticket Name',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Submit'
+      }).then((result) => {
+        if (result.value) {
+          let name = JSON.stringify(result.value);
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/ticket/insert'); ?>",
+            data: {name:name},
+            success: function(){
+              Swal.fire(
+              'Saved',
+              'Ticket Has Been Saved',
+              'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/ticket') ?>";
+              })
+            }
+          }); 
+        }
+      });
+    }
+
+    function deleteTicketType(id){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/ticket/delete'); ?>",
+            data: {id:id},
+            success: function(){
+              Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/ticket') ?>";
+              })
+            }
+          }); 
+        }
+      }) 
+    }
+      
+    //order
+
+    function confirmOrder(id){
+      $.ajax({
+        url:"<?= base_url('admin/order/getDataOrder'); ?>",
+        method:"POST",
+        dataType:"json",
+        data :{id:id},
+        success:function(data){
+          $('#id_order').val(data['id_pemesanan']);
+          $('#id_confirm').val(data['id_konfirmasi']);
+          $('#img_poofer').val(data['bukti_pembayaran']);
+          $('#events_name').val(data['nama_event']);
+          $('#ticket_type').val(data['jenis_tiket']);
+          $('#price').val(formatMoney(data['harga_tiket']));
+          $('#stock').val(data['stok_tiket']);
+          $('#status_ticket').className=null;
+          let status_ticket;
+          if(data['status_tiket']==0){
+            status_ticket="COMING SOON";
+            badge="badge badge-warning";
+          }else if(data['status_tiket']==1){
+            status_ticket="OPEN";
+            badge="badge badge-info";
+          }else if(data['status_tiket']==2){
+            status_ticket="SOLD OUT";
+            badge="badge badge-danger";
+          }
+         
+          $('#status_ticket').addClass(badge);
+          $('#status_ticket').text(status_ticket);
+          $('#qty').val(data['jml_beli']);
+          $('#total').val(formatMoney(data['total_harga']));
+          $('#hideTotal').val(data['total_harga']);
+        }
+      });
+    }
+
+    function formatMoney(amount, decimalCount = 2, decimal = ",", thousands = ".") {
+          try {
+            decimalCount = Math.abs(decimalCount);
+            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+        
+            const negativeSign = amount < 0 ? "-" : "";
+        
+            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+            let j = (i.length > 3) ? i.length % 3 : 0;
+        
+            return "Rp."+negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands)+",-"
+          } catch (e) {
+            console.log(e)
+          }
+        };
+
+    
+    
+    
+    
+    
+    
+    function viewPoofer(){
+      let img=$('#img_poofer').val();
+      let id=$('#id_confirm').val();
+      let total=$('#hideTotal').val();
+      let str="Confirm ID : "+id+"\n"+
+              "Amount Payment : "+formatMoney(total)+"\n";
+      if(img){
+        Swal.fire({
+          title: 'Poofer Payment',
+          html: '<pre>' + str + '</pre>',
+          imageUrl: '<?= base_url('assets/backend/img/order/') ?>'+img,
+          imageWidth: 300,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+        })
+      }else{
+        Swal.fire(
+          'Proof Payment?',
+          'User has not uploaded the proof!',
+          'question'
+        )
+      }
+     
     }
   </script>
 </body>

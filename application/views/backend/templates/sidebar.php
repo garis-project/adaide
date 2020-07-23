@@ -21,10 +21,25 @@
                 </ul>
               </li>
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Stage</span></a>
+                <a href="" class="nav-link has-dropdown"><i class="fas fa-ticket-alt"></i> <span>Tickets</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/ticket'); ?>">List Tickets</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Stage</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/stage'); ?>">List Stage</a></li>
                   <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/stage/add'); ?>">Add New Stage</a></li>
+                </ul>
+              </li>
+              <li class="menu-header">Operation</li>
+              <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i> <span>Order</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/order'); ?>">List Order</a></li>
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/order/validate'); ?>">Awaiting For Validate</a></li>
+                  <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/order/event'); ?>">List By Event</a></li>
                 </ul>
               </li>
             </ul>

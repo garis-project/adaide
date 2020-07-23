@@ -53,12 +53,10 @@
                                             <i class="nav-icon fas fa-edit fa-xs"></i>
                                           </button>
                                         </form>
-                                        <form role="form" action='<?= base_url('admin/stage/delete') ?>' method='POST'>
-                                          <input type="hidden" name="id_stage" value="<?= $value['id_stage']; ?>">
-                                          <button type="submit" class="btn btn-outline-danger btn-sm" onclick="hapus_data()">
+                                        <?php $id_stage="'".$value['id_stage']."'"; ?>
+                                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteEvent(<?=$id_stage ?>)">
                                             <i class="nav-icon fas fa-trash fa-xs"></i>
-                                          </button>
-                                        </form>
+                                        </button>
                                     </div>
                                 </td>
                                 <?php $no ++ ?>

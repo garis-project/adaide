@@ -26,7 +26,7 @@
 					<p class="lead text-center">Select many ticket</p>
 					<div class="d-flex justify-content-center ">
 						<button class="btn btn-circle btn-danger mr-3" onclick="minus()"><i class="fas fa-minus"></i></button>
-							<h3 class="h3" id="qty">0</h3>
+							<h3 class="h3" id="qtyTmp">0</h3>
 						<button class="btn btn-danger btn-circle ml-3" onclick="plus()"><i class="fas fa-plus"></i></button>
 					</div>
 				</div>
@@ -60,12 +60,18 @@
 							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp.".number_format($ticket['harga_tiket'],0,",",".").",-"; ?></span></p>
 							<p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light" id="qty1"></span></p>
 							<hr class="bg-light">
-							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light " id="total"></span></p>
+							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light " id="totalTmp"></span></p>
 						</div>
 						<div class=""></div>
 					</div>
 				</div>
-				<button class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
+				<form action="<?= base_url('ticket/createOrder') ?>" method="post">
+					<input type="hidden" name="id_event" value="<?= $events['id_event'] ?>" />
+					<input type="hidden" name="ticket_type"  value="<?= $ticket['id_jenis_tiket'] ?>" />
+					<input type="hidden" name="total" id="total" />
+					<input type="hidden" name="qty"  id="qty" />
+					<button type="submit" class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
+				</form>
 			</div>
 		</div>
 	</div>

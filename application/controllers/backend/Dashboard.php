@@ -8,10 +8,12 @@ class Dashboard extends CI_Controller {
     }
     public function index() {
         $data['title'] ="Admin Page";
-        $this->load->view('backend/templates/header', $data);
-        $this->load->view('backend/templates/navbar');
-        $this->load->view('backend/templates/sidebar');
-        $this->load->view('backend/admin/index');
-        $this->load->view('backend/templates/footer');
+        $data['total']=[
+            'user'=>$this->user->total(),
+            'event'=>$this->events->total(),
+            'stage'=>$this->stage->total(),
+            'ticket'=>$this->stage->total(),
+        ];
+        templates('admin/index',$data);
     }
 }
