@@ -6,27 +6,31 @@
     
     <script>
         function plus(){
-            let qty=Number($('#qty').text());
+            let qty=Number($('#qtyTmp').text());
             let stock=$('#stock_ticket').val();
             let price=$('#harga_ticket').val();
             if(qty<stock){
                 qty+=1;
             }
             let total=formatMoney(qty*price);
-            $('#qty').text(qty); 
+            $('#qtyTmp').text(qty); 
             $('#qty1').text(qty);
-            $('#total').text(total);
+            $('#qty').val(qty);
+            $('#totalTmp').text(total);
+            $('#total').val(qty*price);
         }
         function minus(){
-            let qty=Number($('#qty').text());
+            let qty=Number($('#qtyTmp').text());
             let price=$('#harga_ticket').val();
             if(qty>0){
                 qty-=1;
             }
             let total=formatMoney(qty*price);
-            $('#qty').text(qty); 
+            $('#qtyTmp').text(qty); 
             $('#qty1').text(qty);
-            $('#total').text(total);
+            $('#qty').val(qty);
+            $('#totalTmp').text(total);
+            $('#total').val(qty*price);
         }
 
         function formatMoney(amount, decimalCount = 2, decimal = ",", thousands = ".") {

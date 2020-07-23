@@ -12,10 +12,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Total User</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    <?= $total['user'] ?>
                   </div>
                 </div>
               </div>
@@ -23,14 +23,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper"></i>
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Stage</h4>
                   </div>
                   <div class="card-body">
-                    42
+                  <?= $total['stage'] ?>
                   </div>
                 </div>
               </div>
@@ -38,14 +38,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="far fa-calendar-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Events</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                  <?= $total['event'] ?>
                   </div>
                 </div>
               </div>
@@ -53,14 +53,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ticket-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Ticket</h4>
                   </div>
                   <div class="card-body">
-                    47
+                  <?= $total['ticket'] ?>
                   </div>
                 </div>
               </div>

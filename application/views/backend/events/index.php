@@ -71,12 +71,10 @@
                                         <i class="nav-icon fas fa-edit fa-xs"></i>
                                       </button>
                                     </form>
-                                    <form role="form" action='<?= base_url('admin/events/delete') ?>' method='POST'>
-                                      <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
-                                      <button type="submit" class="btn btn-outline-danger btn-sm">
-                                        <i class="nav-icon fas fa-trash fa-xs"></i>
-                                      </button>
-                                    </form>
+                                    <?php $id_event="'".$value['id_event']."'"; ?>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteEvent(<?=$id_event ?>)">
+                                      <i class="nav-icon fas fa-trash fa-xs"></i>
+                                    </button>
                                   </div>
                                 </td>
                                 <?php $no ++ ?>
