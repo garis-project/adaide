@@ -84,7 +84,7 @@
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
         let geo=$('#geocode').val();
         geo = geo.split(",",2);
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhaWRlIiwiYSI6ImNrZDE5aHNrcDExZnkycnFyOGZnY282ZXcifQ.uBbquafl-3hyE0TlddYsQg';
         var map = new mapboxgl.Map({
           container: 'map',
           style: 'mapbox://styles/mapbox/streets-v11',
@@ -494,9 +494,9 @@
         dataType:"json",
         data :{id:id},
         success : function (data){
-          let n=data.id_tiket.length;
-          
+          console.log(data);
           if(data){
+            let n=data.id_tiket.length;
             let str="";
             for(i=0;i<n;i++){
               str+='<input class="swal2-input" value="'+data.id_tiket.slice(i,i+1)+'"readonly>';

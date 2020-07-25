@@ -17,11 +17,11 @@
             <div class="d-sm-none d-lg-inline-block"><?= $this->session->userdata('nama_user'); ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Administrator</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="<?= base_url('admin/dashboard/user') ?>" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
+                <i class="<?= base_url('admin/dashboard/settings') ?>"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
               <a href="<?= base_url('admin/auth/logout'); ?>" class="dropdown-item has-icon text-danger">

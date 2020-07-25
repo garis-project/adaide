@@ -72,7 +72,6 @@
                   <input type="hidden" id="id_events">
                   <input type="text" class="form-control" id="events_name" readonly>
                 </div>
-               
               </div>
               <div class="form-row">
                 <div class="col-sm-5">
