@@ -13,6 +13,7 @@
             <div class="card">
                   <div class="card-header">
                     <h4>List Events</h4>
+                    <input type="hidden" id="hiddenId">
                   </div>
                   <div class="card-body">
                     <div class="row justify-content-center">
@@ -59,24 +60,20 @@
                                         <i class="nav-icon fas fa-eye fa-xs"></i>
                                       </button>
                                     </form>
-                                    <form>
-                                    <?php $id_event= "'".$value['id_event']."'"; ?>
+                                      <?php $id_event= "'".$value['id_event']."'"; ?>
                                       <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ticketModal" onclick="loadDetailEvents(<?= $id_event ?>)">
                                         <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
                                       </button>
-                                    </form>
                                     <form role="form" action='<?= base_url('admin/events/update') ?>' method='POST'>
                                       <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">    
                                       <button type="submit" class="btn btn-outline-warning btn-sm">
                                         <i class="nav-icon fas fa-edit fa-xs"></i>
                                       </button>
                                     </form>
-                                    <form role="form" action='<?= base_url('admin/events/delete') ?>' method='POST'>
-                                      <input type="hidden" name="id_events" value="<?= $value['id_event']; ?>">
-                                      <button type="submit" class="btn btn-outline-danger btn-sm">
-                                        <i class="nav-icon fas fa-trash fa-xs"></i>
-                                      </button>
-                                    </form>
+                                    <?php $id_event="'".$value['id_event']."'"; ?>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteEvent(<?=$id_event ?>)">
+                                      <i class="nav-icon fas fa-trash fa-xs"></i>
+                                    </button>
                                   </div>
                                 </td>
                                 <?php $no ++ ?>

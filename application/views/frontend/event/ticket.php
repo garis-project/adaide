@@ -1,20 +1,3 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>/image/logo-merah.png">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="<?= base_url('/assets/frontend/') ?>css/main.css">
-	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/bootstrap.css">
-	<!-- font awesome -->
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>/fontawesome/css/all.css">
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>fontawesome/css/brands.css">
-	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-	<title>Ada Ide</title>
-</head>
 <body class="bg-black">
 	<div class="container-xl py-5">
 		<div class="nav navbar">
@@ -28,20 +11,23 @@
 		<header class="text-left pt-5">
 			<div class="row">
 				<div class="col-md-2 mb-3">
-					<img src="<?= base_url('assets/frontend/')?>/img/hindia.jpg" class="card-img">
+					<img src="<?= base_url('assets/backend/img/events/').$events['banner']?>" class="card-img">
 				</div>
 				<div class="col-md-7">
-					<h3 class="h3 font-weight-bold">Hindia</h3>
-					<h6 class="h6">Live Concert</h6>
-					<h6 class="h6 text-danger">Tuesday, October 6, 2020 7:30 PM</h6>
-					<h6 class="h6">Siliwangi Food, Tasikmalaya</h6>
+					<h3 class="h3 font-weight-bold"><?= $events['nama_event']?></h3>
+					<h6 class="h6 text-danger"><?= date("D,d F Y | h:i A",strtotime($events['tanggal_mulai'])); ?></h6>
+					<h6 class="h6"><?= $events['nama_stage']?></h6>
+					<?php $ticket=$this->db->get_where('tb_detail_event',['id_event'=>$events['id_event'],'status_tiket'=>1])->row_array(); ?>
+					<h3 class="h3 font-weight-bold" ><?= number_format($ticket['stok_tiket'],0,",",".")." Ticket Remaining" ; ?></h3>
+					<input type="hidden" id="stock_ticket" value="<?= $ticket['stok_tiket'] ?>" />
+					<input type="hidden" id="harga_ticket" value="<?= $ticket['harga_tiket'] ?>" />
 				</div>
 				<div class="col-md-3 col-sx-4 pt-3">
 					<p class="lead text-center">Select many ticket</p>
 					<div class="d-flex justify-content-center ">
-						<button class="btn btn-circle btn-danger mr-3" id="btnmin" onclick=""><i class="fas fa-minus"></i></button>
-						<h3 class="h3" id="qty">0</h3>
-						<button class="btn btn-danger btn-circle ml-3" id="btnadd" onclick=""><i class="fas fa-plus"></i></button>
+						<button class="btn btn-circle btn-danger mr-3" onclick="minus()"><i class="fas fa-minus"></i></button>
+							<h3 class="h3" id="qtyTmp">0</h3>
+						<button class="btn btn-danger btn-circle ml-3" onclick="plus()"><i class="fas fa-plus"></i></button>
 					</div>
 				</div>
 			</header>
@@ -55,7 +41,7 @@
 		<div class="row mt-5 h-100" id="ticket">
 			<div class="col-md-8">
 				<p class="lead">
-					AdaIde experiences come with special benefits that are accessed through a companion mobile application. This event includes:
+				<?= $events['deskripsi']?>
 				</p>
 				<div>
 					<dt class="mb-2">This event includes:</dt>
@@ -71,15 +57,21 @@
 					<div class="card-body">
 						<div>
 							<h5 class="card-title">Ticket</h5>
-							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light">Rp84000,-</span></p>
-							<p class="card-subtitle mb-2 text-muted">Fee<span class="float-right text-light">Rp2000,-</span></p>
+							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp.".number_format($ticket['harga_tiket'],0,",",".").",-"; ?></span></p>
+							<p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light" id="qty1"></span></p>
 							<hr class="bg-light">
-							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light">Rp86000,-</span></p>
+							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light " id="totalTmp"></span></p>
 						</div>
 						<div class=""></div>
 					</div>
 				</div>
-				<button class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
+				<form action="<?= base_url('ticket/createOrder') ?>" method="post">
+					<input type="hidden" name="id_event" value="<?= $events['id_event'] ?>" />
+					<input type="hidden" name="ticket_type"  value="<?= $ticket['id_jenis_tiket'] ?>" />
+					<input type="hidden" name="total" id="total" />
+					<input type="hidden" name="qty"  id="qty" />
+					<button type="submit" class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','adaide');
+$autoload['helper'] = array('url','adaide','string');
 
 /*
 | -------------------------------------------------------------------
@@ -132,5 +132,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Events_model'=>'events','Stage_model'=>'stage','TicketType_model'=>'ticket','User_model'=>'user');
+$autoload['model'] = array('Events_model'=>'events','Stage_model'=>'stage','TicketType_model'=>'ticket','User_model'=>'user','Order_model'=>'order');
 

@@ -35,4 +35,8 @@ class Events_model extends CI_Model
         $this->db->where('id_event', $id);
         $this->db->update('tb_event', $data);
     } 
+
+    function total(){
+        return $this->db->count_all('tb_event');
+    }
 }

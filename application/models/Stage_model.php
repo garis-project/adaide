@@ -24,4 +24,8 @@ class Stage_model extends CI_Model
         $this->db->select('nama');
         return $this->db->get('wilayah')->result_array();
     }
+
+    function total(){
+        return $this->db->count_all('tb_stage');
+    }
 }

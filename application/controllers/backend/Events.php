@@ -145,6 +145,8 @@ class Events extends CI_Controller {
     
     public function ticket_list() {
         $id=$this->input->post('id');
+        //jadi gini, dari view index.php ke js masuk, 
+        //tapi pas dipost pakai ajak kesini valuenya malah yang pertama terus
         $list = $this->ticket->get_datatables($id);
         $data_ticket= array();
         $status_ticket="";
@@ -157,21 +159,37 @@ class Events extends CI_Controller {
             $row[] = $value->jenis_tiket;
             $row[] = "Rp.";
             $row[] = number_format($value->harga_tiket,0,",",".");
-            $row[] = $value->stok_tiket;
+            $row[] = number_format($value->stok_tiket,0,",",".");
             if($value->status_tiket==1){
                 $status_ticket="ON";
             }elseif($value->status_tiket==0){
                 $status_ticket="OFF";
+            }elseif($value->status_tiket==2){
+                $status_ticket="NEXT";
             }
             if($status_ticket=="ON"){ 
                 $badge="<div class='badge badge-success'>".$status_ticket."</div>";
-                $action="<button type='button' class='btn btn-outline-danger btn-sm' onclick='editTmpTicket("."\"".$value->id_jenis_tiket."\")'>
+                $action="<button type='button' class='btn btn-outline-danger btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"off\")'>
                             <i class='nav-icon fas fa-stop-circle fa-xs'></i>
+                        </button>
+                        <button type='button' class='btn btn-outline-warning btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"next\")'>
+                            <i class='nav-icon fas fa-arrow-circle-right fa-xs'></i>
                         </button>";
             }elseif($status_ticket=="OFF"){
-                $badge="<div class='badge badge-warning'>".$status_ticket."</div>";
-                $action="<button type='button' class='btn btn-outline-info btn-sm' onclick='deleteTmpTicket("."\"".$value->id_jenis_tiket."\")' >
+                $badge="<div class='badge badge-danger'>".$status_ticket."</div>";
+                $action="<button type='button' class='btn btn-outline-info btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"on\")' >
                             <i class='nav-icon fas fa-check-circle fa-xs'></i>
+                        </button>
+                        <button type='button' class='btn btn-outline-warning btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"next\")'>
+                            <i class='nav-icon fas fa-arrow-circle-right fa-xs'></i>
+                        </button>";
+            }elseif($status_ticket=="NEXT"){
+                $badge="<div class='badge badge-warning'>".$status_ticket."</div>";
+                $action="<button type='button' class='btn btn-outline-info btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"on\")' >
+                            <i class='nav-icon fas fa-check-circle fa-xs'></i>
+                        </button>
+                        <button type='button' class='btn btn-outline-danger btn-sm' onclick='ticketStatus("."\"".$value->id_jenis_tiket."\",\"off\")'>
+                            <i class='nav-icon fas fa-stop-circle fa-xs'></i>
                         </button>";
             }
             $row[] =$badge;
@@ -183,5 +201,28 @@ class Events extends CI_Controller {
                         "data" => $data_ticket
                 );
         echo json_encode($output);
+    }
+
+    public function ticketStatus(){
+        $id=$this->input->post('id');
+        $id_events=$this->input->post('id_event');
+        $status=$this->input->post('status');
+        if($status=='on'){
+            $status=1;
+        }elseif($status=='off'){
+            $status=0;
+        }elseif($status=='next'){
+            $status=2;
+        }
+        $data=[
+            'status_tiket'=>$status
+        ];
+        $con=[
+            'id_jenis_tiket'=>$id,
+            'id_event'=>$id_events
+        ];
+        $this->db->where($con);
+        $this->db->update('tb_detail_event',$data);
+        echo json_encode($id_events);
     }
 }
