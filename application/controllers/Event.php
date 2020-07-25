@@ -12,4 +12,34 @@ class Event extends CI_Controller
     $this->load->view('frontend/event/event');
     $this->load->view('frontend/templates/footer');
   }
+
+  public function orderlist()
+  {
+    $data['events']=$this->events->viewActive();
+
+    $data['title'] = "ADAIDE";
+    $this->load->view('frontend/templates/auth_header',$data);
+    $this->load->view('frontend/event/orderlist');
+    $this->load->view('frontend/templates/footer');
+  }
+
+  public function uploadbukti()
+  {
+    $data['events']=$this->events->viewActive();
+
+    $data['title'] = "ADAIDE";
+    $this->load->view('frontend/templates/auth_header',$data);
+    $this->load->view('frontend/event/uploadbukti');
+    $this->load->view('frontend/templates/footer');
+  }
+
+  public function detailorder()
+  {
+    $data['events']=$this->events->viewActive();
+
+    $data['title'] = "ADAIDE";
+    $this->load->view('frontend/templates/auth_header',$data);
+    $this->load->view('frontend/event/detailorder');
+    $this->load->view('frontend/templates/footer');
+  }
 }
