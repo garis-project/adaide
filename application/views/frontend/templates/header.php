@@ -95,32 +95,39 @@
 	<div class="jumbotron bg-header">
 		<div class="container-xl">
 			<div class="nav navbar">
-				<div class="justify-content-start">
-					<span class="nav-link">
+				<div class="justify-content-start ">
+					<div class="dropdown">
+						<img src="<?= base_url('assets/frontend/')?>/img/icons8-menu.svg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="position-absolute">
 					</span>
-				</div>
-				<div class="display-4 d-flex justify-content-end">
-					<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
-				</div>
-			</div>
-			<div class="container">
-				<nav class="navbar navbar-light fixed-bottom mb-3 container-xl">
-					<a class="navbar-brand" id="emblem">ADAIDE<sup class="font-weight-bold">TM</sup></a>
-					<div class="form-inline">
-						<nav class="nav social-menu">
-							<span class="position-relative p-1" href="#">
-								<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
-								<a class="nav-link" href="<?=base_url('')?>ticket">Youtube</a>
-							</span>
-							<span class="position-relative p-1" href="#">
-								<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
-								<a class="nav-link" href="<?=base_url('')?>ticket">Instagram</a>
-							</span>
-							<span class="position-relative p-1" href="#">
-								<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
-								<a class="nav-link" href="<?=base_url('')?>ticket">contact</a>
-							</span>
-						</nav>
+					<div class="dropdown-menu bg-black" aria-labelledby="dropdownMenuButton">
+						<a class="nav-link" href="#">Action</a>
+						<a class="nav-link" href="#">Another action</a>
+						<a class="nav-link" href="#">Something else here</a>
 					</div>
-				</nav>
+				</div>
 			</div>
+			<div class="display-4 d-flex justify-content-end">
+				<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
+			</div>
+		</div>
+		<div class="container">
+			<nav class="navbar navbar-light fixed-bottom mb-3 container-xl">
+				<a class="navbar-brand" id="emblem">ADAIDE<sup class="font-weight-bold">TM</sup></a>
+				<div class="form-inline">
+					<nav class="nav social-menu">
+						<span class="position-relative p-1" href="#">
+							<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
+							<a class="nav-link" href="<?=base_url('')?>ticket">Youtube</a>
+						</span>
+						<span class="position-relative p-1" href="#">
+							<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
+							<a class="nav-link" href="<?=base_url('')?>ticket">Instagram</a>
+						</span>
+						<span class="position-relative p-1" href="#">
+							<img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="position-absolute sup" id="logo-image">
+							<a class="nav-link" href="<?=base_url('')?>ticket">contact</a>
+						</span>
+					</nav>
+				</div>
+			</nav>
+		</div>

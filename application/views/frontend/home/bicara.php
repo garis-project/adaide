@@ -14,8 +14,8 @@
 </style>
 
 <div class="col-md-12">
-	<div class="d-flex justify-content-end">
-		<h1 class="position-fixed judul display-3 text-uppercase font-weight-bold">Get Your Podcast</h1>
+	<div class="d-flex justify-content-end header-text">
+		<h1 class=" judul text-right display-3 text-uppercase font-weight-bold">Get your podcast</h1>
 	</div>
 </div>
 
@@ -24,54 +24,62 @@
 <!-- MAIN -->
 <div class="bg-black">
 	<div class="container-xl">
-		<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
-			<div class="slogan">
-				<span class="logo-text">ADA IDE<sup>TM</sup><br>BICARA</span>
-				<span class="line-vertical"></span>
-				<span class="logo-text">Bring Your</span>
+		<div class="jumbotron bg-black">
+			<div class="row border border-light py-3 rounded">
+				<div class="col-md-3 col-sm-4">
+					<img src="<?= base_url('assets/frontend/') ?>/img/TL-AIB-PART-1-TGL-1-MEI_28.jpg" class="img-fluid w-100 mb-2">
+				</div>
+				<div class="col-md-9 col-sm-7">
+					<h3 class="font-weight-bold">KOHFU by PIDI BAIQ: AYAH ADALAH ORANG YANG INGIN DILUPKAN?</h3>
+					<p class="font-weight-light">ADAIDE BICARA</p>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4 height-100 d-flex align-items-center align-text-bottom">
-				<div class="w-100">
-					<img src="<?= base_url('assets/frontend/') ?>/img/podcast.jpg" class="w-100">
-					<p class="lead position-absolute mt-n5">
-						Get Your Podcast Passion On
-					</p>
+			<div class="col-md-3 col-sm-6 mb-2">
+				<div class="card bg-black">
+					<img src="<?= base_url('assets/frontend/') ?>/img/bicara.jpg" class="card-img-top" alt="...">
+					<div class="pt-3">
+						<h5 class="card-title"><a href="#">ADAIDE BICARA: Band tasik ngakunya band bandung? anjir!</a></h5>
+						<p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+					</div>
 				</div>
+				<hr class="bg-dark">
 			</div>
-			<div class="col-md-8 height-100 d-flex align-items-center justify-content-center">
-				<div class="d-flex justify-content-end w-50">
-					<p class="lead">
-						Creativity doesn't wait for that perfect moment. It fashions its own perfect moments out of ordinary ones.
-					</p>
+			<div class="col-md-3 col-sm-6 mb-2">
+				<div class="card bg-black">
+					<img src="<?= base_url('assets/frontend/') ?>/img/tangan.jpg" class="card-img-top" alt="...">
+					<div class="pt-3">
+						<h5 class="card-title"><a href="#">ADAIDE BICARA: Band tasik ngakunya band bandung? anjir!</a></h5>
+						<p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+					</div>
 				</div>
+				<hr class="bg-dark">
+			</div>
+			<div class="col-md-3 col-sm-6 mb-2">
+				<div class="card bg-black">
+					<img src="<?= base_url('assets/frontend/') ?>/img/bicara.jpg" class="card-img-top" alt="...">
+					<div class="pt-3">
+						<h5 class="card-title"><a href="#">ADAIDE BICARA: Band tasik ngakunya band bandung? anjir!</a></h5>
+						<p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+				<hr class="bg-dark">
+			</div>
+			<div class="col-md-3 col-sm-6 mb-2">
+				<div class="card bg-black">
+					<img src="<?= base_url('assets/frontend/') ?>/img/tangan.jpg" class="card-img-top" alt="...">
+					<div class="pt-3">
+						<h5 class="card-title"><a href="#">ADAIDE BICARA: Band tasik ngakunya band bandung? anjir!</a></h5>
+						<p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
+				<hr class="bg-dark">
 			</div>
 		</div>
-		<!-- section 2 podcast with bg header -->
-		<div class="row bg-hader">
-			<div class="col-md-4 height-100 d-flex align-items-center align-text-bottom">
-				<div class="w-75">
-					<h1 class="h1 text-uppercase">
-						Band tasik, ngaku band bandung!!! gengsi?
-					</h1>
-					<img src="<?= base_url('assets/frontend/') ?>/img/TL-AIB-PART-1-TGL-1-MEI_28.jpg" class="w-100">
-					<p class="lead position-absolute mt-n5">
-						Get Your Podcast Passion On
-					</p>
-				</div>
-			</div>
-			<div class="col-md-8 height-100 d-flex align-items-center justify-content-center">
-				<div class="d-flex justify-content-end w-50">
-					<p class="lead">
-						Creativity doesn't wait for that perfect moment. It fashions its own perfect moments out of ordinary ones.
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- gallery -->
 
 		<!-- sebelum footer -->
 		<section class="container-xl">
