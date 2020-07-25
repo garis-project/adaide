@@ -69,6 +69,7 @@
               <div class="form-row">
                 <div class="col">
                   <label>Events Name</label>
+                  <input type="hidden" id="id_events">
                   <input type="text" class="form-control" id="events_name" readonly>
                 </div>
                
@@ -106,7 +107,8 @@
               </div>
               </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal">Confirm</button>
+              <button type="button" id="decline" class="btn btn-danger" data-dismiss="modal" onclick="changeStatus('FAILED')">Decline</button>
+              <button type="button" id="confirm" class="btn btn-info" data-dismiss="modal" onclick="changeStatus('SUCCESS')">Confirm</button>
             </div>
           </div>
         </div>
