@@ -32,7 +32,7 @@ class Order extends CI_Controller {
             $row[] ="Rp.".number_format($value->total_harga,0,",",".").",-";
             if($value->status_pemesanan=="SUCCESS"){ 
                 $badge="<div class='badge badge-success'>".$value->status_pemesanan."</div>";
-                $action="<button type='button' class='btn btn-outline-danger btn-sm' onclick='("."\"".$value->id_pemesanan."\")'>
+                $action="<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#detailOrderModal' onclick='confirmOrder("."\"".$value->id_pemesanan."\")'>
                             <i class='nav-icon fas fa-stop-circle fa-xs'></i>
                         </button>";
             }elseif($value->status_pemesanan=="PENDING"){
@@ -41,13 +41,15 @@ class Order extends CI_Controller {
                             <i class='nav-icon fas fa-check-circle fa-xs'></i>
                         </button>";
             }elseif($value->status_pemesanan=="AWAITING"){
-                $badge="<div class='badge badge-warning'>".$value->status_pemesanan."</div>";
-                $action="<button type='button' class='btn btn-outline-success btn-sm' onclick=("."\"".$value->id_pemesanan."\")'>
+                $badge="<div class='badge badge-info'>".$value->status_pemesanan."</div>";
+                $action="<button type='button' class='btn btn-outline-success btn-sm' data-toggle='modal' data-target='#detailOrderModal' onclick='confirmOrder("."\"".$value->id_pemesanan."\")'>
                             <i class='nav-icon fas fa-check-circle fa-xs'></i>
                         </button>";
             }elseif($value->status_pemesanan=="FAILED"){
                 $badge="<div class='badge badge-danger'>".$value->status_pemesanan."</div>";
-                $action=" ";
+                $action="<button type='button' class='btn btn-outline-success btn-sm' data-toggle='modal' data-target='#detailOrderModal' onclick='confirmOrder("."\"".$value->id_pemesanan."\")'>
+                            <i class='nav-icon fas fa-check-circle fa-xs'></i>
+                        </button>";
             }
             $row[] = $badge;
             $row[] = $action;
@@ -71,5 +73,29 @@ class Order extends CI_Controller {
         $id=$this->input->post('id');
         $data=$this->order->getData($id);
        echo json_encode($data);
+    }
+
+    public function changeStatus(){
+        $id=$this->input->post('id');
+        $id_events=$this->input->post('id_events');
+        $qty=$this->input->post('qty');
+        $status=$this->input->post('status');
+        if($status=='SUCCESS'){
+            for ($i=0;$i<$qty;$i++){
+                $maxTicketId=$this->order->maxTicketId($id_events);
+                $dataTicket=[
+                    'id_pemesanan'=>$id,
+                    'id_tiket'=>$maxTicketId,
+                    'status_tiket'=>'unused'
+                ];
+                $this->order->insertTicket($dataTicket);
+            }
+        }
+      
+        $data=[
+            'status_pemesanan'=>$status
+        ];
+       $this->order->updateOrder($id,$data);
+        echo json_encode($id,$id_events,$qty,$status);
     }
 }

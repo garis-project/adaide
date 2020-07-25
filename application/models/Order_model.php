@@ -3,9 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order_model extends CI_Model 
 { 
-    var $table = 'tagihan';
-    var $column_order = array(null, 'id_pemesanan','id_user','id_event','tanggal_pemesanan','total_harga','jml_beli','status_pemesanan'); //set column field database for datatable orderable
-    var $column_search = array('id_pemesanan','id_event','id_user','tanggal_pesan'); //set column field database for datatable searchable 
+    var $column_order = array(null, 'id_pemesanan','p.nama_user','nama_event','tanggal_pemesanan','total_harga','jml_beli','status_pemesanan'); //set column field database for datatable orderable
+    var $column_search = array('id_pemesanan','nama_event','tanggal_pesan'); //set column field database for datatable searchable 
     var $order = array('id_pemesanan' => 'asc'); // default order 
  
     private function _get_datatables_query()
@@ -72,7 +71,7 @@ class Order_model extends CI_Model
     }
 
     public function getData($id){
-        $this->db->select('id_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,total_harga,status_tiket,nama_event,nama_user,jml_beli,harga_tiket,jenis_tiket,d.stok_tiket,status_tiket');
+        $this->db->select('id_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,total_harga,status_tiket,p.id_event,nama_event,nama_user,jml_beli,harga_tiket,jenis_tiket,d.stok_tiket,status_tiket,status_pemesanan');
         $this->db->from('tb_pemesanan as p');
         $this->db->join('tb_event e', 'p.id_event=e.id_event','left'); 
         $this->db->join('tb_user u', 'u.id_user=p.id_user','left'); 
@@ -80,6 +79,28 @@ class Order_model extends CI_Model
         $this->db->join('tb_jenis_tiket j', 'j.id_jenis_tiket=p.id_jenis_tiket','left'); 
         $this->db->where('id_pemesanan',$id);
         return $this->db->get()->row_array();
+    }
 
+
+    public function maxTicketId($id_events){
+        $this->db->select('SUBSTRING(id_tiket,12,4) AS id');
+        $this->db->like('id_tiket',$id_events,'after');
+        $id=$this->db->get('tb_detail_pemesanan')->result_array();
+        if($id){
+            $max=sprintf("%'.04d",(implode(",",max($id))+1));
+        }else{
+            $max=sprintf("%'.04d",1);
+        }
+        return $id_events.$max;
+    }
+
+    public function insertTicket($data){
+        $this->db->insert('tb_detail_pemesanan',$data);
+    }
+
+
+    public function updateOrder($id,$data){
+        $this->db->where('id_pemesanan',$id);
+        $this->db->update('tb_pemesanan',$data);
     }
 }

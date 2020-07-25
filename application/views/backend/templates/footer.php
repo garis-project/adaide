@@ -34,6 +34,30 @@
   
   <script>
     $(document).ready(function(){
+      ticketTable=$('#ticketTable').DataTable({ 
+        "processing": true, 
+        "serverSide": true, 
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "retrieve": true,
+        "searching": false,
+        "ajax": {
+          "url": "<?= base_url('admin/events/ticket_list')?>",
+          "type": "POST",
+          "data":function (d){d.id=$('#hiddenId').val()}
+        },
+        "columnDefs": [
+          {
+            "targets": [0,5,6],
+            "className": "text-center"
+          },
+          {
+            "targets": [3,4],
+            "className": "text-right"
+          },
+        ],
+      });
       $("select").select2(); 
       $("#table_data").DataTable({
         "paging": false,
@@ -41,7 +65,7 @@
         "info": false,
         "retrieve": true,
         "searching": false
-      });
+    });
       //Event Js
       loadTmpEvents();
       loadOrder();
@@ -78,6 +102,8 @@
   </script>
   
 <script>
+
+    //event
     function readURL(input) {
       if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -89,12 +115,14 @@
       reader.readAsDataURL(input.files[0]); // convert to base64 string
       }
     }
-
+    //check banner image
     function checkImg(){
       let name=$('#banner-name').text();
       console.log(name);
       $('#image-check').val(name);
     }
+
+    //set id_event if date hasbeen changed
     function changeDate() {
       let now=$('#startdate').val();
       let y= now.substr(0,4);
@@ -104,6 +132,8 @@
       $('#date_events').val(d+m+y);
 
     }
+
+    //load table for ticket event temporary
     function loadTmpEvents(){
       $('#tmpTicketTable').DataTable({ 
         "processing": true, 
@@ -130,56 +160,28 @@
       }).ajax.reload();
     }
 
-    function loadOrder(){
-      $('#orderTable').DataTable({ 
-        "processing": true, 
-        "serverSide": true, 
-        "retrieve": true,
-        "ajax": {
-          "url": "<?= base_url('admin/order/order_list')?>",
-          "type": "POST"
-        },
-        "columnDefs": [
-          {
-            "targets": [0,5],
-            "className": "text-center"
-          },
-          {
-            "targets": [3,4],
-            "className": "text-right"
-          },
-        ],
-      }).ajax.reload();
+   
+    //load ticket from current events
+    function loadDetailEvents(id){
+      $('#hiddenId').val(id);
+      ticketTable.ajax.reload();
     }
 
-    function loadDetailEvents(id){
-      var tes= $('#ticketTable').DataTable({ 
-        "processing": true, 
-        "serverSide": true, 
-        "paging": false,
-        "ordering": false,
-        "info": false,
-        "retrieve": true,
-        "searching": false,
-        "ajax": {
-          "url": "<?= base_url('admin/events/ticket_list')?>",
-          "type": "POST",
-          "data": function (d) {
-            d.id = id;
-          }
-        },
-        "columnDefs": [
-          {
-            "targets": [0,5,6],
-            "className": "text-center"
-          },
-          {
-            "targets": [3,4],
-            "className": "text-right"
-          },
-        ],
-      }).ajax.reload();
+    function ticketStatus(id,status){
+      let id_event=$('#hiddenId').val();
+      $.ajax({
+        url:"<?= base_url('admin/events/ticketStatus') ?>",
+        type:'post',
+        dataType:"json",
+        data:{
+          id_event:id_event,id:id,status:status
+        }, success : function(data){
+          console.log(data);
+          ticketTable.ajax.reload();
+        }
+      });
     }
+
     
     function addTmpTicket(){
       var id_type=$('#id_type').val();
@@ -395,7 +397,29 @@
     }
       
     //order
-
+    //load table for confirm order
+    function loadOrder(){
+      $('#orderTable').DataTable({ 
+        "processing": true, 
+        "serverSide": true, 
+        "retrieve": true,
+        "ajax": {
+          "url": "<?= base_url('admin/order/order_list')?>",
+          "type": "POST"
+        },
+        "columnDefs": [
+          {
+            "targets": [0,5],
+            "className": "text-center"
+          },
+          {
+            "targets": [3,4],
+            "className": "text-right"
+          },
+        ],
+      }).ajax.reload();
+    }
+    //Placing Data To Modal
     function confirmOrder(id){
       $.ajax({
         url:"<?= base_url('admin/order/getDataOrder'); ?>",
@@ -406,6 +430,7 @@
           $('#id_order').val(data['id_pemesanan']);
           $('#id_confirm').val(data['id_konfirmasi']);
           $('#img_poofer').val(data['bukti_pembayaran']);
+          $('#id_events').val(data['id_event']);
           $('#events_name').val(data['nama_event']);
           $('#ticket_type').val(data['jenis_tiket']);
           $('#price').val(formatMoney(data['harga_tiket']));
@@ -428,32 +453,77 @@
           $('#qty').val(data['jml_beli']);
           $('#total').val(formatMoney(data['total_harga']));
           $('#hideTotal').val(data['total_harga']);
+
+          //optional setting
+          if((data['status_pemesanan']=='PENDING')||(data['status_pemesanan']=='AWAITING')){
+            $('#confirm').show();
+            $('#decline').show();
+          }else{
+            $('#confirm').hide();
+            $('#decline').hide();
+          }
         }
       });
     }
+    
+    function changeStatus(status){
+      let id=$('#id_order').val();
+      let id_events=$('#id_events').val();
+      let qty=$('#qty').val();
+      $.ajax({
+        url:"<?= base_url('admin/order/changeStatus'); ?>",
+        method:"POST",
+        dataType:"json",
+        data :{id:id,status:status,id_events:id_events,qty:qty},
+        success : function (data){
+          console.log(data);
+        },
+        complete :function(){
+          loadOrder();
+        }
+      });
+      
+    }
 
-    function formatMoney(amount, decimalCount = 2, decimal = ",", thousands = ".") {
-          try {
-            decimalCount = Math.abs(decimalCount);
-            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
-        
-            const negativeSign = amount < 0 ? "-" : "";
-        
-            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
-            let j = (i.length > 3) ? i.length % 3 : 0;
-        
-            return "Rp."+negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands)+",-"
-          } catch (e) {
-            console.log(e)
+
+    function exchangeOrder(){
+      let id=$('#qrcode').val();
+      $.ajax({
+        url:"<?= base_url('admin/exchange/getDataOrder'); ?>",
+        method:"POST",
+        dataType:"json",
+        data :{id:id},
+        success : function (data){
+          let n=data.id_tiket.length;
+          
+          if(data){
+            let str="";
+            for(i=0;i<n;i++){
+              str+='<input class="swal2-input" value="'+data.id_tiket.slice(i,i+1)+'"readonly>';
+            }     
+            Swal.fire({
+              title: '<strong>List Ticket</strong>',
+              icon: 'info',
+              html: str,              
+              focusConfirm: false
+            });
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Sorry',
+              text: 'Code Is Wrong!',
+              showConfirmButton: false,
+              timer: 1500,
+              footer: "Code isn't Registered Yet or Unactive"
+            })
           }
-        };
-
-    
-    
-    
-    
-    
-    
+          
+        }
+      });
+      
+      
+    }
+    //View Image Poofer From Payment
     function viewPoofer(){
       let img=$('#img_poofer').val();
       let id=$('#id_confirm').val();
@@ -478,6 +548,30 @@
       }
      
     }
+
+    function formatMoney(amount, decimalCount = 2, decimal = ",", thousands = ".") {
+          try {
+            decimalCount = Math.abs(decimalCount);
+            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+        
+            const negativeSign = amount < 0 ? "-" : "";
+        
+            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+            let j = (i.length > 3) ? i.length % 3 : 0;
+        
+            return "Rp."+negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands)+",-"
+          } catch (e) {
+            console.log(e)
+          }
+        };
+
+    
+    
+    
+    
+    
+    
+    
   </script>
 </body>
 </html>
