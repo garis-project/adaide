@@ -58,7 +58,7 @@
                       <div class="card-body">
                         <div id='mapSearch' style='width: 100%; height: 460px;'></div>
                         <script>
-                          mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FyaXMwNCIsImEiOiJja2NwaTVzN2owNGZmMnRtcXJyN3I3M3dtIn0.JSU41eR6kbD5e9v_yQsbOg';
+                          mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhaWRlIiwiYSI6ImNrZDE5aHNrcDExZnkycnFyOGZnY282ZXcifQ.uBbquafl-3hyE0TlddYsQg';
                           var mapSearch = new mapboxgl.Map({
                             container: 'mapSearch',
                             style: 'mapbox://styles/mapbox/streets-v11',
