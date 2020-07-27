@@ -43,16 +43,9 @@
 				<p class="lead">
 				<?= $events['deskripsi']?>
 				</p>
-				<div>
-					<dt class="mb-2">This event includes:</dt>
-					<dd class="h6"><i class="fas fa-ticket-alt mr-3"></i>Ticket</dd>
-					<dd class="h6"><i class="fas fa-cocktail mr-3"></i>First Drink on Us</dd>
-					<dd class="h6"><i class="fas fa-door-open mr-3"></i>Preferred Entrance</dd>
-					<dd class="h6"><i class="fas fa-headset mr-3"></i>Ambassador Support</dd>
-				</div>
 			</div>
 			<div class="col-md-4">
-				<p class="lead">You only buy 2 ticket?</p>
+				<p class="lead">Your Order</p>
 				<div class="card bg-black border-light">
 					<div class="card-body">
 						<div>

@@ -9,7 +9,8 @@
     background-size: cover;
     background-position: center;
     height: auto;
-  }
+  } 
+  
 </style>
 <body class="bg-black">
   <header>
@@ -25,43 +26,44 @@
         </div>
       </div>
       <div class="container-xl">
-        <h1 class="display-4">Hallo, angga</h1>
-        <p class="lead">Upload bukti pembayaran agar anda bisa memebli tiket dengan baik</p>
+        <h1 class="display-4"><?= $order['id_pemesanan'] ?> </h1>
+        <p class="lead">Exchange your order to get the ticket</p>
       </div>
     </div>
   </header>
   <div class="container mt-5">
     <div class="row">
       <div class="col-lg-8 col-md-6 col-sm-12">
+        <h2 class="">Detail Ticket</h2>
         <ul class="list-group mb-3 border border-light rounded">
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
             <div>
-              <h6 class="my-0">Order ID : 83426728</h6>
-              <small class=" text-info">Status : Pending</small>
-              <p>Harga x 43000</p>
-              <p>QTY x 1</p>
-              <p class="text-muted">Harga total : Rp43000</p>
+            <?php if($order['status_pemesanan']=="SUCCESS"||$order['status_pemesanan']=="AWAITING"){
+                    $qr=$order['id_pemesanan'].$order['id_konfirmasi'];
+                  }else{
+                    $qr=null;
+                  }
+            ?>
+            <input type="hidden" id="qr" value="<?= $qr ?>" />
+            <h2 class="text-light"><?= $order['nama_event'] ?></h2>
+            <h3 class="text-light"><?= $order['jml_beli']." Ticket ".$order['jenis_tiket'] ?></h3>
+            <h3 class="text-light"><?= "Total Rp.".number_format($order['total_harga'],0,",",".").",-" ?></h3>
+            <p>Order Date : <?= date('D, d M Y',strtotime($order['tanggal_pemesanan'])) ?></p>
+            <p>Limit Date : <?= date('D, d M Y',strtotime($order['tanggal_konfirmasi'])) ?></p>
             </div>
-            <span class="align-items-center"><button href="" class="btn btn-danger">Pending</button></span>
           </li>
         </ul>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <ul class="list-group mb-3 border border-light rounded">
+        <h2 class="">QR Exchange</h2>
+        <ul class="list-group mb-3 border border-light rounded ">
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
-            <div>
-              <label>Upload bukti pembayaran</label>
-              <img src="<?=base_url('assets/frontend/img/idefest.jpg')?>" class="img-fluid mb-3">
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile02">
-                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                </div>
+          <div class="card">
+              <div class="card-body bg.light">
+                <div id="qrcode" class="qr"></div>
               </div>
-              <div class="input-group-append">
-                <button class="btn btn-danger col-sm-12 col-lg-4" id="submit">Submit</button>
-              </div>
-            </div>
+          </div>  
+          
           </li>
         </ul>
       </div>

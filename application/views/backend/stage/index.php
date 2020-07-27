@@ -12,7 +12,11 @@
           <div class="section-body">
             <div class="card">
                   <div class="card-header">
-                    <h4>List Events</h4>
+                    <div class="row">
+                      <a href="<?= base_url('admin/stage/add') ?>">
+                        <button class="btn btn-info">Create New</button>
+                      </a>
+                    </div>
                   </div>
                   <div class="card-body">
                     <div class="row justify-content-center">
@@ -49,7 +53,7 @@
                                       </form>
                                         <form role="form" action='<?= base_url('admin/stage/update') ?>' method='POST'>
                                           <input type="hidden" name="id_stage" value="<?= $value['id_stage']; ?>">    
-                                          <button type="submit" class="btn btn-outline-info btn-sm">
+                                          <button type="submit" class="btn btn-outline-warning btn-sm">
                                             <i class="nav-icon fas fa-edit fa-xs"></i>
                                           </button>
                                         </form>

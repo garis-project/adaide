@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2020 at 09:16 AM
+-- Generation Time: Jul 27, 2020 at 03:14 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_detail_event` (
+  `tiket_init` varchar(15) NOT NULL,
   `id_event` varchar(15) NOT NULL,
   `id_jenis_tiket` int(11) DEFAULT NULL,
   `harga_tiket` int(11) DEFAULT NULL,
@@ -40,12 +41,18 @@ CREATE TABLE `tb_detail_event` (
 -- Dumping data for table `tb_detail_event`
 --
 
-INSERT INTO `tb_detail_event` (`id_event`, `id_jenis_tiket`, `harga_tiket`, `stok_tiket`, `status_tiket`) VALUES
-('TOF24072020', 3, 75000, 1000, 1),
-('TOF24072020', 2, 5000, 100, 1),
-('DJR31072020', 1, 50000, 1000, 1),
-('DJR31072020', 2, 60000, 2000, 1),
-('DJR31072020', 3, 70000, 3000, 1);
+INSERT INTO `tb_detail_event` (`tiket_init`, `id_event`, `id_jenis_tiket`, `harga_tiket`, `stok_tiket`, `status_tiket`) VALUES
+('AIE310720201', 'AIE31072020', 1, 60000, 1000, 0),
+('AIE310720202', 'AIE31072020', 2, 70000, 2000, 0),
+('AIE310720203', 'AIE31072020', 3, 80000, 1000, 0),
+('AIE310720204', 'AIE31072020', 4, 100000, 3000, 0),
+('HUT150620201', 'HUT15062020', 1, 40000, 95, 1),
+('HUT150620202', 'HUT15062020', 2, 50000, 200, 0),
+('HUT150620204', 'HUT15062020', 4, 60000, 500, 0),
+('TOF300720201', 'TOF30072020', 1, 30000, 500, 0),
+('TOF300720202', 'TOF30072020', 2, 40000, 700, 0),
+('TOF300720203', 'TOF30072020', 3, 50000, 1000, 0),
+('TOF300720204', 'TOF30072020', 4, 60000, 1000, 0);
 
 -- --------------------------------------------------------
 
@@ -54,10 +61,21 @@ INSERT INTO `tb_detail_event` (`id_event`, `id_jenis_tiket`, `harga_tiket`, `sto
 --
 
 CREATE TABLE `tb_detail_pemesanan` (
-  `id_pemesanan` int(11) DEFAULT NULL,
+  `id_pemesanan` varchar(12) DEFAULT NULL,
   `id_tiket` varchar(15) NOT NULL,
   `status_tiket` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_detail_pemesanan`
+--
+
+INSERT INTO `tb_detail_pemesanan` (`id_pemesanan`, `id_tiket`, `status_tiket`) VALUES
+('AI-ORD000001', 'HUT150620200001', 'unused'),
+('AI-ORD000001', 'HUT150620200002', 'unused'),
+('AI-ORD000001', 'HUT150620200003', 'unused'),
+('AI-ORD000001', 'HUT150620200004', 'unused'),
+('AI-ORD000001', 'HUT150620200005', 'unused');
 
 -- --------------------------------------------------------
 
@@ -71,7 +89,7 @@ CREATE TABLE `tb_event` (
   `jenis_event` int(11) DEFAULT NULL,
   `tanggal_mulai` datetime DEFAULT NULL,
   `tanggal_selesai` datetime NOT NULL,
-  `stok_tiket` int(11) DEFAULT NULL,
+  `total_stok` int(11) DEFAULT NULL,
   `status_event` varchar(15) DEFAULT NULL,
   `banner` text DEFAULT NULL,
   `deskripsi` text DEFAULT NULL,
@@ -82,10 +100,10 @@ CREATE TABLE `tb_event` (
 -- Dumping data for table `tb_event`
 --
 
-INSERT INTO `tb_event` (`id_event`, `nama_event`, `jenis_event`, `tanggal_mulai`, `tanggal_selesai`, `stok_tiket`, `status_event`, `banner`, `deskripsi`, `id_stage`) VALUES
-('DJR31072020', 'Djarum Kopi Asyik', NULL, '2020-07-31 22:20:00', '2020-07-31 22:20:00', NULL, 'Completed', '1594912866events.jpg', 'Loremmmmmmm ', 2),
-('TOF24072020', 'Tasik October Festival', NULL, '2020-07-24 06:56:00', '2020-07-08 14:56:00', NULL, 'Processed', '1594886306summer.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2),
-('TOF25072020', 'Tasik October Festival', NULL, '2020-07-25 06:00:00', '2020-07-23 07:22:00', NULL, 'Onprogress', '1594859040events.jpg', 'knock out', 2);
+INSERT INTO `tb_event` (`id_event`, `nama_event`, `jenis_event`, `tanggal_mulai`, `tanggal_selesai`, `total_stok`, `status_event`, `banner`, `deskripsi`, `id_stage`) VALUES
+('AIE31072020', 'Ada Ide Festival', NULL, '2020-07-31 07:42:00', '2020-07-31 17:42:00', NULL, 'Onprogress', '1595810756events.jpg', '<span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>', 4),
+('HUT15062020', 'HUT Kota Tasikmalaya', NULL, '2020-06-15 07:46:00', '2020-08-02 07:46:00', NULL, 'Processed', '1595810901hut.jpg', '<p><span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span><br></p>', 5),
+('TOF30072020', 'Tasik October Festival 2020', NULL, '2020-07-30 08:00:00', '2020-07-31 15:00:00', NULL, 'Completed', '1595810561TOF.jpg', '<p>Tasikmalaya October Festival merupakan ajang festival tahunan terbesar di Kota Tasikmalaya yang selalu diisi dengan berbagai acar yang menarik.</p>', 5);
 
 -- --------------------------------------------------------
 
@@ -105,7 +123,8 @@ CREATE TABLE `tb_jenis_tiket` (
 INSERT INTO `tb_jenis_tiket` (`id_jenis_tiket`, `jenis_tiket`) VALUES
 (1, 'Early Bird'),
 (2, 'Pre Sale'),
-(3, 'On The Spot');
+(3, 'On The Spot'),
+(4, 'Reguler');
 
 -- --------------------------------------------------------
 
@@ -114,16 +133,27 @@ INSERT INTO `tb_jenis_tiket` (`id_jenis_tiket`, `jenis_tiket`) VALUES
 --
 
 CREATE TABLE `tb_pemesanan` (
-  `id_pemesanan` int(11) NOT NULL,
+  `id_pemesanan` varchar(12) NOT NULL,
   `id_user` varchar(10) NOT NULL,
   `id_event` varchar(15) NOT NULL,
-  `tanggal_pesan` date DEFAULT NULL,
+  `tanggal_pemesanan` date DEFAULT NULL,
+  `tiket_init` varchar(15) NOT NULL,
+  `id_jenis_tiket` int(11) NOT NULL,
   `diskon` int(11) NOT NULL,
   `total_harga` int(11) DEFAULT NULL,
   `jml_beli` int(11) DEFAULT NULL,
-  `bukti_pembayaran` varchar(20) NOT NULL,
+  `id_konfirmasi` varchar(5) NOT NULL,
+  `tanggal_konfirmasi` date NOT NULL,
+  `bukti_pembayaran` text NOT NULL,
   `status_pemesanan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_pemesanan`
+--
+
+INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_user`, `id_event`, `tanggal_pemesanan`, `tiket_init`, `id_jenis_tiket`, `diskon`, `total_harga`, `jml_beli`, `id_konfirmasi`, `tanggal_konfirmasi`, `bukti_pembayaran`, `status_pemesanan`) VALUES
+('AI-ORD000001', '1595809922', 'HUT15062020', '2020-07-27', 'HUT150620201', 1, 0, 200000, 5, '0AOYF', '2020-07-28', '1595812168telpon.jpg', 'SUCCESS');
 
 -- --------------------------------------------------------
 
@@ -152,7 +182,7 @@ INSERT INTO `tb_role` (`id_role`, `role`) VALUES
 
 CREATE TABLE `tb_stage` (
   `id_stage` int(11) NOT NULL,
-  `nama_stage` varchar(30) DEFAULT NULL,
+  `nama_stage` varchar(50) DEFAULT NULL,
   `alamat_stage` text DEFAULT NULL,
   `kota_stage` varchar(30) DEFAULT NULL,
   `geocode` text DEFAULT NULL
@@ -163,7 +193,8 @@ CREATE TABLE `tb_stage` (
 --
 
 INSERT INTO `tb_stage` (`id_stage`, `nama_stage`, `alamat_stage`, `kota_stage`, `geocode`) VALUES
-(2, 'DadahaVT7', 'Jln. Lingkar Dadaha', 'KOTA TASIKMALAYA', '23424234,343465');
+(4, 'Parking Area Siliwangi Food Market', 'Jln.Siliwangi No.223 Tawang', 'KOTA TASIKMALAYA', '108.22591,-7.348979'),
+(5, 'Bale Kota Tasikmalaya', 'Jln. Letnan Harun No.70', 'KOTA TASIKMALAYA', '108.19719,-7.316562');
 
 -- --------------------------------------------------------
 
@@ -185,19 +216,6 @@ INSERT INTO `tb_status` (`id_status`, `status`) VALUES
 (2, 'Offline'),
 (3, 'Online'),
 (4, 'Banned');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_tiket`
---
-
-CREATE TABLE `tb_tiket` (
-  `id_event` varchar(30) NOT NULL,
-  `jenis_tiket` varchar(30) NOT NULL,
-  `harga_tiket` int(11) NOT NULL,
-  `stok_tiket` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -225,7 +243,7 @@ CREATE TABLE `tb_user` (
   `kontak` varchar(13) DEFAULT NULL,
   `alamat` text DEFAULT NULL,
   `gender_user` varchar(1) NOT NULL,
-  `password` varchar(30) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -235,7 +253,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `email_user`, `kontak`, `alamat`, `gender_user`, `password`, `id_status`, `id_role`) VALUES
-('1593614026', 'Someone', 'someone@gmail.com', '085321317658', 'Ciamis', 'L', 'MTIzNA==', 2, 1);
+('1593614026', 'Someone', 'someone@gmail.com', '085321317658', 'Ciamis', 'L', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
+('1595809922', 'ANGGA EKA PURNAMA', 'anggaekapurnama4@gmail.com', '085321317658', 'CIAMIS', 'L', '81dc9bdb52d04dc20036dbd8313ed055', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -773,6 +792,12 @@ INSERT INTO `wilayah` (`kode`, `nama`) VALUES
 --
 
 --
+-- Indexes for table `tb_detail_event`
+--
+ALTER TABLE `tb_detail_event`
+  ADD PRIMARY KEY (`tiket_init`);
+
+--
 -- Indexes for table `tb_event`
 --
 ALTER TABLE `tb_event`
@@ -828,13 +853,13 @@ ALTER TABLE `wilayah`
 -- AUTO_INCREMENT for table `tb_jenis_tiket`
 --
 ALTER TABLE `tb_jenis_tiket`
-  MODIFY `id_jenis_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jenis_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_stage`
 --
 ALTER TABLE `tb_stage`
-  MODIFY `id_stage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_stage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_status`

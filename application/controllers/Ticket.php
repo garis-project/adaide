@@ -2,6 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class Ticket extends CI_Controller
 {
+  public function __construct()
+  {
+    parent::__construct();
+    check_user();    
+  }
+  
   public function index()
   {
     $id_event=$this->input->post('id_event');
@@ -32,6 +38,7 @@ class Ticket extends CI_Controller
       $limit=date ('Y-m-d', strtotime ("$now + 1 days"));
       $data=[
         'id_pemesanan'=>'AI-ORD'.$max,
+        'tiket_init'=>$this->input->post('id_event').$this->input->post('ticket_type'),
         'id_event'=>$this->input->post('id_event'),
         'id_user'=>$this->session->userdata('id_login'),
         'total_harga'=>$this->input->post('total'),
@@ -43,7 +50,7 @@ class Ticket extends CI_Controller
         'status_pemesanan'=>'PENDING'
       ];
       $this->db->insert('tb_pemesanan',$data);
-      redirect('home');
+      redirect('order');
     }else{
       redirect('event');
     }

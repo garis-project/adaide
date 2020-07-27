@@ -35,7 +35,7 @@ class TicketType_model extends CI_Model
         return $this->db->get('tb_tmp_detail_event')->row_array();
     }
     function insertTicket($id){
-        $sql="INSERT INTO tb_detail_event (id_event,id_jenis_tiket,harga_tiket,stok_tiket,status_tiket) SELECT '".$id."' AS id_event,id_jenis_tiket,harga_tiket,stok_tiket,0 FROM tb_tmp_detail_event";
+        $sql="INSERT INTO tb_detail_event (tiket_init,id_event,id_jenis_tiket,harga_tiket,stok_tiket,status_tiket) SELECT CONCAT('".$id."',id_jenis_tiket) AS tiket_init,'".$id."' AS id_event,id_jenis_tiket,harga_tiket,stok_tiket,0 FROM tb_tmp_detail_event";
         $this->db->query($sql);
         $this->db->truncate('tb_tmp_detail_event');
     } 

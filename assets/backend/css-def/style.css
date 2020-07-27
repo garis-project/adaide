@@ -97,8 +97,8 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .bg-light {
   background-color: #e3eaef !important; }
 
-.bg-dar {
-  background-color: #232931 !important; }
+.bg-dark {
+  background-color: #191d21 !important; }
 
 .text-primary, .text-primary-all *, .text-primary-all *:before, .text-primary-all *:after {
   color: #6777ef !important; }

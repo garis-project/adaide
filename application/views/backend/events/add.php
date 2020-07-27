@@ -88,7 +88,7 @@
                         </div>
                         <div class="form-group mb-0">
                           <label>Description</label>
-                          <textarea class="form-control" id="description" name="description"></textarea>
+                          <textarea class="form-control summernote" id="description" name="description"></textarea>
                         </div>
                     </div>
                   </div>

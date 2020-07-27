@@ -14,6 +14,7 @@ class Events_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_event e');
         $this->db->join('tb_stage s','s.id_stage=e.id_stage','left');
+        $this->db->where('status_event',"Processed");
         return $this->db->get()->result_array();
     }
 
@@ -38,5 +39,18 @@ class Events_model extends CI_Model
 
     function total(){
         return $this->db->count_all('tb_event');
+    }
+
+    function updateStok($data,$qty){
+        //get current stock
+        $this->db->select('stok_tiket');
+        $this->db->where($data);
+        $current=$this->db->get('tb_detail_event')->row();
+
+        //update stock
+        $this->db->where($data);
+        $update=($current->stok_tiket)-$qty;
+        $this->db->set(['stok_tiket'=>$update]);
+        $this->db->update('tb_detail_event');
     }
 }

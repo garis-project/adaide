@@ -71,14 +71,24 @@ class Order_model extends CI_Model
     }
 
     public function getData($id){
-        $this->db->select('id_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,total_harga,status_tiket,p.id_event,nama_event,nama_user,jml_beli,harga_tiket,jenis_tiket,d.stok_tiket,status_tiket,status_pemesanan');
+        $this->db->select('id_pemesanan,tanggal_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,tanggal_konfirmasi,total_harga,status_pemesanan,p.id_event,nama_event,nama_user,p.id_jenis_tiket,jenis_tiket,stok_tiket,status_tiket,jml_beli,harga_tiket');
         $this->db->from('tb_pemesanan as p');
         $this->db->join('tb_event e', 'p.id_event=e.id_event','left'); 
         $this->db->join('tb_user u', 'u.id_user=p.id_user','left'); 
-        $this->db->join('tb_detail_event d', 'd.id_event=p.id_event','left'); 
+        $this->db->join('tb_detail_event d', 'd.tiket_init=p.tiket_init','left'); 
         $this->db->join('tb_jenis_tiket j', 'j.id_jenis_tiket=p.id_jenis_tiket','left'); 
         $this->db->where('id_pemesanan',$id);
         return $this->db->get()->row_array();
+    }
+    public function getDataUser($id){
+        $this->db->select('id_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,tanggal_konfirmasi,total_harga,status_pemesanan,p.id_event,nama_event,nama_user,p.id_jenis_tiket,jenis_tiket,stok_tiket,status_tiket,jml_beli,harga_tiket');
+        $this->db->from('tb_pemesanan as p');
+        $this->db->join('tb_event e', 'p.id_event=e.id_event','left'); 
+        $this->db->join('tb_user u', 'u.id_user=p.id_user','left'); 
+        $this->db->join('tb_detail_event d', 'd.tiket_init=p.tiket_init','left'); 
+        $this->db->join('tb_jenis_tiket j', 'j.id_jenis_tiket=p.id_jenis_tiket','left'); 
+        $this->db->where('p.id_user',$id);
+        return $this->db->get()->result_array();
     }
 
 

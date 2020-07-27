@@ -81,7 +81,7 @@ class Events extends CI_Controller {
     }
 
     public function delete(){
-        $id_event=$this->input->post('id_events');
+        $id_event=$this->input->post('id_event');
         $this->db->delete("tb_event",['id_event'=>$id_event]);
         $this->db->delete("tb_detail_event",['id_event'=>$id_event]);
         redirect('admin/events');
@@ -145,8 +145,6 @@ class Events extends CI_Controller {
     
     public function ticket_list() {
         $id=$this->input->post('id');
-        //jadi gini, dari view index.php ke js masuk, 
-        //tapi pas dipost pakai ajak kesini valuenya malah yang pertama terus
         $list = $this->ticket->get_datatables($id);
         $data_ticket= array();
         $status_ticket="";

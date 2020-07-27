@@ -72,12 +72,13 @@ class Order extends CI_Controller {
     public function getDataOrder(){
         $id=$this->input->post('id');
         $data=$this->order->getData($id);
-       echo json_encode($data);
+        echo json_encode($data);
     }
 
     public function changeStatus(){
         $id=$this->input->post('id');
         $id_events=$this->input->post('id_events');
+        $id_ticket=$this->input->post('id_ticket');
         $qty=$this->input->post('qty');
         $status=$this->input->post('status');
         if($status=='SUCCESS'){
@@ -92,10 +93,14 @@ class Order extends CI_Controller {
             }
         }
       
-        $data=[
+        $data_order=[
             'status_pemesanan'=>$status
         ];
-       $this->order->updateOrder($id,$data);
-        echo json_encode($id,$id_events,$qty,$status);
+        $data_ticket=[
+            'id_event'=>$id_events,
+            'id_jenis_tiket'=>$id_ticket
+        ];
+        $this->order->updateOrder($id,$data_order);
+        $this->events->updateStok($data_ticket,$qty);
     }
 }
