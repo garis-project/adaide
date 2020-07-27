@@ -1036,7 +1036,8 @@ table tr:hover .table-links {
   padding-left: 15px !important;
   padding-right: 15px !important; }
   .nav-pills .nav-item .nav-link:hover {
-    background-color: #f6f7fe; }
+    background-color: #f6f7fe;
+   }
   .nav-pills .nav-item .nav-link.active {
     box-shadow: 0 2px 6px #acb5f6;
     color: #fff;

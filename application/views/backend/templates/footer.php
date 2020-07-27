@@ -79,8 +79,12 @@
         "searching": false
       });
       //Event Js
-      loadTmpEvents();
-      loadOrder();
+      if (document.URL=="<?= base_url('admin/events/add') ?>"){
+        loadTmpEvents();
+      }
+      if (document.URL=="<?= base_url('admin/order') ?>"){
+        loadOrder();
+      }
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
       });
@@ -91,7 +95,6 @@
         $('#image-check').val(this.files[0].name);
         readURL(this);
       });
-      
 
     // Map View JS
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
@@ -115,7 +118,32 @@
   </script>
   
   <script>
-
+   //profile
+   function changePassword(){
+    const { value: formValues } = Swal.fire({
+      title: 'Change Password',
+      html:
+        '<label>New Password</label>'+
+        '<input id="swal-input1" type="password" class="swal2-input">' +
+        '<label>Confirm Password</label>'+
+        '<input id="swal-input2" type="password"  class="swal2-input">',
+      focusConfirm: false,
+      // showCancelButton: true,
+      // confirmButtonColor: '#3085d6',
+      // confirmButtonText: 'Change',
+      // cancelButtonText: 'Cancel',
+      // cancelButtonColor: '#d33',
+      preConfirm: () => {
+        return [
+          document.getElementById('swal-input1').value,
+          document.getElementById('swal-input2').value
+        ]
+      }
+    })
+    if (formValues) {
+      Swal.fire(JSON.stringify(formValues))
+    }
+   }
     //event
     function readURL(input) {
       if (input.files && input.files[0]) {

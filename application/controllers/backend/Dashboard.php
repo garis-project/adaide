@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller {
         parent::__construct();
         check_login();
     }
+
     public function index() {
         $data['title'] ="Admin Page";
         $data['total']=[
@@ -15,5 +16,28 @@ class Dashboard extends CI_Controller {
             'ticket'=>$this->stage->total(),
         ];
         templates('admin/index',$data);
+    }
+
+    public function profile(){
+        $data['user']= $this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']])->row_array();
+        $data['role']= $this->db->get_where('tb_role',['id_role'=>$this->session->userdata['id_role']])->row_array();
+        $data['title'] ="Profile Page";
+        templates('admin/profile',$data);
+    }
+
+    public function update(){
+        $name=$this->input->post('fullname');
+        $email=$this->input->post('email');
+        $phone=$this->input->post('phone');
+        $id= $this->session->userdata('id_login');
+
+        $data=[
+            'nama_user'=>$name,
+            'email_user'=>$email,
+            'kontak'=>$phone
+        ];
+        $this->user->update($id,$data);
+        $this->session->set_userdata(['nama_user'=>$name]);
+        redirect('admin');
     }
 }
