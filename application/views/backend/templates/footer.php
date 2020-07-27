@@ -22,7 +22,7 @@
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <script src="<?= base_url('assets/backend/'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?= base_url('assets/backend/'); ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <!-- Template JS File -->
   <script src="<?= base_url('assets/backend/'); ?>js/scripts.js"></script>
   <script src="<?= base_url('assets/backend/'); ?>js/custom.js"></script>
@@ -59,13 +59,25 @@
         ],
       });
       $("select").select2(); 
+      $('#description').summernote({
+        toolbar: [
+          // [groupName, [list of button]]
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['strikethrough', 'superscript', 'subscript']],
+          ['fontsize', ['fontsize']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']],
+          ['misc',['undo','redo']],
+        ]
+      });
       $("#table_data").DataTable({
         "paging": false,
         "ordering": false,
         "info": false,
         "retrieve": true,
         "searching": false
-    });
+      });
       //Event Js
       loadTmpEvents();
       loadOrder();
@@ -80,7 +92,7 @@
         readURL(this);
       });
 
-// Map View JS
+    // Map View JS
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
         let geo=$('#geocode').val();
         geo = geo.split(",",2);
@@ -101,7 +113,7 @@
     })
   </script>
   
-<script>
+  <script>
 
     //event
     function readURL(input) {
@@ -244,8 +256,9 @@
     }
 
 
-  //event main
+    //event main
     function deleteEvent(id){
+      console.log(id);
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -432,6 +445,7 @@
           $('#img_poofer').val(data['bukti_pembayaran']);
           $('#id_events').val(data['id_event']);
           $('#events_name').val(data['nama_event']);
+          $('#id_ticket').val(data['id_jenis_tiket']);
           $('#ticket_type').val(data['jenis_tiket']);
           $('#price').val(formatMoney(data['harga_tiket']));
           $('#stock').val(data['stok_tiket']);
@@ -470,11 +484,12 @@
       let id=$('#id_order').val();
       let id_events=$('#id_events').val();
       let qty=$('#qty').val();
+      let id_ticket=$('#id_ticket').val();
       $.ajax({
         url:"<?= base_url('admin/order/changeStatus'); ?>",
         method:"POST",
         dataType:"json",
-        data :{id:id,status:status,id_events:id_events,qty:qty},
+        data :{id:id,status:status,id_events:id_events,qty:qty,id_ticket:id_ticket},
         success : function (data){
           console.log(data);
         },

@@ -1,4 +1,4 @@
-<div class="main-sidebar bg-dark">
+<div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand mt-3">
       <a href="<?= base_url('admin'); ?>">
@@ -10,25 +10,38 @@
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header text-center">Creative takes</li>
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="dashboard"){echo "active";}?>">
         <a href="<?= base_url('admin'); ?>" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
       </li>
 
       <li class="menu-header">Data Master</li>
+      <li class="nav-item dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="events"){echo "active";}?>">
+        <a href="<?= base_url('admin/events') ?>" class="nav-link"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+      </li>
+      <li class="nav-item dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="stage"){echo "active";}?>">
+        <a href="<?= base_url('admin/stage') ?>" class="nav-link"><i class="fas fa-map-marker-alt"></i> <span>Stage</span></a>
+      </li>
+      <li class="nav-item dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="ticket"){echo "active";}?>">
+        <a href="<?= base_url('admin/ticket') ?>" class="nav-link"><i class="fas fa-ticket-alt"></i> <span>Ticket Type</span></a>
+      </li>
+      <li class="menu-header">Operation</li>
       <li class="nav-item dropdown">
-        <a href="" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+        <a href="" class="nav-link has-dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="order"){echo "active";}?>"><i class="fas fa-bell"></i> <span>Order</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/events'); ?>">List Events</a></li>
-          <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/events/add'); ?>">Add New Events</a></li>
+          <li><a class="nav-link" href="<?= base_url('admin/order'); ?>">By Events</a></li>
+          <li><a class="nav-link" href="<?= base_url('admin/order/date'); ?>">By Date Order</a></li>
+          <li><a class="nav-link" href="<?= base_url('admin/order/confirmdate'); ?>">By Date Confirmation</a></li>
+          <li><a class="nav-link" href="<?= base_url('admin/order/status'); ?>">By Status</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i> <span>Stage</span></a>
+        <a href="" class="nav-link has-dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="exchange"){echo "active";}?>"><i class="fas fa-exchange-alt"></i> <span>Exchange</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/stage'); ?>">List Stage</a></li>
-          <li><a class="nav-link beep beep-sidebar" href="<?= base_url('admin/stage/add'); ?>">Add New Stage</a></li>
+          <li><a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="exhange" && $this->uri->segment(3)=="order"){echo "active";}?>" href="<?= base_url('admin/exchange/order'); ?>">Order</a></li>
+          <li><a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="exhange" && $this->uri->segment(3)=="ticket"){echo "active";}?>" href="<?= base_url('admin/exchange/ticket'); ?>">Ticket</a></li>
         </ul>
       </li>
+    
     </ul>
   </aside>
 </div>

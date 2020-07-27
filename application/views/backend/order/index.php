@@ -76,6 +76,7 @@
               <div class="form-row">
                 <div class="col-sm-5">
                   <label>Ticket Type</label>
+                  <input type="hidden" class="form-control" id="id_ticket">
                   <input type="text" class="form-control" id="ticket_type" readonly>
                 </div>
                 <div class="col-sm-5">

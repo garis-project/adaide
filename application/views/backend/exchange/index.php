@@ -16,7 +16,15 @@
                 <h4>Scan</h4>
               </div>
               <div class="card-body">
-               <input type="text" id="qrcode" onchange="exchangeOrder()"/>
+                <div class="form-inline">
+                  <div class="col-sm-12 col-lg-3">
+                    <input type="text" class="form-control" id="qrcode" onchange="exchangeOrder()"/>
+                  </div>
+                  <div class="col-sm-12 col-lg-4">
+                    <button class="btn btn-info" onclick="resetQr()">Reset</button>
+                  </div>
+                </div>
+               
               </div>
             </div>
           </div>
