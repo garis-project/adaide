@@ -91,6 +91,7 @@
         $('#image-check').val(this.files[0].name);
         readURL(this);
       });
+      
 
     // Map View JS
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
@@ -503,13 +504,13 @@
 
     function exchangeOrder(){
       let id=$('#qrcode').val();
-      $.ajax({
-        url:"<?= base_url('admin/exchange/getDataOrder'); ?>",
-        method:"POST",
-        dataType:"json",
-        data :{id:id},
-        success : function (data){
-          console.log(data);
+      if (id.length==17){
+        $.ajax({
+          url:"<?= base_url('admin/exchange/getDataOrder'); ?>",
+          method:"POST",
+          dataType:"json",
+          data :{id:id},
+          success : function (data){
           if(data){
             let n=data.id_tiket.length;
             let str="";
@@ -531,12 +532,10 @@
               timer: 1500,
               footer: "Code isn't Registered Yet or Unactive"
             })
+          }  
           }
-          
-        }
-      });
-      
-      
+        });
+      }     
     }
     //View Image Poofer From Payment
     function viewPoofer(){
