@@ -1,4 +1,4 @@
-<div class="navbar-bg"></div>
+<div class="navbar-bg bg-danger"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
@@ -17,11 +17,11 @@
             <div class="d-sm-none d-lg-inline-block"><?= $this->session->userdata('nama_user'); ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Administrator</div>
-              <a href="<?= base_url('admin/dashboard/user') ?>" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+              <a href="<?= base_url('admin/dashboard/profile') ?>" class="dropdown-item has-icon">
+                <i class="fas fa-user"></i> Profile
               </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="<?= base_url('admin/dashboard/settings') ?>"></i> Settings
+              <a class="dropdown-item has-icon" onclick="changePassword()">
+                <i class="fas fa-lock"></i> Change Password
               </a>
               <div class="dropdown-divider"></div>
               <a href="<?= base_url('admin/auth/logout'); ?>" class="dropdown-item has-icon text-danger">
