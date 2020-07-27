@@ -18,7 +18,7 @@
               <div class="card-body">
                 <div class="form-inline">
                   <div class="col-sm-12 col-lg-3">
-                    <input type="text" class="form-control" id="qrcode" onchange="exchangeOrder()"/>
+                    <input type="text" class="form-control" id="qrcode" oninput="exchangeOrder()"/>
                   </div>
                   <div class="col-sm-12 col-lg-4">
                     <button class="btn btn-info" onclick="resetQr()">Reset</button>
@@ -30,4 +30,5 @@
           </div>
         </section>
       </div>
+    </div>
   
