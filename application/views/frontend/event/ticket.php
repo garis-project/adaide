@@ -26,7 +26,7 @@
 					<p class="lead text-center">Select many ticket</p>
 					<div class="d-flex justify-content-center ">
 						<button class="btn btn-circle btn-danger mr-3" onclick="minus()"><i class="fas fa-minus"></i></button>
-							<h3 class="h3" id="qtyTmp">0</h3>
+						<h3 class="h3" id="qtyTmp">0</h3>
 						<button class="btn btn-danger btn-circle ml-3" onclick="plus()"><i class="fas fa-plus"></i></button>
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 		<div class="row mt-5 h-100" id="ticket">
 			<div class="col-md-8">
 				<p class="lead">
-				<?= $events['deskripsi']?>
+					<?= $events['deskripsi']?>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -50,10 +50,10 @@
 					<div class="card-body">
 						<div>
 							<h5 class="card-title">Ticket</h5>
-							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp.".number_format($ticket['harga_tiket'],0,",",".").",-"; ?></span></p>
+							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp".number_format($ticket['harga_tiket'],0,",",".").",-"; ?></span></p>
 							<p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light" id="qty1"></span></p>
 							<hr class="bg-light">
-							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light " id="totalTmp"></span></p>
+							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light" id="totalTmp"></span></p>
 						</div>
 						<div class=""></div>
 					</div>
@@ -63,7 +63,7 @@
 					<input type="hidden" name="ticket_type"  value="<?= $ticket['id_jenis_tiket'] ?>" />
 					<input type="hidden" name="total" id="total" />
 					<input type="hidden" name="qty"  id="qty" />
-					<button type="submit" class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
+					<button type="submit" class="btn btn-danger px-3 py-2 mt-3 w-100" data-toggle="modal" data-target="#modalBayar">Confirmation</button>
 				</form>
 			</div>
 		</div>
@@ -76,4 +76,41 @@
 			<p>Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
 		</div>
 	</section>
+</div>
+
+
+<!-- modal modal modol modal modol modal modol modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalBayar" tabindex="-1" role="dialog" aria-labelledby="modalbayarLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content bg-black">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">
+				<img src="<?=base_url('assets/frontend/img/')?>money.svg" class="card-img" style="height: 100px; margin-bottom: 1rem;">
+				<p class="lead">Harga pembayaran</p>
+				<h4 id="totalTmp"></h4>
+				<hr class="bg-light">
+				<p>Ke nomor rekening, dibawah ini dan pastikan untuk fotokan bukti pembayaran nya sebagai tanda bukti yang sah</p>
+				<h5 class="text-info">
+					0032342 432<br>
+					mandiri a/n Nugraha
+				</h5>
+				<h6>Batas pembayaran <br>29 July 2020</h6>
+				<div class="mt-3">
+					<p>ORDER ID : xxxx<br>CONFIRMATION ID : XXXXX</p>
+					<p class="text-danger">Cantumkan confirmation id pada keterangan transfer</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary col-sm-8 col-lg-3" data-dismiss="modal">OK</button>
+
+			</div>
+		</div>
+	</div>
 </div>
