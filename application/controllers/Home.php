@@ -27,15 +27,21 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/templates/footer');
 	}
 	public function photo() {
-		$data['title'] = "ADAIDE";
+		$data['title'] = "ADAIDE";http://localhost:8080/adaide/assets/frontend//img/logo-putih.png
 		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/home/photo');
 		$this->load->view('frontend/templates/footer');
 	}
 	public function merch() {
 		$data['title'] = "ADAIDE";
-		$this->load->view('frontend/templates/auth_header', $data);
+		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/home/merch');
+		$this->load->view('frontend/templates/footer');
+	}
+	public function creative() {
+		$data['title'] = "ADAIDE";
+		$this->load->view('frontend/templates/header', $data);
+		$this->load->view('frontend/home/creative');
 		$this->load->view('frontend/templates/footer');
 	}
 }

@@ -1,9 +1,3 @@
-<nav class="mt-n4">
-  <ol class="breadcrumb bg-transparent">
-    <li class="lead text-uppercase" aria-current="page">/kita bukan bayangan</li>
-  </ol>
-</nav>
-
 <!-- breadcumb -->
 <div class="col-md-12 d-flex justify-content-center">
   <div class="text-center w-100 header-text">

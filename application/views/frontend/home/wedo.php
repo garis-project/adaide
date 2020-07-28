@@ -11,7 +11,7 @@
 <div class="col-md-12">
 	<div class="col-md-12 d-flex align-middle justify-content-center mx-auto my-auto">
 		<div class="text-center w-75 header-text ">
-			<h1 class="display-3 mt-5 pt-3 rotate font-blom">We Do<br>What You Want</h1>
+			<h1 class="display-3 rotate font-blom">We Do<br>What You Want</h1>
 		</div>
 	</div>
 </div>
