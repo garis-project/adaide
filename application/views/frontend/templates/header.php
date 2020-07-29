@@ -163,7 +163,7 @@
 									<a class="nav-link" href="<?= base_url('auth/') ?>">Login</a>
 								<?php }else{ ?>
 									<a class="nav-link" href="<?= base_url('order') ?>">Order</a>
-									<!-- <a class="nav-link" href="<?= base_url('home/userprofile') ?>">Profile</a> -->
+									<a class="nav-link" href="<?= base_url('home/user') ?>">Profile</a>
 									<a class="nav-link" href="<?= base_url('auth/logout') ?>">Logout</a>
 								<?php } ?>
 							</div>

@@ -52,7 +52,11 @@
               <div class="item-tiket_event">
                 <span class="font-weight-bold"><?= $value['jenis_tiket'] ?></span><br>
                 <p class="text-danger"><?= "Rp.".number_format($value['harga_tiket'],0,".",",").",-"; ?></p>
-                <small><?= $value['stok_tiket'] ?></small>
+                <?php if($value['status_tiket']==1){ ?>
+                  <small><?= number_format($value['stok_tiket'])." Ticket Left" ?></small> 
+                <?php }else{?>
+                  <small>Stay Tuned</small>
+                <?php } ?>
               </div>
               <div class="d-flex align-items-center" >
                 <div id="buttonQty">
@@ -114,27 +118,28 @@
 	<div class="modal-dialog">
 		<div class="modal-content bg-black">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Payment Information</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body text-center">
 				<img src="<?=base_url('assets/frontend/img/')?>money.svg" class="card-img" style="height: 100px; margin-bottom: 1rem;">
-				<p class="lead" id="payment"></p>
-				<h4 id="totalTmp"></h4>
-				<hr class="bg-light">
-				<p>Ke nomor rekening, dibawah ini dan pastikan untuk fotokan bukti pembayaran nya sebagai tanda bukti yang sah</p>
+				<p class="lead">Amount Payment</p>
+				<h4 id="payment"></h4>
+        <hr class="bg-light">
+        <div class="mt-3">
+					<p>ORDER ID : <label id="orderId"></label><br>CONFIRMATION ID : <label id="confirmId"></p>
+			
+				</div>
+				<p>Please transfer to the account below by confirming the confirmation id in the transfer information section</p>
 				<h5 class="text-info">
 					0032342 432<br>
 					mandiri a/n Nugraha
 				</h5>
-				<h6>Batas pembayaran </h6>
-				<h6 id="confirmDate"></h6>
-				<div class="mt-3">
-					<p>ORDER ID : <label id="orderId"></label><br>CONFIRMATION ID : <label id="confirmId"></p>
-					<p class="text-danger">Cantumkan confirmation id pada keterangan transfer</p>
-				</div>
+				<h6>Before</h6>
+        <h6 id="confirmDate"></h6>
+        <p class="text-danger">Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
 			</div>
 			<div class="modal-footer">
 					<button class="btn btn-primary col-sm-8 col-lg-3" data-dismiss="modal" onclick="window.location.href='<?= base_url('order') ?>'">OK</button>

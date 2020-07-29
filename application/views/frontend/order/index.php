@@ -45,12 +45,11 @@
                 <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
               <?php }elseif($value['status_pemesanan']=="SUCCESS"){ ?>
                 <h3 class=" text-info"> <?= $value['status_pemesanan'] ?></h3>
-              <?php }elseif($value['status_pemesanan']=="AWAITING"||$value['status_pemesanan']=="AWAITING"){ ?>
+              <?php }elseif($value['status_pemesanan']=="AWAITING"){ ?>
                 <h3 class=" text-warning"> <?= $value['status_pemesanan'] ?></h3>
               <?php } ?>
               
             </div>
-            <!-- <form action="<?= base_url('order/cekStatus') ?>"> -->
                 <?php $id= "'".$value['id_pemesanan']."'";
                       $status="'".$value['status_pemesanan']."'" ;
                 ?>

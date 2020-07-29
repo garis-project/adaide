@@ -19,6 +19,10 @@
 	        qrcode.makeCode(qr.value);
         }
         $('#modalBayar').modal('hide');
+
+        $("#modalBayar").on("hidden.bs.modal", function () {
+          window.location = "<?= base_url('order') ?>";
+        });
     });
     </script>
     <script>
@@ -98,7 +102,6 @@
         }
 
         function confirmOrder(){
-          
           let qty=$('#qty').val();
           if(qty>0){
             let type=$('#ticket_type').val();
@@ -123,8 +126,12 @@
                   success: function(data){
                     $('#payment').text(formatMoney(data['total_harga']));
                     $('#orderId').text(data['id_pemesanan']);
-                    
-                    $('#confirmDate').text(data['tanggal_konfirmasi']);
+                    let date=data['tanggal_konfirmasi'].split("-");
+                    const dump=date[2];
+                    date[1]=getMonth(date[1]);
+                    date[2]=date[0]
+                    date[0]=dump;
+                    $('#confirmDate').text(date.join(' '));
                     $('#confirmId').text(data['id_konfirmasi']);
                     $('#modalBayar').modal('show');
                   }
@@ -139,6 +146,14 @@
             })
           }
         }
+
+        function getMonth(number){
+          let months = [ "January", "February", "March", "April", "May", "June", 
+           "July", "August", "September", "October", "November", "December" ];
+           return months[number-1];
+        }
+
+
     </script>
 </body>
 </html>

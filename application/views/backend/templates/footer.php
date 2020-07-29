@@ -642,7 +642,6 @@
         dataType:"json",
         data :{id:id,status:status,id_events:id_events,qty:qty,id_ticket:id_ticket},
         success : function (data){
-          console.log(data);
         },
         complete :function(){
           loadOrder();
@@ -729,13 +728,38 @@
           }
         };
 
-    
-    
-    
-    
-    
-    
-    
+        function changeWA(){
+          let token=$('#token').val();
+          let phone=$('#phone').val();
+          let status=$('#status').val();
+          let date=$('#enddate').val();
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Save Changes!'
+          }).then((result) => {
+            if (result.value) {
+              $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/notification/updateWA'); ?>",
+                data: {token:token,status:status,phone:phone,date:date},
+                success: function(){
+                  Swal.fire(
+                    'Changed!',
+                    'Your Whatsapp Setting has been updated.',
+                    'success'
+                  ).then(function(){
+                  window.location="<?= base_url('admin') ?>";
+                  })
+                }
+              })
+            }
+          })
+        }    
   </script>
 </body>
 </html>
