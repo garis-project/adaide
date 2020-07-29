@@ -46,7 +46,7 @@ class Home extends CI_Controller {
 	}
 	public function userprofile() {
 		$data['title'] = "ADAIDE";
-		$this->load->view('frontend/templates/auth_header', $data);
+		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/home/userprofile');
 		$this->load->view('frontend/templates/footer');
 	}

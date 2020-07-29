@@ -34,7 +34,7 @@
     <h4>Order Confirmation</h4>
     <hr class="border-light">
     <div class="row">
-      <div class="col-lg-8 col-md-6 col-sm-12 bg-black rounded px-4">
+      <div class="col-lg-9 col-md-6 col-sm-12 bg-black rounded px-4">
         <div class="d-flex justify-content-between">
           <div>
             <h5 class="font-weight-bold">Order ID</h5>
@@ -61,7 +61,7 @@
         <p class="text-danger">**Upload a Proof of Payment by confirming the confirmation_id in the payment statement</p>
 
       </div>
-      <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="col-lg-3 col-md-6 col-sm-12">
         <h5 class="font-weight-bold">Upload Poofer Payment**</h5>
         <ul class="list-group mb-3 border border-light rounded">
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">

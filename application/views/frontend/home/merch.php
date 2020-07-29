@@ -5,84 +5,146 @@
       rgba(2, 2, 2, 0.8) 0%,
       rgba(46, 46, 46, 0.8)
       ),
-    url("<?= base_url('assets/frontend/')?>/img/tangan.jpg");
+    url('<?=base_url('assets/frontend/img/tangan.jpg')?>');
     background-size: cover;
-    background-position: top;
+    background-position: center;
     height: 100vh;
   }
 </style>
-
-<div class="col-md-12">
-  <div class="d-flex justify-content-end header-text">
-    <h1 class=" judul text-right display-3 text-uppercase font-weight-bold">Merchendise</h1>
-  </div>
-</div>
-
-</div>
-</div>
-<!-- MAIN -->
-<div class="bg-black">
+<header class="jumbotron jumbotron-fluid bg-header">
   <div class="container-xl">
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-3 col-sm-6 mb-2">
-          <div class="card bg-black">
-            <img src="<?= base_url('assets/frontend/') ?>/img/lukis.jpg" class="card-img-top" alt="...">
-            <div class="pt-3">
-              <h5 class="card-title"><a href="#">Ini Celana</a></h5>
-              <p class="card-text"><strong class="text-white">Rp65000</strong></p>
-            </div>
-          </div>
-          <hr class="bg-dark">
-        </div>
-        <div class="col-md-3 col-sm-6 mb-2">
-          <div class="card bg-black">
-            <img src="<?= base_url('assets/frontend/') ?>/img/lukis.jpg" class="card-img-top" alt="...">
-            <div class="pt-3">
-              <h5 class="card-title"><a href="#">Ini Baju</a></h5>
-              <p class="card-text"><strong class="text-white">Rp43000</strong></p>
-            </div>
-          </div>
-          <hr class="bg-dark">
-        </div>
-        <div class="col-md-3 col-sm-6 mb-2">
-          <div class="card bg-black">
-            <img src="<?= base_url('assets/frontend/') ?>/img/gambar.jpg" class="card-img-top" alt="...">
-            <div class="pt-3">
-              <h5 class="card-title"><a href="#">Ini Baju</a></h5>
-              <p class="card-text"><strong class="text-white">Rp43000</strong></p>
-            </div>
-          </div>
-          <hr class="bg-dark">
-        </div>
-        <div class="col-md-3 col-sm-6 mb-2">
-          <div class="card bg-black">
-            <img src="<?= base_url('assets/frontend/') ?>/img/nyanyi.jpg" class="card-img-top" alt="...">
-            <div class="pt-3">
-              <h5 class="card-title"><a href="#">Ini Baju</a></h5>
-              <p class="card-text"><strong class="text-white">Rp43000</strong></p>
-            </div>
-          </div>
-          <hr class="bg-dark">
+    <nav class="nav navbar">
+      <div class="justify-content-start">
+        <h4 class="h4"></h4>
+      </div>
+      <div class="display-4 d-flex justify-content-end">
+        <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="logo" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
+      </div>
+    </nav>
+    <div class="d-flex justify-content-center header-text">
+      <h1 class="judul text-center display-3 text-uppercase font-weight-bold">Merchendise<br><p class="lead">In ADAIDE</p></h1>
+    </div>
+  </div>
+  <nav class="navbar navbar-light fixed-bottom mb-3 container-xl">
+    <a class="navbar-brand" id="emblem">ADAIDE<sup class="font-weight-bold">TM</sup></a>
+    <div class="form-inline">
+      <nav class="nav social-menu">
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">Youtube</a>
+        </span>
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">Instagram</a>
+        </span>
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">contact</a>
+        </span>
+      </nav>
+    </div>
+  </nav>
+</header>
+
+
+<div class="bg-black pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h4>Merchendise List</h4>
+      </div>
+      <div class="col-md-3">
+        <label for="carimerchendise">Search Merch</label>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">Find!</button>
+          </span>
         </div>
       </div>
     </div>
-  </body>
-  <section class="container-xl">
-    <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
-      <div class="slogan">
-        <span class="logo-text">ADA IDE<sup>TM</sup><br>BICARA</span>
-        <span class="line-vertical"></span>
-        <span class="logo-text">Bring Your</span>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 mb-2">
+        <div class="card bg-black">
+          <img src="<?= base_url('assets/frontend/') ?>img/bicara.jpg" class="card-img-top" alt="...">
+          <div class="pt-3">
+            <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+            <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+          </div>
+        </div>
+        <hr class="bg-dark">
       </div>
+      <div class="col-md-3 col-sm-6 mb-2">
+        <div class="card bg-black">
+          <img src="<?= base_url('assets/frontend/') ?>img/dcdc.jpg" class="card-img-top" alt="...">
+          <div class="pt-3">
+           <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+           <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+         </div>
+       </div>
+       <hr class="bg-dark">
+     </div>
+     <div class="col-md-3 col-sm-6 mb-2">
+      <div class="card bg-black">
+        <img src="<?= base_url('assets/frontend/') ?>img/bicara.jpg" class="card-img-top" alt="...">
+        <div class="pt-3">
+         <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+         <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+       </div>
+     </div>
+     <hr class="bg-dark">
+   </div>
+   <div class="col-md-3 col-sm-6 mb-2">
+    <div class="card bg-black">
+      <img src="<?= base_url('assets/frontend/') ?>img/dcdc.jpg" class="card-img-top" alt="...">
+      <div class="pt-3">
+       <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+       <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+     </div>
+   </div>
+   <hr class="bg-dark">
+ </div>
+ <div class="col-md-3 col-sm-6 mb-2">
+  <div class="card bg-black">
+    <img src="<?= base_url('assets/frontend/') ?>img/bicara.jpg" class="card-img-top" alt="...">
+    <div class="pt-3">
+      <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+      <p class="card-text"><strong class="text-white">Rp52000</strong></p>
     </div>
-  </section>
-  <!-- Footer -->
-  <section class="container-fluid border-top">
-    <div class="footer container-xl">
-      <h1 class="h2 text-uppercase font-weight-bold">find us</h1>
-      <h2 class="h3 text-uppercase font-weight-bold">ada ide HQ</h2>
-      <p class="lead">Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
-    </div>
-  </section>
+  </div>
+  <hr class="bg-dark">
 </div>
+<div class="col-md-3 col-sm-6 mb-2">
+  <div class="card bg-black">
+    <img src="<?= base_url('assets/frontend/') ?>img/dcdc.jpg" class="card-img-top" alt="...">
+    <div class="pt-3">
+     <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+     <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+   </div>
+ </div>
+ <hr class="bg-dark">
+</div>
+<div class="col-md-3 col-sm-6 mb-2">
+  <div class="card bg-black">
+    <img src="<?= base_url('assets/frontend/') ?>img/bicara.jpg" class="card-img-top" alt="...">
+    <div class="pt-3">
+     <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+     <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+   </div>
+ </div>
+ <hr class="bg-dark">
+</div>
+<div class="col-md-3 col-sm-6 mb-2">
+  <div class="card bg-black">
+    <img src="<?= base_url('assets/frontend/') ?>img/dcdc.jpg" class="card-img-top" alt="...">
+    <div class="pt-3">
+     <h5 class="card-title"><a href="#">ADAIDE KickDenim!</a></h5>
+     <p class="card-text"><strong class="text-white">Rp52000</strong></p>
+   </div>
+ </div>
+ <hr class="bg-dark">
+</div>
+</div>
+</div>
+

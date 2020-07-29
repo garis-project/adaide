@@ -5,16 +5,16 @@ class Order extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    check_user();    
+    check_user();
   }
-  
+
   public function index()
   {
     $id=$this->session->userdata('id_login');
     $data['user']=$this->db->get_where('tb_user',['id_user'=>$id])->row_array();
     $data['order']=$this->order->getDataUser($id);
     $data['title'] = "ADAIDE";
-    $this->load->view('frontend/templates/auth_header',$data);
+    $this->load->view('frontend/templates/header',$data);
     $this->load->view('frontend/order/index');
     $this->load->view('frontend/templates/footer');
   }
@@ -27,7 +27,7 @@ class Order extends CI_Controller
       $url="detail";
     }else{
       $url="error";
-    }  
+    }
     echo json_encode($url);
   }
 
@@ -35,13 +35,13 @@ class Order extends CI_Controller
     $id_order=$this->input->post('id_order');
     if($id_order){
       $data['order']= $this->order->getData($id_order);
-      $this->load->view('frontend/templates/auth_header',$data);
+      $this->load->view('frontend/templates/header',$data);
       $this->load->view('frontend/order/confirm');
       $this->load->view('frontend/templates/footer');
     }else{
       redirect('order');
     }
-    
+
   }
 
   public function process(){
@@ -63,12 +63,12 @@ class Order extends CI_Controller
     $id_order=$this->input->post('id_order');
     if($id_order){
       $data['order']= $this->order->getData($id_order);
-      $this->load->view('frontend/templates/auth_header',$data);
+      $this->load->view('frontend/templates/header',$data);
       $this->load->view('frontend/order/detail');
       $this->load->view('frontend/templates/footer');
     }else{
       redirect('order');
     }
-   
+
   }
 }

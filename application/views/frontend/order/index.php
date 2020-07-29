@@ -26,45 +26,52 @@
       </div>
       <div class="container-xl">
         <h1 class="display-4"><?= $user['nama_user'] ?></h1>
-        <p class="lead">Order History</p>
+        <p class="lead">List ticket you have buys</p>
       </div>
     </div>
   </header>
+
+
   <div class="container mt-3">
     <div class="row">
-    <?php foreach($order as $value){ ?>
+      <div class="col-md-9">
+        <h4>Order List</h4>
+      </div>
+    </div>
+    <div class="row">
+      <?php foreach($order as $value){ ?>
         <div class="col-lg-4 col-md-6 col-sm-12">
-        <ul class="list-group mb-3 border border-light rounded">
-          <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
-            <div>
-              <h6 class="my-0">Order ID : <?= $value['id_pemesanan'] ?></h6>
-              <h5 class="text-light"><?= "Rp.".number_format($value['total_harga'],0,".",",").",-" ?></h5>
-              <p><?= $value['jml_beli']." Ticket @Rp.".$value['harga_tiket']?></p>
-              <p class="text-muted"><?= $value['nama_event'] ?></p>
-              <?php if($value['status_pemesanan']=="PENDING" || $value['status_pemesanan']=="FAILED"){ ?>
-                <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
-              <?php }elseif($value['status_pemesanan']=="SUCCESS"){ ?>
-                <h3 class=" text-info"> <?= $value['status_pemesanan'] ?></h3>
-              <?php }elseif($value['status_pemesanan']=="AWAITING"||$value['status_pemesanan']=="AWAITING"){ ?>
-                <h3 class=" text-warning"> <?= $value['status_pemesanan'] ?></h3>
-              <?php } ?>
-              
-            </div>
-            <!-- <form action="<?= base_url('order/cekStatus') ?>"> -->
+          <ul class="list-group mb-3 border border-light rounded">
+            <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
+              <div>
+                <h6 class="my-0">Order ID : <?= $value['id_pemesanan'] ?></h6>
+                <h5 class="text-light"><?= "Rp.".number_format($value['total_harga'],0,".",",").",-" ?></h5>
+                <p><?= $value['jml_beli']." Ticket @Rp.".$value['harga_tiket']?></p>
+                <p class="text-muted"><?= $value['nama_event'] ?></p>
+                <?php if($value['status_pemesanan']=="PENDING" || $value['status_pemesanan']=="FAILED"){ ?>
+                  <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
+                <?php }elseif($value['status_pemesanan']=="SUCCESS"){ ?>
+                  <h3 class=" text-info"> <?= $value['status_pemesanan'] ?></h3>
+                <?php }elseif($value['status_pemesanan']=="AWAITING"||$value['status_pemesanan']=="AWAITING"){ ?>
+                  <h3 class=" text-warning"> <?= $value['status_pemesanan'] ?></h3>
+                <?php } ?>
+
+              </div>
+              <!-- <form action="<?= base_url('order/cekStatus') ?>"> -->
                 <?php $id= "'".$value['id_pemesanan']."'";
-                      $status="'".$value['status_pemesanan']."'" ;
+                $status="'".$value['status_pemesanan']."'" ;
                 ?>
 
                 <span class="align-items-center">
-                    <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
+                  <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
                 </span>
-            <!-- </form> -->
-           
-          </li>
-        </ul>
+                <!-- </form> -->
+
+              </li>
+            </ul>
+          </div>
+        <?php }?>
+
       </div>
-    <?php }?>
-      
     </div>
-  </div>
-</body>
+  </body>
