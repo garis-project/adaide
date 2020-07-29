@@ -8,9 +8,8 @@
 				<div class="display-4 d-flex justify-content-end ">
 					<img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="logo" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
 				</div>
-			</div>
-
-			<header class="text-left">
+			</div>	
+				<header class="text-left">
 				<?php
 				foreach($events as $value){
 					?>
