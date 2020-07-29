@@ -53,7 +53,7 @@ class Stage extends CI_Controller {
                 'kota_stage'=>$this->input->post('city'),
                 'geocode'=>$this->input->post('geocode'),
             ];
-            $this->db->updateStage($data_stage,$id);
+            $this->stage->updateStage($data_stage,$id);
             redirect('admin/stage');
         }
     }

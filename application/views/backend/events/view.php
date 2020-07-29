@@ -20,9 +20,9 @@
                       </div>
                       <div class="card-body">
                         <div class="form-group">
-                            <div class=" float-center">
-                              <img src="<?= base_url('assets/backend/img/events/').$event['banner']; ?> " class="img-fluid" id="banner-img"alt="Responsive image">
-                            </div>
+                          <div class="text-center">
+                            <img src="<?= base_url('assets/backend/img/events/').$event['banner']; ?> " class="img-fluid" id="banner-img"alt="Responsive image">
+                          </div>
                         </div>
                         <div class="form-group">
                           <label>Description</label>

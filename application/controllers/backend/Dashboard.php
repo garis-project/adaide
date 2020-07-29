@@ -40,4 +40,10 @@ class Dashboard extends CI_Controller {
         $this->session->set_userdata(['nama_user'=>$name]);
         redirect('admin');
     }
+
+    public function changePassword(){
+        $id=$this->session->userdata('id_login');
+        $password=md5($this->input->post('password'));
+        $this->user->changePassword($id,$password);
+    }
 }

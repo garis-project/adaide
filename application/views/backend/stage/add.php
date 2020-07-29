@@ -57,46 +57,7 @@
                       </div>
                       <div class="card-body">
                         <div id='mapSearch' style='width: 100%; height: 460px;'></div>
-                        <script>
-                          mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhaWRlIiwiYSI6ImNrZDE5aHNrcDExZnkycnFyOGZnY282ZXcifQ.uBbquafl-3hyE0TlddYsQg';
-                          var mapSearch = new mapboxgl.Map({
-                            container: 'mapSearch',
-                            style: 'mapbox://styles/mapbox/streets-v11',
-                            center: [108.2236116,-7.3488505],
-                            zoom: 10
-                          });
-
-                          var geocoder = new MapboxGeocoder({
-                            accessToken: mapboxgl.accessToken,
-                            marker:{
-                              color:'transparent'
-                            },
-                            mapboxgl: mapboxgl
-                          });
-                          
-                          var markerPick = new mapboxgl.Marker({
-                              draggable: true,
-                          })
-                          .setLngLat([108.2236116,-7.3488505])
-                          .addTo(mapSearch);
-
-                          mapSearch.addControl(geocoder);
-
-                          geocoder.on('result', function(e) {
-                            let lat=e.result.center[1];
-                            let lng=e.result.center[0];
-                            markerPick.setLngLat([lng,lat]);
-                            markerPick.addTo(mapSearch);
-                            $('#geocode').val(lng+","+lat);
-                          })
-                          
-                            function onDragEnd() {
-                              var lngLat = markerPick.getLngLat();
-                              $('#geocode').val(lngLat.lng+","+lngLat.lat);
-                            }
-
-                            markerPick.on('dragend', onDragEnd);
-                        </script>
+                     
                       </div>
                     </div>
                 </div>
