@@ -17,4 +17,9 @@ class Additional_model extends CI_Model
         $this->db->where('id',1);
         $this->db->update('tb_wa',$data);
     }
+
+    function updatePayment($data){
+        $this->db->where('id',1);
+        $this->db->update('tb_pembayaran',$data);
+    }
 }

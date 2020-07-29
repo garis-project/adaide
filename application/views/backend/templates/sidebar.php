@@ -42,8 +42,8 @@
       <li class="nav-item dropdown">
         <a href="<?= base_url('admin/notification'); ?>" class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="wa"){echo "active";}?>"><i class="fas fa-envelope"></i> <span>Whatsapp</span></a>
       </li>
-      <li class="nav-item dropdown">
-        <a href="<?= base_url('admin/payment'); ?>" class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="payment"){echo "active";}?>"><i class="fas fa-university"></i> <span>Payment</span></a>
+      <li class="nav-item dropdown" onclick="payment()" >
+        <a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="payment"){echo "active";}?>"><i class="fas fa-university"></i><span>Payment</span></a>
       </li>
     </ul>
   </aside>

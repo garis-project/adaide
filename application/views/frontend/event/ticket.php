@@ -64,9 +64,9 @@
                     <button class="btn btn-circle btn-danger" onclick="minus()"><i class="fas fa-minus"></i></button>
 						        <span id="qtyTmp">0</span>
 						        <button class="btn btn-danger btn-circle" onclick="plus()"><i class="fas fa-plus"></i></button>
-                  <?php }elseif($value['status_tiket']==0){ ?>
-                      <small class=text-center>Coming Soon</small>
                   <?php }elseif($value['status_tiket']==2){ ?>
+                      <small class=text-center>Coming Soon</small>
+                  <?php }elseif($value['status_tiket']==0){ ?>
                     <small class=text-center>Not Available</small>
                   <?php } ?>
                 </div>
@@ -134,8 +134,8 @@
 				</div>
 				<p>Please transfer to the account below by confirming the confirmation id in the transfer information section</p>
 				<h5 class="text-info">
-					0032342 432<br>
-					mandiri a/n Nugraha
+					<?= $payment['no_rek'] ?><br>
+					<?= $payment['bank'] ?> a/n <?= $payment['an'] ?>
 				</h5>
 				<h6>Before</h6>
         <h6 id="confirmDate"></h6>
