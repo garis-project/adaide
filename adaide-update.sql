@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2020 at 03:14 AM
+-- Generation Time: Jul 29, 2020 at 05:04 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,7 +42,7 @@ CREATE TABLE `tb_detail_event` (
 --
 
 INSERT INTO `tb_detail_event` (`tiket_init`, `id_event`, `id_jenis_tiket`, `harga_tiket`, `stok_tiket`, `status_tiket`) VALUES
-('AIE310720201', 'AIE31072020', 1, 60000, 1000, 0),
+('AIE310720201', 'AIE31072020', 1, 60000, 1000, 1),
 ('AIE310720202', 'AIE31072020', 2, 70000, 2000, 0),
 ('AIE310720203', 'AIE31072020', 3, 80000, 1000, 0),
 ('AIE310720204', 'AIE31072020', 4, 100000, 3000, 0),
@@ -101,9 +101,9 @@ CREATE TABLE `tb_event` (
 --
 
 INSERT INTO `tb_event` (`id_event`, `nama_event`, `jenis_event`, `tanggal_mulai`, `tanggal_selesai`, `total_stok`, `status_event`, `banner`, `deskripsi`, `id_stage`) VALUES
-('AIE31072020', 'Ada Ide Festival', NULL, '2020-07-31 07:42:00', '2020-07-31 17:42:00', NULL, 'Onprogress', '1595810756events.jpg', '<span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>', 4),
-('HUT15062020', 'HUT Kota Tasikmalaya', NULL, '2020-06-15 07:46:00', '2020-08-02 07:46:00', NULL, 'Processed', '1595810901hut.jpg', '<p><span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span><br></p>', 5),
-('TOF30072020', 'Tasik October Festival 2020', NULL, '2020-07-30 08:00:00', '2020-07-31 15:00:00', NULL, 'Completed', '1595810561TOF.jpg', '<p>Tasikmalaya October Festival merupakan ajang festival tahunan terbesar di Kota Tasikmalaya yang selalu diisi dengan berbagai acar yang menarik.</p>', 5);
+('AIE31072020', 'Ada Ide Festival', NULL, '2020-07-31 07:42:00', '2020-07-31 17:42:00', NULL, 'Processed', '1595810756events.jpg', '<span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>', 4),
+('HUT15062020', 'HUT Kota Tasikmalaya', NULL, '2020-06-15 07:46:00', '2020-08-02 07:46:00', NULL, 'Onprogress', '1595810901hut.jpg', '<p><span style=\"\" open=\"\" sans\",=\"\" arial,=\"\" sans-serif;=\"\" text-align:=\"\" justify;\"=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span><br></p>', 5),
+('TOF30072020', 'Tasik October Festival 2020', NULL, '2020-07-30 08:00:00', '2020-07-31 15:00:00', NULL, 'Onprogress', '1595810561TOF.jpg', '<p>Tasikmalaya October Festival merupakan ajang festival tahunan terbesar di Kota Tasikmalaya yang selalu diisi dengan berbagai acar yang menarik.</p>', 5);
 
 -- --------------------------------------------------------
 
@@ -125,6 +125,25 @@ INSERT INTO `tb_jenis_tiket` (`id_jenis_tiket`, `jenis_tiket`) VALUES
 (2, 'Pre Sale'),
 (3, 'On The Spot'),
 (4, 'Reguler');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_pembayaran`
+--
+
+CREATE TABLE `tb_pembayaran` (
+  `no_rek` varchar(30) NOT NULL,
+  `bank` varchar(30) NOT NULL,
+  `an` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_pembayaran`
+--
+
+INSERT INTO `tb_pembayaran` (`no_rek`, `bank`, `an`) VALUES
+('123214214151', 'MANDIRI', 'Maman Sulaeman');
 
 -- --------------------------------------------------------
 
@@ -153,7 +172,70 @@ CREATE TABLE `tb_pemesanan` (
 --
 
 INSERT INTO `tb_pemesanan` (`id_pemesanan`, `id_user`, `id_event`, `tanggal_pemesanan`, `tiket_init`, `id_jenis_tiket`, `diskon`, `total_harga`, `jml_beli`, `id_konfirmasi`, `tanggal_konfirmasi`, `bukti_pembayaran`, `status_pemesanan`) VALUES
-('AI-ORD000001', '1595809922', 'HUT15062020', '2020-07-27', 'HUT150620201', 1, 0, 200000, 5, '0AOYF', '2020-07-28', '1595812168telpon.jpg', 'SUCCESS');
+('AI-ORD000001', '1595809922', 'HUT15062020', '2020-07-27', 'HUT150620201', 1, 0, 200000, 5, '0AOYF', '2020-07-28', '1595812168telpon.jpg', 'SUCCESS'),
+('AI-ORD000002', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'xaVAq', '2020-07-31', '', 'PENDING'),
+('AI-ORD000003', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'tV4R8', '2020-07-31', '', 'PENDING'),
+('AI-ORD000004', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'Y6EnS', '2020-07-31', '', 'PENDING'),
+('AI-ORD000005', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'I7g5w', '2020-07-31', '', 'PENDING'),
+('AI-ORD000006', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'Gdrav', '2020-07-31', '', 'PENDING'),
+('AI-ORD000007', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'vM4dc', '2020-07-31', '', 'PENDING'),
+('AI-ORD000008', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'dDmYc', '2020-07-31', '1596025101telpon.jpg', 'AWAITING'),
+('AI-ORD000009', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'KHYUP', '2020-07-31', '', 'PENDING'),
+('AI-ORD000010', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'qPDzX', '2020-07-31', '', 'PENDING'),
+('AI-ORD000011', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'Am7rs', '2020-07-31', '', 'PENDING'),
+('AI-ORD000012', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'utiDZ', '2020-07-31', '', 'PENDING'),
+('AI-ORD000013', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'tHIVd', '2020-07-31', '', 'PENDING'),
+('AI-ORD000014', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'a1wMO', '2020-07-31', '', 'PENDING'),
+('AI-ORD000015', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'FVcni', '2020-07-31', '', 'PENDING'),
+('AI-ORD000016', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'Rv1tm', '2020-07-31', '', 'PENDING'),
+('AI-ORD000017', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'hFnKx', '2020-07-31', '', 'PENDING'),
+('AI-ORD000018', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 360000, 6, '7lMxZ', '2020-07-31', '', 'PENDING'),
+('AI-ORD000019', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'fUp0q', '2020-07-31', '', 'PENDING'),
+('AI-ORD000020', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'g6Rzl', '2020-07-31', '', 'PENDING'),
+('AI-ORD000021', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'cdUXt', '2020-07-31', '', 'PENDING'),
+('AI-ORD000022', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'fThFl', '2020-07-31', '', 'PENDING'),
+('AI-ORD000023', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'PgMoh', '2020-07-31', '', 'PENDING'),
+('AI-ORD000024', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'a9TwV', '2020-07-31', '', 'PENDING'),
+('AI-ORD000025', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, '81LJx', '2020-07-31', '', 'PENDING'),
+('AI-ORD000026', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'tIX4D', '2020-07-31', '', 'PENDING'),
+('AI-ORD000027', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 180000, 3, 'lyCcu', '2020-07-31', '', 'PENDING'),
+('AI-ORD000028', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'H83Rq', '2020-07-31', '', 'PENDING'),
+('AI-ORD000029', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'Db5gC', '2020-07-31', '', 'PENDING'),
+('AI-ORD000030', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 240000, 4, 'aBiht', '2020-07-31', '', 'PENDING'),
+('AI-ORD000031', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'el0nB', '2020-07-31', '', 'PENDING'),
+('AI-ORD000032', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'h35pz', '2020-07-31', '', 'PENDING'),
+('AI-ORD000033', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 360000, 6, 'e9CZc', '2020-07-31', '', 'PENDING'),
+('AI-ORD000034', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 360000, 6, '1LYr6', '2020-07-31', '', 'PENDING'),
+('AI-ORD000035', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 360000, 6, '1AYah', '2020-07-31', '', 'PENDING'),
+('AI-ORD000036', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, 'zyoFV', '2020-07-31', '', 'PENDING'),
+('AI-ORD000037', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 300000, 5, '5q0pr', '2020-07-31', '', 'PENDING'),
+('AI-ORD000038', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 360000, 6, 'y0fc1', '2020-07-31', '', 'PENDING'),
+('AI-ORD000039', '1595809922', 'AIE31072020', '2020-07-29', 'AIE31072020', 1, 0, 540000, 9, 'UibfB', '2020-07-31', '', 'PENDING'),
+('AI-ORD000040', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, '2Kd9q', '2020-07-31', '', 'PENDING'),
+('AI-ORD000041', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'mJ9TA', '2020-07-31', '', 'PENDING'),
+('AI-ORD000042', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'rlb7f', '2020-07-31', '', 'PENDING'),
+('AI-ORD000043', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, 'NOnIQ', '2020-07-31', '', 'PENDING'),
+('AI-ORD000044', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 120000, 2, 'AKTmb', '2020-07-31', '', 'PENDING'),
+('AI-ORD000045', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'TpQRe', '2020-07-31', '', 'PENDING'),
+('AI-ORD000046', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, 'A2WhD', '2020-07-31', '', 'PENDING'),
+('AI-ORD000047', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, 'GDgn7', '2020-07-31', '', 'PENDING'),
+('AI-ORD000048', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, '7ixsZ', '2020-07-31', '', 'PENDING'),
+('AI-ORD000049', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'RuiIC', '2020-07-31', '', 'PENDING'),
+('AI-ORD000050', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, '28RKJ', '2020-07-31', '', 'PENDING'),
+('AI-ORD000051', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 180000, 3, 'l6X7V', '2020-07-31', '', 'PENDING'),
+('AI-ORD000052', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 180000, 3, 'HwKlz', '2020-07-31', '', 'PENDING'),
+('AI-ORD000053', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'TCRzo', '2020-07-31', '', 'PENDING'),
+('AI-ORD000054', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 180000, 3, 'Bdzuy', '2020-07-31', '', 'PENDING'),
+('AI-ORD000055', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, '8m5xz', '2020-07-31', '', 'PENDING'),
+('AI-ORD000056', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'UduZ6', '2020-07-31', '', 'PENDING'),
+('AI-ORD000057', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'pQP4G', '2020-07-31', '', 'PENDING'),
+('AI-ORD000058', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, '8KL9J', '2020-07-31', '', 'PENDING'),
+('AI-ORD000059', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 360000, 6, '9drYD', '2020-07-31', '', 'PENDING'),
+('AI-ORD000060', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'ZvewT', '2020-07-31', '', 'PENDING'),
+('AI-ORD000061', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, 'tlOIi', '2020-07-31', '', 'PENDING'),
+('AI-ORD000062', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, 'CzrH3', '2020-07-31', '', 'PENDING'),
+('AI-ORD000063', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 300000, 5, 'jJQD2', '2020-07-31', '', 'PENDING'),
+('AI-ORD000064', '1595809922', 'AIE31072020', '2020-07-29', 'AIE310720201', 1, 0, 240000, 4, '2OQNt', '2020-07-31', '', 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -171,8 +253,8 @@ CREATE TABLE `tb_role` (
 --
 
 INSERT INTO `tb_role` (`id_role`, `role`) VALUES
-(1, 'admin'),
-(2, 'user');
+(1, 'Administrator'),
+(2, 'User');
 
 -- --------------------------------------------------------
 
@@ -194,7 +276,8 @@ CREATE TABLE `tb_stage` (
 
 INSERT INTO `tb_stage` (`id_stage`, `nama_stage`, `alamat_stage`, `kota_stage`, `geocode`) VALUES
 (4, 'Parking Area Siliwangi Food Market', 'Jln.Siliwangi No.223 Tawang', 'KOTA TASIKMALAYA', '108.22591,-7.348979'),
-(5, 'Bale Kota Tasikmalaya', 'Jln. Letnan Harun No.70', 'KOTA TASIKMALAYA', '108.19719,-7.316562');
+(5, 'Bale Kota Tasikmalaya', 'Jln. Letnan Harun No.70', 'KOTA TASIKMALAYA', '108.19719,-7.316562'),
+(7, 'Indihiang', 'Jln.Siliwangi No.554 Indihiang', 'KOTA TASIKMALAYA', '108.16681979865035,-7.289912291213625');
 
 -- --------------------------------------------------------
 
@@ -253,8 +336,29 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `email_user`, `kontak`, `alamat`, `gender_user`, `password`, `id_status`, `id_role`) VALUES
-('1593614026', 'Someone', 'someone@gmail.com', '085321317658', 'Ciamis', 'L', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
+('1593614026', 'Someone', 'someone@gmail.com', '085321317658', 'Ciamis', 'L', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1),
 ('1595809922', 'ANGGA EKA PURNAMA', 'anggaekapurnama4@gmail.com', '085321317658', 'CIAMIS', 'L', '81dc9bdb52d04dc20036dbd8313ed055', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_wa`
+--
+
+CREATE TABLE `tb_wa` (
+  `id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `valid` datetime NOT NULL,
+  `phone` varchar(13) NOT NULL,
+  `status` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_wa`
+--
+
+INSERT INTO `tb_wa` (`id`, `token`, `valid`, `phone`, `status`) VALUES
+(1, 'BKAJDKHAJSDHAGSDFAGSDTADABDE', '2020-07-31 00:00:00', '085321317658', 'on');
 
 -- --------------------------------------------------------
 
@@ -810,6 +914,12 @@ ALTER TABLE `tb_jenis_tiket`
   ADD PRIMARY KEY (`id_jenis_tiket`);
 
 --
+-- Indexes for table `tb_pembayaran`
+--
+ALTER TABLE `tb_pembayaran`
+  ADD PRIMARY KEY (`no_rek`);
+
+--
 -- Indexes for table `tb_pemesanan`
 --
 ALTER TABLE `tb_pemesanan`
@@ -859,7 +969,7 @@ ALTER TABLE `tb_jenis_tiket`
 -- AUTO_INCREMENT for table `tb_stage`
 --
 ALTER TABLE `tb_stage`
-  MODIFY `id_stage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_stage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_status`

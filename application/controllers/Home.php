@@ -44,7 +44,9 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/home/creative');
 		$this->load->view('frontend/templates/footer');
 	}
-	public function userprofile() {
+	public function user() {
+		$data['user']=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']])->row_array();
+		$data['order']=$this->order->getLimit($this->session->userdata['id_login']);
 		$data['title'] = "ADAIDE";
 		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/home/userprofile');

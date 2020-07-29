@@ -46,4 +46,18 @@ class Dashboard extends CI_Controller {
         $password=md5($this->input->post('password'));
         $this->user->changePassword($id,$password);
     }
+
+    public function getPayment(){
+        echo json_encode($this->add->getPayment());
+    }
+
+    public function changePayment(){
+        $data=[
+            'bank'=>$this->input->post('bank'),
+            'no_rek'=>$this->input->post('account'),
+            'an'=>$this->input->post('name')
+        ];
+        $this->add->updatePayment($data);
+        echo json_encode($data);
+    }
 }

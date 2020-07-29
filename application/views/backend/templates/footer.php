@@ -223,13 +223,6 @@
         }
       }
     })    
-    //   preConfirm: () => {
-    //     return [
-    //       document.getElementById('password1').value,
-    //       document.getElementById('password2').value
-    //     ]
-    //   }
-    // })
    }
     //event
     function readURL(input) {
@@ -246,7 +239,6 @@
     //check banner image
     function checkImg(){
       let name=$('#banner-name').text();
-      console.log(name);
       $('#image-check').val(name);
     }
 
@@ -409,7 +401,6 @@
 
     //event main
     function deleteEvent(id){
-      console.log(id);
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -642,7 +633,6 @@
         dataType:"json",
         data :{id:id,status:status,id_events:id_events,qty:qty,id_ticket:id_ticket},
         success : function (data){
-          console.log(data);
         },
         complete :function(){
           loadOrder();
@@ -651,6 +641,52 @@
       
     }
 
+    function payment(){
+      $.ajax({
+        type: "POST",
+        dataType:'json',
+        url: "<?= base_url('admin/dashboard/getPayment'); ?>",
+        success: function(data){
+          Swal.fire({
+            title: 'Change Payment',
+            customClass: 'swal-height',
+            html:
+              '<label>Account Number</label>'+
+              '<input id="no_rek" type="text" class="swal2-input" value="'+data['no_rek']+'" />'+
+              '<label>Bank</label>'+
+              '<input id="bank" type="text"  class="swal2-input" value="'+data['bank']+'" />'+
+              '<label>a/n</label>'+
+              '<input id="name" type="text"  class="swal2-input" value="'+data['an']+'" />',
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Change',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#d33',
+          }).then((result) => {
+            if (result.value) {
+              let account= $('#no_rek').val();
+              let name=$('#name').val();
+              let bank=$('#bank').val();
+              $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/dashboard/changePayment'); ?>",
+                data: {account:account,name:name,bank:bank},
+                success: function(x){
+                  console.log(x);
+                  Swal.fire(
+                  'Updated',
+                  'Your Payment Has Been Updated',
+                  'success'
+                  );
+                 
+                }
+              }); 
+            }
+          })
+        }
+      })
+    }
 
     function exchangeOrder(){
       let id=$('#qrcode').val();
@@ -729,13 +765,38 @@
           }
         };
 
-    
-    
-    
-    
-    
-    
-    
+        function changeWA(){
+          let token=$('#token').val();
+          let phone=$('#phone').val();
+          let status=$('#status').val();
+          let date=$('#enddate').val();
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Save Changes!'
+          }).then((result) => {
+            if (result.value) {
+              $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/notification/updateWA'); ?>",
+                data: {token:token,status:status,phone:phone,date:date},
+                success: function(){
+                  Swal.fire(
+                    'Changed!',
+                    'Your Whatsapp Setting has been updated.',
+                    'success'
+                  ).then(function(){
+                  window.location="<?= base_url('admin') ?>";
+                  })
+                }
+              })
+            }
+          })
+        }    
   </script>
 </body>
 </html>
