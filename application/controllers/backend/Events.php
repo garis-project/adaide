@@ -223,4 +223,11 @@ class Events extends CI_Controller {
         $this->db->update('tb_detail_event',$data);
         echo json_encode($id_events);
     }
+
+    public function changeStatus(){
+        $id= $this->input->post('id');
+        $status=$this->input->post('status');
+
+        $this->events->changeStatus($id,$status);
+    }
 }

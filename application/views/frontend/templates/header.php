@@ -28,8 +28,7 @@
 								<a href="<?=base_url('auth/logout')?>" class="nav-link text-uppercase font-weight-bold">Logout</a>
 							<?php }else{ ?>
 								<a href="<?=base_url('auth')?>" class="nav-link text-uppercase font-weight-bold">Login</a>
-							<?php }?>
-							
+							<?php }?>	
 						</nav>
 					</div>
 					<div class="display-4 d-flex justify-content-end">
@@ -113,7 +112,6 @@
 							<a class="nav-link" href="<?= base_url('auth/logout') ?>">Profile</a>
 							<a class="nav-link" href="<?= base_url('auth/logout') ?>">Logout</a>
 						<?php } ?>
-						
 					</div>
 				</div>
 			</div>

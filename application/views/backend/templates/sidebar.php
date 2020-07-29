@@ -29,9 +29,6 @@
         <a href="" class="nav-link has-dropdown <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="order"){echo "active";}?>"><i class="fas fa-bell"></i> <span>Order</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?= base_url('admin/order'); ?>">By Events</a></li>
-          <li><a class="nav-link" href="<?= base_url('admin/order/date'); ?>">By Date Order</a></li>
-          <li><a class="nav-link" href="<?= base_url('admin/order/confirmdate'); ?>">By Date Confirmation</a></li>
-          <li><a class="nav-link" href="<?= base_url('admin/order/status'); ?>">By Status</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">

@@ -15,4 +15,9 @@ class User_model extends CI_Model
         $this->db->where('id_user',$id);
         $this->db->update('tb_user',$data);
     }
+
+    function changePassword($id,$password){
+        $this->db->where('id_user',$id);
+        $this->db->update('tb_user',['password'=>$password]);
+    }
 }
