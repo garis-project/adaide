@@ -88,10 +88,22 @@ class Order_model extends CI_Model
         $this->db->join('tb_detail_event d', 'd.tiket_init=p.tiket_init','left'); 
         $this->db->join('tb_jenis_tiket j', 'j.id_jenis_tiket=p.id_jenis_tiket','left'); 
         $this->db->where('p.id_user',$id);
+        $this->db->order_by('status_pemesanan','ASC');
         return $this->db->get()->result_array();
     }
 
-
+    public function getLimit($id){
+        $this->db->select('id_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,tanggal_konfirmasi,total_harga,status_pemesanan,p.id_event,nama_event,nama_user,p.id_jenis_tiket,jenis_tiket,stok_tiket,status_tiket,jml_beli,harga_tiket');
+        $this->db->from('tb_pemesanan as p');
+        $this->db->join('tb_event e', 'p.id_event=e.id_event','left'); 
+        $this->db->join('tb_user u', 'u.id_user=p.id_user','left'); 
+        $this->db->join('tb_detail_event d', 'd.tiket_init=p.tiket_init','left'); 
+        $this->db->join('tb_jenis_tiket j', 'j.id_jenis_tiket=p.id_jenis_tiket','left'); 
+        $this->db->where('p.id_user',$id);
+        $this->db->limit(4);
+        $this->db->order_by('tanggal_pemesanan','DESC');
+        return $this->db->get()->result_array();
+    }
     public function maxTicketId($id_events){
         $this->db->select('SUBSTRING(id_tiket,12,4) AS id');
         $this->db->like('id_tiket',$id_events,'after');

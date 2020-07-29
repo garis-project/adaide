@@ -1,5 +1,5 @@
 <?php
-class notification{  
+class notif{  
     function send_wa($token,$phone,$msg){
         $token = $token;
         $phone = $phone;

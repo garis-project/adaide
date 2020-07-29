@@ -23,11 +23,13 @@ class Order extends CI_Controller
     $status_order=$this->input->post('status');
     if($status_order=="PENDING"){
       $url="confirm";
+    }elseif($status_order=="AWAITING"){
+      $url="awaiting";
     }elseif($status_order=="SUCCESS"){
       $url="detail";
-    }else{
-      $url="error";
-    }  
+    }elseif($status_order=="FAILED"){
+      $url="failed";
+    }
     echo json_encode($url);
   }
 
