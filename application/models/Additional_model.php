@@ -10,7 +10,7 @@ class Additional_model extends CI_Model
 
     function getPayment(){
         $this->db->select('*');
-        return $this->db->get('tb_payment')->row_array();
+        return $this->db->get('tb_pembayaran')->row_array();
     }
 
     function updateWA($data){
