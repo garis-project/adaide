@@ -11,30 +11,45 @@
     height: auto;
   }
 </style>
-<body class="bg-black">
-  <header>
-    <div class="jumbotron jumbotron-fluid bg-img">
-      <div class="container-xl">
-        <div class="nav navbar">
-          <div class="justify-content-start">
-            <h4 class="h4"></h4>
-          </div>
-          <div class="display-4 d-flex justify-content-end">
-            <img src="<?= base_url('assets/frontend/')?>/img/logo-putih.png" class="logo" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
-          </div>
-        </div>
+<header class="jumbotron jumbotron-fluid bg-img">
+  <div class="container-xl">
+    <nav class="nav navbar">
+      <div class="justify-content-start">
+        <h4 class="h4"></h4>
       </div>
-      <div class="container-xl">
+      <div class="display-4 d-flex justify-content-end">
+        <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="logo position-fixed" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
       </div>
+    </nav>
+  </div>
+  <nav class="navbar navbar-light fixed-bottom mb-3 container-xl">
+    <a class="navbar-brand" id="emblem">ADAIDE<sup class="font-weight-bold">TM</sup></a>
+    <div class="form-inline">
+      <nav class="nav social-menu">
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">Youtube</a>
+        </span>
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">Instagram</a>
+        </span>
+        <span class="position-relative p-1" href="#">
+          <img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="position-absolute sup" id="logo-image">
+          <a class="nav-link" href="">contact</a>
+        </span>
+      </nav>
     </div>
-  </header>
+  </nav>
+</header>
 
 
+<body class="bg-black">
   <div class="container mt-4">
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12">
         <h5 class="font-weight-bold">Profile</h5>
-        <img src="<?=base_url('assets/frontend/img/')?>person.svg" class="img-thumbnail">
+        <img src="<?=base_url('assets/frontend/img/')?>avatar.svg" class="img-fluid">
       </div>
       <div class="col-lg-8 col-md-6 col-sm-12 bg-black rounded px-4 mt-3">
         <div class="d-flex justify-content-between">

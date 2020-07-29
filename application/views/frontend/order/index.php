@@ -26,13 +26,20 @@
       </div>
       <div class="container-xl">
         <h1 class="display-4"><?= $user['nama_user'] ?></h1>
-        <p class="lead">Order History</p>
+        <p class="lead">List ticket you have buys</p>
       </div>
     </div>
   </header>
+
+
   <div class="container mt-3">
     <div class="row">
-    <?php foreach($order as $value){ ?>
+      <div class="col-md-9">
+        <h4>Order List</h4>
+      </div>
+    </div>
+    <div class="row">
+      <?php foreach($order as $value){ ?>
         <div class="col-lg-4 col-md-6 col-sm-12">
         <ul class="list-group mb-3 border border-light rounded">
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
@@ -51,19 +58,19 @@
               
             </div>
                 <?php $id= "'".$value['id_pemesanan']."'";
-                      $status="'".$value['status_pemesanan']."'" ;
+                $status="'".$value['status_pemesanan']."'" ;
                 ?>
 
                 <span class="align-items-center">
-                    <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
+                  <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
                 </span>
-            <!-- </form> -->
-           
-          </li>
-        </ul>
+                <!-- </form> -->
+
+              </li>
+            </ul>
+          </div>
+        <?php }?>
+
       </div>
-    <?php }?>
-      
     </div>
-  </div>
-</body>
+  </body>

@@ -48,7 +48,7 @@ class Home extends CI_Controller {
 		$data['user']=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']])->row_array();
 		$data['order']=$this->order->getLimit($this->session->userdata['id_login']);
 		$data['title'] = "ADAIDE";
-		$this->load->view('frontend/templates/auth_header', $data);
+		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/home/userprofile');
 		$this->load->view('frontend/templates/footer');
 	}

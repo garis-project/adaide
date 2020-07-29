@@ -10,7 +10,7 @@ class Ticket extends CI_Controller
     $this->user=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']]);
     $this->token=$wa['token'];
   }
-  
+
   public function index()
   {
     
@@ -21,7 +21,7 @@ class Ticket extends CI_Controller
       $data['active']=$this->ticket->ticketActive($id_event);
       $data['payment']=$this->add->getPayment();
       $data['title'] = "ADAIDE";
-      $this->load->view('frontend/templates/auth_header',$data);
+      $this->load->view('frontend/templates/header',$data);
       $this->load->view('frontend/event/ticket');
       $this->load->view('frontend/templates/footer');
     }else{
@@ -35,7 +35,7 @@ class Ticket extends CI_Controller
       while ($this->db->get_where('tb_pemesanan',['id_konfirmasi'=>$id_konfirmasi,'status_pemesanan'=>'PENDING'])->num_rows()) {
         $id_konfirmasi= random_string('alnum',5);
       }
-      
+
       $this->db->select('SUBSTRING(id_pemesanan,7,6) AS id');
       $id=$this->db->get('tb_pemesanan')->result_array();
       $max=sprintf("%'.06d",(implode(",",max($id))+1));
@@ -56,6 +56,7 @@ class Ticket extends CI_Controller
         'tanggal_konfirmasi'=>$limit,
         'status_pemesanan'=>'PENDING'
       ];
+
       $this->db->insert('tb_pemesanan',$data);
 
       // if($this->token){
