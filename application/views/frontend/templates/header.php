@@ -6,13 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/png" href="<?= base_url('assets/frontend/') ?>img/logo-putih.png">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="<?= base_url('/assets/frontend/') ?>css/main.css">
+	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/main.css">
 	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/bootstrap.css">
 	<link rel="stylesheet" href="<?= base_url('assets/frontend/') ?>css/grid-gallery.css">
 	<!-- font awesome -->
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>fontawesome/css/all.css">
-	<link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>fontawesome/css/brands.css">
+	<link rel="stylesheet" href="<?=base_url('assets/frontend/')?>fontawesome/css/all.css">
+	<link rel="stylesheet" href="<?=base_url('assets/frontend/')?>fontawesome/css/brands.css">
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
 	<title>Ada Ide</title>
 </head>
 

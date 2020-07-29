@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>/fontawesome/css/all.css">
   <link rel="stylesheet" href="<?=base_url('/assets/frontend/')?>fontawesome/css/brands.css">
   <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  
+  
+  <script src="<?= base_url('assets/backend/'); ?>plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  
   <title>Ada Ide</title>
 </head>
 

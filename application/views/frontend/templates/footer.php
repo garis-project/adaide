@@ -18,6 +18,7 @@
           var qr = document.getElementById("qr");       
 	        qrcode.makeCode(qr.value);
         }
+        $('#modalBayar').modal('hide');
     });
     </script>
     <script>
@@ -79,7 +80,7 @@
           $('#image-check').val(name);
         }
 
-        function cekStatus (id,status) {		
+        function cekStatus(id,status) {		
           $.ajax({
             type: "POST",
             url: "<?= base_url('order/cekStatus'); ?>",
@@ -92,11 +93,52 @@
                 '</form>');
               $('body').append(form);
               form.submit();
-              console.log(url);
             }
           }); 
         }
 
+        function confirmOrder(){
+          
+          let qty=$('#qty').val();
+          if(qty>0){
+            let type=$('#ticket_type').val();
+            let total=$('#total').val();
+            let id_type=$('#id_ticket_type').val();
+            let id_event=$('#id_event').val();
+            Swal.fire({
+              title: 'Are you sure?',
+              html: "Buy "+qty+" "+type+" Ticket <br> Amount :"+formatMoney(total),
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, Buy it!'
+            }).then((result) => {
+              if (result.value) {
+                $.ajax({
+                  type: "POST",
+                  dataType: 'json',
+                  url: "<?= base_url('ticket/createOrder'); ?>",
+                  data: {id_event:id_event,qty:qty,id_type:id_type,total:total},
+                  success: function(data){
+                    $('#payment').text(formatMoney(data['total_harga']));
+                    $('#orderId').text(data['id_pemesanan']);
+                    
+                    $('#confirmDate').text(data['tanggal_konfirmasi']);
+                    $('#confirmId').text(data['id_konfirmasi']);
+                    $('#modalBayar').modal('show');
+                  }
+                });
+              }
+            });
+          }else{
+            Swal.fire({
+              icon: 'warning',
+              title: 'Oops...',
+              text: 'You must enter at least 1 ticket!',
+            })
+          }
+        }
     </script>
 </body>
 </html>

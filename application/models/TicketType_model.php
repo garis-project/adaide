@@ -51,4 +51,12 @@ class TicketType_model extends CI_Model
     function total(){
         return $this->db->count_all('tb_jenis_tiket');
     }
+
+    function ticketActive($id){
+        $this->db->select('*');
+        $this->db->from('tb_detail_event as d');
+        $this->db->join('tb_jenis_tiket j','j.id_jenis_tiket=d.id_jenis_tiket','left');
+        $this->db->where(['d.id_event'=>$id,'d.status_tiket'=>1]);
+        return $this->db->get('tb_detail_event')->row_array();
+    }
 }
