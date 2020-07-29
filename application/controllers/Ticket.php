@@ -6,19 +6,20 @@ class Ticket extends CI_Controller
   {
     parent::__construct();
     check_user();    
-    $wa=$this->add->getWA()->row_array();
+    $wa=$this->add->getWA();
     $this->user=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']]);
-    $this->payment=$this->add->getPayment()->row_array();
     $this->token=$wa['token'];
   }
   
   public function index()
   {
+    
     $id_event=$this->input->post('id_event');
     if($id_event){
       $data['events']=$this->events->getEventDetail($id_event);
       $data['ticket']=$this->ticket->byIdEvent($id_event);
       $data['active']=$this->ticket->ticketActive($id_event);
+      $data['payment']=$this->add->getPayment();
       $data['title'] = "ADAIDE";
       $this->load->view('frontend/templates/auth_header',$data);
       $this->load->view('frontend/event/ticket');
@@ -57,10 +58,10 @@ class Ticket extends CI_Controller
       ];
       $this->db->insert('tb_pemesanan',$data);
 
-      if($this->token){
-        $message="ORDER ID : ".$id_order.". Silahkan lakukan transfer ke rekening : ".$this->payment['no_rek']." a/n "."$this->payment['an']"." Sejumlah Rp. ".number_format($total,0,".",",").",- . Dengan mencatumkan ID Konfirmasi : ".$id_konfirmasi." pada bagian keterangan transfer. Orderan akan otomatis digagalkan apabila stok tiket habis atau waktu pembayaran telah melibihi batas, yakni ".date('d M Y ',strtotime($limit));
-        $this->notif->send_wa($this->user['kontak'],$message);
-      }
+      // if($this->token){
+      //   $message="ORDER ID : ".$id_order.". Silahkan lakukan transfer ke rekening : ".$this->payment['no_rek']." a/n "."$this->payment['an']"." Sejumlah Rp. ".number_format($total,0,".",",").",- . Dengan mencatumkan ID Konfirmasi : ".$id_konfirmasi." pada bagian keterangan transfer. Orderan akan otomatis digagalkan apabila stok tiket habis atau waktu pembayaran telah melibihi batas, yakni ".date('d M Y ',strtotime($limit));
+      //   $this->notif->send_wa($this->token,$this->user['kontak'],$message);
+      // }
       echo json_encode($data);
     }else{
       redirect('event');
