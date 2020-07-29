@@ -1,7 +1,7 @@
 
 <div class="col-md-12">
-	<div class="d-flex justify-content-end">
-		<h1 class="position-fixed w-50 judul text-right display-4 text-uppercase font-weight-bold">PHOTOGRAPHY IS A WAY OF FEELING</h1>
+	<div class="d-flex justify-content-end header-text">
+		<h1 class="judul text-right display-3 text-uppercase font-weight-bold">Photograph is a way of feeling</h1>
 	</div>
 </div>
 

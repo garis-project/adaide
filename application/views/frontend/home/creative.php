@@ -6,7 +6,7 @@
 
 <div class="col-md-12">
 	<div class="d-flex justify-content-end header-text">
-		<h1 class="position-fixed judul text-right display-3 text-uppercase font-weight-bold">Creative takes</h1>
+		<h1 class="position-absolute judul text-right display-3 text-uppercase font-weight-bold">Creative takes</h1>
 	</div>
 </div>
 
@@ -17,14 +17,14 @@
 	<section class="container-xl height-75">
 		<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
 			<div class="slogan">
-				<span class="logo-text text-uppercase">ADA IDE<sup>TM</sup><br>Creative</span>
+				<span class="logo-text text-uppercase font-weight-bold">ADA IDE<sup>TM</sup><br>Creative</span>
 				<span class="line-vertical"> </span>
 				<span class="logo-text">Bring Your</span>
 			</div>
 		</div>
-		<div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 200px;">
-			<div class="mt-auto p-2 bd-highlight">
-				<p class="lead w-75 align-items-end float-right m-0">
+		<div class="d-flex align-items-end flex-column bd-highlight mb-3">
+			<div class="p-2 bd-highlight">
+				<p class="lead w-75 align-items-end float-right mb-4">
 					Creativity doesn't wait for that perfect moment. It fashions its own perfect moments out of ordinary ones.
 				</p>
 			</div>

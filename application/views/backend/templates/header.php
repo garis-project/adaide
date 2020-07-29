@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />
   <!-- include summernote css/js -->
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
- 
+
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/backend'); ?>/css/style.css">
   <link rel="stylesheet" href="<?= base_url('assets/backend'); ?>/css/components.css">
