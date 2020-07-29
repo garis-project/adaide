@@ -30,40 +30,43 @@
       </div>
     </div>
   </header>
-  <div class="container mt-5">
+  <div class="container mt-4">
+    <h4>Order Confirmation</h4>
+    <hr class="border-light">
     <div class="row">
-      <div class="col-lg-8 col-md-6 col-sm-12">
-        <ul class="list-group mb-3 border border-light rounded">
-          <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
-            <div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h5 class="my-0">Order ID : <?= $order['id_pemesanan'] ?></h5>
-                    </div>
-                    <div class="col-lg-6 text-right">
-                        <h5>Confirmation ID : <?= $order['id_konfirmasi'] ?></h5>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body bg-black">
-                        <h5 class="text-light"><?= "Amount Payment : Rp.".number_format($order['total_harga'],0,",",".").",- (".$order['jml_beli']." Ticket @Rp.".number_format($order['harga_tiket'],0,",",".").",-)" ?></h5>
-                        <p class="text-light"><?= "Events Name : ".$order['nama_event'] ?></p>
-                        <p>Order Date : <?= date('D, d M Y',strtotime($order['tanggal_pemesanan'])) ?></p>
-                        <p>Limit Date : <?= date('D, d M Y',strtotime($order['tanggal_konfirmasi']))."*" ?></p>
-                        <p class="text-danger">*Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
-                        <p class="text-danger">**Upload a Proof of Payment by confirming the confirmation_id in the payment statement</p>
-                    </div>
-                </div>
-            </div>
-          </li>
-        </ul>
+      <div class="col-lg-8 col-md-6 col-sm-12 bg-black rounded px-4">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="font-weight-bold">Order ID</h5>
+            <p><?= $order['id_pemesanan'] ?></p>
+          </div>
+          <div class="text-left">
+            <h5 class="font-weight-bold">Confirmation ID</h5>
+            <p><?= $order['id_konfirmasi'] ?></p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="text-light font-weight-bold">Amount Payment</h5>
+            <p><?="Rp".number_format($order['total_harga'],0,",",".").",- (".$order['jml_beli']." Ticket @Rp.".number_format($order['harga_tiket'],0,",",".").",-)" ?></p>
+            <h5 class="font-weight-bold">Details</h5>
+            <p class="text-light"><?= "Events Name : ".$order['nama_event'] ?></p>
+            <h5 class="font-weight-bold">Order Date :</h5><p> <?= date('D, d M Y',strtotime($order['tanggal_pemesanan'])) ?></p>
+            <h5 class="font-weight-bold">Limit Date :</h5><p> <?= date('D, d M Y',strtotime($order['tanggal_konfirmasi']))."*" ?></p>
+          </div>
+        </div>
+        <hr class="border-light">
+        <h5 class="font-weight-bold">*Note</h5>
+        <p class="text-danger">*Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
+        <p class="text-danger">**Upload a Proof of Payment by confirming the confirmation_id in the payment statement</p>
+
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
+        <h5 class="font-weight-bold">Upload Poofer Payment**</h5>
         <ul class="list-group mb-3 border border-light rounded">
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
             <form action="<?= base_url('order/process')?>" method="POST" enctype="multipart/form-data">
-              <label>Upload Poofer Payment**</label>
-              <img src="<?=base_url('assets/backend/img/order/default.png')?>" class="img-fluid mb-3" id="proofPayment" width="100%">
+              <img src="<?=base_url('assets/frontend/img/upload.svg')?>" class="img-fluid mb-3 p-4" id="proofPayment" width="100%">
               <div class="input-group mb-3">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="image-input" name="image-input"/>
@@ -71,7 +74,7 @@
                   <input type="hidden" id="image-check" name="image-check"/>
                   <input type="hidden" name="image-default" value="default.png" />
                 </div>
-                </div>
+              </div>
               <div class="input-group-append">
                 <input type="hidden" name="id_order" value="<?= $order['id_pemesanan'] ?>">
                 <button class="btn btn-danger col-sm-12 col-lg-4" id="submit">Submit</button>

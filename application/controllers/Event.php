@@ -49,4 +49,14 @@ class Event extends CI_Controller
     $this->load->view('frontend/event/ticket');
     $this->load->view('frontend/templates/footer');
   }
+
+  public function eventdetail()
+  {
+    $data['events']=$this->events->viewActive();
+
+    $data['title'] = "ADAIDE";
+    $this->load->view('frontend/templates/auth_header',$data);
+    $this->load->view('frontend/event/eventdetail');
+    $this->load->view('frontend/templates/footer');
+  }
 }

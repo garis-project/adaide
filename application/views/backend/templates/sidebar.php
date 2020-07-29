@@ -1,4 +1,4 @@
-<div class="main-sidebar">
+<div class="main-sidebar bg-dark">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand mt-3">
       <a href="<?= base_url('admin'); ?>">
@@ -38,7 +38,7 @@
           <li><a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="exhange" && $this->uri->segment(3)=="ticket"){echo "active";}?>" href="<?= base_url('admin/exchange/ticket'); ?>">Ticket</a></li>
         </ul>
       </li>
-    
+
     </ul>
   </aside>
 </div>

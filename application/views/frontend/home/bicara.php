@@ -8,7 +8,6 @@
 		url("<?= base_url('assets/frontend/')?>/img/bicara-x.jpg");
 		background-size: cover;
 		background-position: top;
-		min-height: 820px;
 		height: 100vh;
 	}
 </style>
