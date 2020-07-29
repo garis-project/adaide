@@ -9,7 +9,6 @@
 					<img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="logo" id="logo-image" role="dialog" data-toggle="modal" data-target="#modalMenu">
 				</div>
 			</div>	
-			
 				<header class="text-left">
 				<?php
 					foreach($events as $value){
@@ -59,7 +58,6 @@
 							<?php } ?>
 						</div>
 					</div>
-					<!-- form pengisian data diri -->
 				</div>
 						
 			<?php }?>
