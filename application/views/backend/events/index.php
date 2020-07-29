@@ -45,13 +45,17 @@
                             <td><?= date("d/m/Y",strtotime($value['tanggal_selesai'])); ?> </td>
                             <td><?= $value['nama_stage']; ?> </td>
                             <td>
-                              <div class="badge <?php if($value['status_event']=='Completed'){
+                            <?php 
+                              $id_event= "'".$value['id_event']."'"; 
+                              $status_event= "'".$value['status_event']."'"; 
+                            ?>
+                              <div class="btn badge <?php if($value['status_event']=='Completed'){
                                   echo 'badge-success';
                                   }elseif($value['status_event']=='Onprogress'){
                                     echo 'badge-info';
                                   }elseif($value['status_event']=='Processed'){
                                     echo 'badge-warning';
-                                }?>">
+                                }?>" onclick="changeStatusEvents(<?= $id_event.','.$status_event ?>)">
                                 <?= $value['status_event']; ?> 
                               </div>
                             </td>
@@ -63,7 +67,7 @@
                                     <i class="nav-icon fas fa-eye fa-xs"></i>
                                   </button>
                                 </form>
-                                  <?php $id_event= "'".$value['id_event']."'"; ?>
+                                 
                                   <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#ticketModal" onclick="loadDetailEvents(<?= $id_event ?>)">
                                     <i class="nav-icon fas fa-ticket-alt fa-xs"></i>
                                   </button>

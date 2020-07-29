@@ -18,21 +18,20 @@
                         <h4>Advertise</h4>
                       </div>
                       <div class="card-body">
-                          <div class="mx-auto">
-                              <img src="<?= base_url('assets/backend/img/events/').$event['banner']; ?> " id="banner-img" width="40%" height="50%">
+                        <div class="text-center">
+                            <img src="<?= base_url('assets/backend/img/events/').$event['banner']; ?> " id="banner-img" width="40%" height="50%">
+                        </div>
+                        <div class="form-group">
+                          <label>Banner</label>
+                          <div class="input-group">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="banner-input" name="banner-input">
+                                <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name" onchange="checkImg()"></label>
+                                <input type="hidden" id="image-check" name="image-check"/>
+                                <input type="hidden" name="image-default" value="<?= $event['banner'] ?>" />
+                              </div>
                           </div>
-                          <div class="form-group">
-                            <label>Banner</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="banner-input" name="banner-input">
-                                  <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name" onchange="checkImg()"></label>
-                                  <input type="hidden" id="image-check" name="image-check"/>
-                                  <input type="hidden" name="image-default" value="<?= $event['banner'] ?>" />
-
-                                </div>
-                            </div>
-                          </div>
+                        </div>
                       </div>
                     </div>
                 </div>
@@ -71,7 +70,7 @@
                         <label>Status</label>
                         <select class="form-control" id="events_status" name="events_status">
                           <option <?php if($event['status_event']=="Onprogress"){echo "selected";} ?> value="Onprogress">On Progress</option>
-                          <option <?php if($event['status_event']=="Processed"){echo "selected";} ?>value="Processed">Processed</option>
+                          <option <?php if($event['status_event']=="Processed"){echo "selected";} ?> value="Processed">Processed</option>
                           <option <?php if($event['status_event']=="Completed"){echo "selected";} ?> value="Completed">Completed</option>
                         </select>
                         <?= form_error('events_status','<small class="text-danger pl-3">', '</small>'); ?>

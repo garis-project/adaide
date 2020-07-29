@@ -51,8 +51,6 @@
 			</div>
 
 
-			<!-- menu menu menu menu -->
-
 			<div class="modal swing-in-top-bck" id="modalMenu" tabindex="-1" role="dialog" aria-labelledby="modalMenu" aria-hidden="true">
 				<div class="modal-dialog costum-modal">
 					<div class="modal-content bg-black">

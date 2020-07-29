@@ -18,20 +18,20 @@
                         <h4>Advertise</h4>
                       </div>
                       <div class="card-body">
-                          <div class="mx-auto">
+                        <div class="text-center">
                               <img src="<?= base_url('assets/backend/img/events/')."default.png"; ?> "id="banner-img" width="40%" height="50%">
+                        </div>
+                        <div class="form-group">
+                          <label>Banner</label>
+                          <div class="input-group">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="banner-input" name="banner-input">
+                                <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name" onchange="checkImg()"></label>
+                                <input type="hidden" id="image-check" name="image-check"/>
+                                <input type="hidden" name="image-default" value="default.png" />
+                              </div>
                           </div>
-                          <div class="form-group">
-                            <label>Banner</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="banner-input" name="banner-input">
-                                  <label class="custom-file-label" for="banner-name" id="banner-name" name="banner-name" onchange="checkImg()"></label>
-                                  <input type="hidden" id="image-check" name="image-check"/>
-                                  <input type="hidden" name="image-default" value="default.png" />
-                                </div>
-                            </div>
-                          </div>
+                        </div>
                       </div>
                     </div>
                 </div>

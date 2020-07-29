@@ -34,6 +34,12 @@
   
   <script>
     $(document).ready(function(){
+      let origin=window.location.href;
+      let base = "<?= base_url() ?>"
+      let current_url=origin.replace(base+"admin/",'');
+      let uri=current_url.split('/');
+     
+
       ticketTable=$('#ticketTable').DataTable({ 
         "processing": true, 
         "serverSide": true, 
@@ -79,8 +85,64 @@
         "searching": false
       });
       //Event Js
-      loadTmpEvents();
-      loadOrder();
+      if (document.URL=="<?= base_url('admin/events/add') ?>"){
+        loadTmpEvents();
+      }
+      if (document.URL=="<?= base_url('admin/order') ?>"){
+        loadOrder();
+      }
+    
+      if (uri[0]=="stage" && (uri[1]=="add"||uri[1]=="update")){
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhaWRlIiwiYSI6ImNrZDE5aHNrcDExZnkycnFyOGZnY282ZXcifQ.uBbquafl-3hyE0TlddYsQg';
+        let geo;
+        if(uri[1]=="add"){
+          geo=[108.2236116,-7.3488505];
+        }else if(uri[1]=="update"){
+          let geoVal=$('#geocode').val();
+          geo=geoVal.split(",");
+          geo[0]=parseFloat(geo[0]);
+          geo[1]=parseFloat(geo[1]);
+        } 
+      // 
+        // console.log(geo);
+        let map=$('#mapSearch');
+        let mapSearch = new mapboxgl.Map({
+          container: 'mapSearch',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center:geo,
+          zoom: 14
+        });
+
+        let geocoder = new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          marker:{
+            color:'transparent'
+          },
+          mapboxgl: mapboxgl
+        });
+      
+        let markerPick = new mapboxgl.Marker({
+            draggable: true,
+        })
+        .setLngLat(geo)
+        .addTo(mapSearch);
+
+        mapSearch.addControl(geocoder);
+
+        geocoder.on('result', function(e) {
+          let lat=e.result.center[1];
+          let lng=e.result.center[0];
+          markerPick.setLngLat([lng,lat]);
+          markerPick.addTo(mapSearch);
+          $('#geocode').val(lng+","+lat);
+        })
+
+        function onDragEnd() {
+          let lngLat = markerPick.getLngLat();
+          $('#geocode').val(lngLat.lng+","+lngLat.lat);
+        }
+        markerPick.on('dragend', onDragEnd);
+      }
       $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
       });
@@ -91,7 +153,6 @@
         $('#image-check').val(this.files[0].name);
         readURL(this);
       });
-      
 
     // Map View JS
       if (document.URL=="<?= base_url('admin/stage/view') ?>"){
@@ -115,7 +176,61 @@
   </script>
   
   <script>
-
+   //profile
+   function changePassword(){
+    Swal.fire({
+      title: 'Change Password',
+      html:
+        '<label>New Password</label>'+
+        '<input id="password1" type="password" class="swal2-input">' +
+        '<label>Confirm Password</label>'+
+        '<input id="password2" type="password"  class="swal2-input">',
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Change',
+      cancelButtonText: 'Cancel',
+      cancelButtonColor: '#d33',
+    }).then(function () {
+      let pass= $('#password1').val();
+      let conf=$('#password2').val();
+      if(pass){
+        if (pass==conf) {
+        $.ajax({
+          type: "POST",
+          url: "<?= base_url('admin/dashboard/changePassword'); ?>",
+          data: {password:pass},
+          success: function(data){
+            Swal.fire(
+            'Updated',
+            'Your Password Has Been Updated',
+            'success'
+            );
+          }
+         }); 
+        }else if(pass!=conf){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Password didn't match!",
+          });
+        }else{
+          Swal.fire(
+            'Hmmm?',
+            'Something false?',
+            'question'
+          )
+        }
+      }
+    })    
+    //   preConfirm: () => {
+    //     return [
+    //       document.getElementById('password1').value,
+    //       document.getElementById('password2').value
+    //     ]
+    //   }
+    // })
+   }
     //event
     function readURL(input) {
       if (input.files && input.files[0]) {
@@ -180,6 +295,42 @@
       ticketTable.ajax.reload();
     }
 
+    function changeStatusEvents(id,status){
+      Swal.fire({
+        title: 'Select Events Status',
+        input: 'select',
+        customClass: {
+          input: 'col-4 select2'
+        },
+        inputOptions: {
+            Onprogress: 'On Progress',
+            Processed: 'Processed',
+            Completed: 'Completed',
+        },
+        inputValue:status,
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.value) {
+          let newStatus = JSON.stringify(result.value);
+          newStatus = newStatus.replace(/\"/g, "");
+          $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/events/changeStatus'); ?>",
+            data: {id:id,status:newStatus},
+            success: function(){
+              Swal.fire(
+              'Updated',
+              'Events Status Has Been Updated',
+              'success'
+              ).then(function(){
+                window.location="<?= base_url('admin/events') ?>";
+              })
+            }
+          });
+        }
+      })
+    }
+
     function ticketStatus(id,status){
       let id_event=$('#hiddenId').val();
       $.ajax({
@@ -189,7 +340,6 @@
         data:{
           id_event:id_event,id:id,status:status
         }, success : function(data){
-          console.log(data);
           ticketTable.ajax.reload();
         }
       });
@@ -315,7 +465,7 @@
           }); 
         }
       }) 
-    }
+    }    
 
     //ticket type
 

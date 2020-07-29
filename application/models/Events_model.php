@@ -53,4 +53,9 @@ class Events_model extends CI_Model
         $this->db->set(['stok_tiket'=>$update]);
         $this->db->update('tb_detail_event');
     }
+
+    public function changeStatus($id,$status){
+        $this->db->where('id_event',$id);
+        $this->db->update('tb_event',['status_event'=>$status]);
+    }
 }
