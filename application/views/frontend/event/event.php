@@ -65,7 +65,7 @@
 				<?php }?>
 			</header>
 
-
+			<!-- // nu baru -->
 			<body class="bg-black">
 				<div class="container-xl py-5">
 					<div class="nav navbar">
@@ -96,10 +96,22 @@
 				<div class="container-xl">
 					<hr class="border-light">
 					<div class="row mt-5 h-100" id="ticket">
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<h3>Popular Event</h3>
 							<div class="row">
-								<div class="col-lg-6 mb-2">
+								<div class="col-lg-6 col-md-6 mb-2">
+									<div class="item-tiket">
+										<div class="item-tiket_button">
+											<span class="text-center"><a href="/ticket">Get Ticket</a></span>
+										</div>
+										<div class="item-tiket_event">
+											<span class="font-weight-bold">HUT tasikmalaya 2020</span><br>
+											<p class="text-danger">Venue : Rock Am RING</p>
+											<small>Tanggal : 28 July 2020</small>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 mb-2">
 									<div class="item-tiket">
 										<div class="item-tiket_button">
 											<span class="text-center"><a href="/ticket">Get Ticket</a></span>
@@ -111,19 +123,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-6 mb-2">
-									<div class="item-tiket">
-										<div class="item-tiket_button">
-											<span class="text-center"><a href="/ticket">Get Ticket</a></span>
-										</div>
-										<div class="item-tiket_event">
-											<span class="font-weight-bold">Avenged Seven Fold</span><br>
-											<p class="text-danger">Rock Am RING</p>
-											<small>28 July 2020</small>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6 mb-2">
+								<div class="col-lg-6 col-md-6 mb-2">
 									<div class="item-tiket">
 										<div class="item-tiket_button">
 											<span class="text-center"><a href="/ticket">Get Ticket</a></span>
@@ -137,22 +137,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<p>You only buy 2 ticket?</p>
-							<div class="card bg-black border-light">
-								<div class="card-body">
-									<div>
-										<h5 class="card-title">Ticket</h5>
-										<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light">Rp84000,-</span></p>
-										<p class="card-subtitle mb-2 text-muted">Fee<span class="float-right text-light">Rp2000,-</span></p>
-										<hr class="bg-light">
-										<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light">Rp86000,-</span></p>
-									</div>
-									<div class=""></div>
-								</div>
-							</div>
-							<button class="btn btn-danger px-3 py-2 mt-3 w-100">Confirmation</button>
-						</div>
+
 					</div>
 				</div>
 				<!-- Footer -->
