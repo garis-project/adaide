@@ -13,6 +13,8 @@ class Ticket extends CI_Controller
     $id_event=$this->input->post('id_event');
     if($id_event){
       $data['events']=$this->events->getEventDetail($id_event);
+      $data['ticket']=$this->ticket->byIdEvent($id_event);
+      $data['active']=$this->ticket->ticketActive($id_event);
       $data['title'] = "ADAIDE";
       $this->load->view('frontend/templates/auth_header',$data);
       $this->load->view('frontend/event/ticket');
@@ -20,7 +22,6 @@ class Ticket extends CI_Controller
     }else{
       redirect('event');
     }
-    
   }
 
   public function createOrder(){
@@ -35,22 +36,23 @@ class Ticket extends CI_Controller
       $max=sprintf("%'.06d",(implode(",",max($id))+1));
 
       $now=date('Y-m-d');
-      $limit=date ('Y-m-d', strtotime ("$now + 1 days"));
+      $limit=date ('Y-m-d', strtotime ("$now + 2 days"));
       $data=[
         'id_pemesanan'=>'AI-ORD'.$max,
-        'tiket_init'=>$this->input->post('id_event').$this->input->post('ticket_type'),
+        'tiket_init'=>$this->input->post('id_event').$this->input->post('id_type'),
         'id_event'=>$this->input->post('id_event'),
         'id_user'=>$this->session->userdata('id_login'),
         'total_harga'=>$this->input->post('total'),
         'jml_beli'=>$this->input->post('qty'),
-        'id_jenis_tiket'=>$this->input->post('ticket_type'),
+        'id_jenis_tiket'=>$this->input->post('id_type'),
         'id_konfirmasi'=>$id_konfirmasi,
         'tanggal_pemesanan'=>$now,
         'tanggal_konfirmasi'=>$limit,
         'status_pemesanan'=>'PENDING'
       ];
+   
       $this->db->insert('tb_pemesanan',$data);
-      redirect('order');
+      echo json_encode($data);
     }else{
       redirect('event');
     }
