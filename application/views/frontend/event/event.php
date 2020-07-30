@@ -36,19 +36,24 @@
 						<div class="col-lg-6 col-md-6 mb-2">
 							<div class="item-tiket">
 								<div class="item-tiket_button align-items-center">
+									<?php if($value['status_event']=='Processed'){ ?>
 									<form action="<?= base_url('ticket') ?>" method="post">
 										<input type="hidden" name="id_event" value="<?= $value['id_event'] ?>" />
 										<button class="text-uppercase font-weight-bold" type="submit">
 											<span class="text-center">Get <br>Ticket</a></span>
 										</button>
 									</form>
-
+									<?php }else{ ?>
+										<button class="text-uppercase font-weight-bold">
+											<span class="text-center">Completed</span>
+										</button>
+									<?php } ?>
 								</div>
 								<div class="item-tiket_event">
 									<span class="font-weight-bold"><?= $value['nama_event'] ?></span><br>
 									<span class="text-danger"><?= $value['nama_stage'] ?></span>
 									<p><?= date("D,d F Y | h:i A",strtotime($value['tanggal_mulai'])); ?></p>
-									<span class="badge badge-<?php if($value['status_event']=='Onprogress'){ echo 'warning';}elseif($value['status_event']=='Processed'){ echo 'danger';} ?>"><?= $value['status_event'] ?></span><br>
+									<span class="badge badge-<?php if($value['status_event']=='Completed'){ echo 'info';}elseif($value['status_event']=='Processed'){ echo 'danger';} ?>"><?= $value['status_event'] ?></span><br>
 								</div>
 							</div>
 						</div>

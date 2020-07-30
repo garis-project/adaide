@@ -22,7 +22,7 @@ class Events_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_event e');
         $this->db->join('tb_stage s','s.id_stage=e.id_stage','left');
-        $this->db->where('status_event !=',"Ongoing");
+        $this->db->where('status_event !=',"Onprogress");
         $this->db->order_by('status_event','DESC');
         return $this->db->get()->result_array();
     }
