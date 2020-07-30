@@ -6,6 +6,8 @@ class Order extends CI_Controller {
     {
         parent::__construct();
         check_login();
+        $this->payment=$this->add->getPayment();
+        $this->wa=$this->add->getWA();  
     }
 
     public function index(){
@@ -91,8 +93,12 @@ class Order extends CI_Controller {
                 ];
                 $this->order->insertTicket($dataTicket);
             }
+                $message="Selamat Pesanan ".$id." Anda telah berhasil kami validasi.";        
+        }else{
+            $message="Pesanan ".$id." Anda telah dibatalkan. Karena melebihi batas waktu pembayaran atau stok tiket habis";
         }
-      
+        $user=$this->order->getData($id);
+       
         $data_order=[
             'status_pemesanan'=>$status
         ];
@@ -102,5 +108,8 @@ class Order extends CI_Controller {
         ];
         $this->order->updateOrder($id,$data_order);
         $this->events->updateStok($data_ticket,$qty);
+        if($this->wa['token']){
+            $this->notif->send_wa($this->wa['token'],$user['kontak'],$message);
+        }
     }
 }
