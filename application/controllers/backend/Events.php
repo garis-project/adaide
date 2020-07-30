@@ -123,7 +123,7 @@ class Events extends CI_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $value->jenis_tiket;
-            $row[] = "Rp.";
+            $row[] = "Rp";
             $row[] = number_format($value->harga_tiket,0,",",".");
             $row[] = $value->stok_tiket;
             $row[] = "
@@ -155,7 +155,7 @@ class Events extends CI_Controller {
             $row = array();
             $row[] = $no;
             $row[] = $value->jenis_tiket;
-            $row[] = "Rp.";
+            $row[] = "Rp";
             $row[] = number_format($value->harga_tiket,0,",",".");
             $row[] = number_format($value->stok_tiket,0,",",".");
             if($value->status_tiket==1){

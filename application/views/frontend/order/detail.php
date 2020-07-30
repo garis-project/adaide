@@ -47,7 +47,7 @@
             <input type="hidden" id="qr" value="<?= $qr ?>" />
             <h2 class="text-light"><?= $order['nama_event'] ?></h2>
             <h3 class="text-light"><?= $order['jml_beli']." Ticket ".$order['jenis_tiket'] ?></h3>
-            <h3 class="text-light"><?= "Total Rp.".number_format($order['total_harga'],0,",",".").",-" ?></h3>
+            <h3 class="text-light"><?= "Total Rp".number_format($order['total_harga'],0,",",".").",-" ?></h3>
             <p>Order Date : <?= date('D, d M Y',strtotime($order['tanggal_pemesanan'])) ?></p>
             <p>Limit Date : <?= date('D, d M Y',strtotime($order['tanggal_konfirmasi'])) ?></p>
             </div>
