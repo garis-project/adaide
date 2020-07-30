@@ -29,7 +29,7 @@ class Order extends CI_Controller {
             $row[] = Date('d/m/Y',strtotime($value->tanggal_konfirmasi));
             
             $row[] = $value->nama_event;
-            $row[] ="Rp.".number_format($value->total_harga,0,",",".").",-";
+            $row[] ="Rp".number_format($value->total_harga,0,",",".").",-";
             if($value->status_pemesanan=="SUCCESS"){ 
                 $badge="<div class='badge badge-success'>".$value->status_pemesanan."</div>";
                 $action="<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#detailOrderModal' onclick='confirmOrder("."\"".$value->id_pemesanan."\")'>

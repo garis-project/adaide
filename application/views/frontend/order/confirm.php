@@ -48,7 +48,7 @@
         <div class="d-flex justify-content-between">
           <div>
             <h5 class="text-light font-weight-bold">Amount Payment</h5>
-            <p><?="Rp".number_format($order['total_harga'],0,",",".").",- (".$order['jml_beli']." Ticket @Rp.".number_format($order['harga_tiket'],0,",",".").",-)" ?></p>
+            <p><?="Rp".number_format($order['total_harga'],0,",",".").",- (".$order['jml_beli']." Ticket @Rp".number_format($order['harga_tiket'],0,",",".").",-)" ?></p>
             <h5 class="font-weight-bold">Details</h5>
             <p class="text-light"><?= "Events Name : ".$order['nama_event'] ?></p>
             <h5 class="font-weight-bold">Order Date :</h5><p> <?= date('D, d M Y',strtotime($order['tanggal_pemesanan'])) ?></p>

@@ -51,9 +51,15 @@
 							<div class="item-tiket justify-content-between">
 								<div class="item-tiket_event">
 									<span class="font-weight-bold"><?= $value['jenis_tiket'] ?></span><br>
-									<p class="text-danger"><?= "Rp.".number_format($value['harga_tiket'],0,".",",").",-"; ?></p>
+									<p class="text-danger"><?= "Rp".number_format($value['harga_tiket'],0,".",",").",-"; ?></p>
 									<small class="font-weight-bold">Stock</small>
-									<p><?= $value['stok_tiket'] ?></p>
+									<?php if($value['status_tiket']==1){ ?>
+										<p><?= number_format($value['stok_tiket'],0,",",".")." Ticket Remainning" ?></p>
+									<?php }elseif($value['status_tiket']==0){?>
+										<p>Not Available</p>
+									<?php }elseif($value['status_tiket']==2){?>
+										<p>Stay Tuned</p>
+									<?php } ?>
 								</div>
 								<div class="d-flex align-items-center" >
 									<div id="buttonQty">
@@ -88,13 +94,13 @@
           </div>
         </div>
         <input type="hidden" id="stock_ticket" value="<?= $active['stok_tiket'] ?>" />
-					<input type="hidden" id="harga_ticket" value="<?= $active['harga_tiket'] ?>" />
-          <input type="hidden" id="id_event" value="<?= $events['id_event'] ?>" />
-					<input type="hidden" id="id_ticket_type"  value="<?= $active['id_jenis_tiket'] ?>" />
-					<input type="hidden" id="ticket_type"  value="<?= $active['jenis_tiket'] ?>" />
-					<input type="hidden" id="total" id="total" />
-					<input type="hidden" id="qty"  id="qty" />
-					<button class="btn btn-danger px-3 py-2 mt-3 w-100" onclick="confirmOrder()">Confirmation</button>
+		<input type="hidden" id="harga_ticket" value="<?= $active['harga_tiket'] ?>" />
+        <input type="hidden" id="id_event" value="<?= $events['id_event'] ?>" />
+		<input type="hidden" id="id_ticket_type"  value="<?= $active['id_jenis_tiket'] ?>" />
+		<input type="hidden" id="ticket_type"  value="<?= $active['jenis_tiket'] ?>" />
+		<input type="hidden" id="total" id="total" />
+		<input type="hidden" id="qty"  id="qty" />
+		<button class="btn btn-danger px-3 py-2 mt-3 w-100" onclick="confirmOrder()">Confirmation</button>
       </div>
     </div>
 
@@ -124,8 +130,8 @@
 				<img src="<?=base_url('assets/frontend/img/')?>money.svg" class="card-img" style="height: 100px; margin-bottom: 1rem;">
 				<p class="lead">Amount Payment</p>
 				<h4 id="payment"></h4>
-        <hr class="bg-light">
-        <div class="mt-3">
+        		<hr class="bg-light">
+        		<div class="mt-3">
 					<p>ORDER ID : <label id="orderId"></label><br>CONFIRMATION ID : <label id="confirmId"></p>
 				</div>
 				<p>Please transfer to the account below by confirming the confirmation id in the transfer information section</p>
@@ -134,32 +140,11 @@
 					<?= $payment['bank'] ?> a/n <?= $payment['an'] ?>
 				</h5>
 				<h6>Before</h6>
-        <h6 id="confirmDate"></h6>
-        <p class="text-danger">Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
+        		<h6 id="confirmDate"></h6>
+        		<p class="text-danger">Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
 			</div>
-			<div class="col-md-4">
-				<h4>Your Order</h4>
-				<div class="card bg-black border-light">
-					<div class="card-body">
-						<div>
-							<h5 class="card-title">Ticket</h5>
-							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp".number_format($active['harga_tiket'],0,",",".").",-"; ?></span></p>
-							<p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light " id="qty1"></span></p>
-							<hr class="bg-light">
-							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light" id="totalTmp"></span></p>
-						</div>
-						<div class=""></div>
-					</div>
-				</div>
-				<input type="hidden" id="stock_ticket" value="<?= $active['stok_tiket'] ?>" />
-				<input type="hidden" id="harga_ticket" value="<?= $active['harga_tiket'] ?>" />
-				<input type="hidden" id="id_event" value="<?= $events['id_event'] ?>" />
-				<input type="hidden" id="id_ticket_type"  value="<?= $active['id_jenis_tiket'] ?>" />
-				<input type="hidden" id="ticket_type"  value="<?= $active['jenis_tiket'] ?>" />
-				<input type="hidden" id="total" id="total" />
-				<input type="hidden" id="qty"  id="qty" />
-				<button class="btn btn-danger px-3 py-2 mt-3 w-100" onclick="confirmOrder()">Confirmation</button>
+			<div class="modal-footer text-right">
+				<button type="button" class="btn btn-danger" onclick="window.location='<?= base_url('order') ?>'">OK</button>
 			</div>
 		</div>
-
 	</div>
