@@ -30,7 +30,10 @@
 			</div>
 		</nav>
 		<div class="d-flex justify-content-center header-text">
-			<h1 class="judul text-center display-3 font-blom rotate">We do <br>What You Want</h1>
+			<h1 class="judul text-center mt-n4 display-3 font-blom rotate">We do <br>What You Want</h1>
+		</div>
+		<div class="d-flex justify-content-center mt-5">
+			<button class="btn btn-light">GET TICKET</button>
 		</div>
 	</div>
 	<nav class="navbar navbar-light fixed-bottom mb-3 container-xl">
