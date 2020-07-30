@@ -6,9 +6,9 @@ class Ticket extends CI_Controller
   {
     parent::__construct();
     check_user();    
-    $wa=$this->add->getWA();
-    $this->user=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']]);
-    $this->token=$wa['token'];
+    $this->payment=$this->add->getPayment();
+    $this->wa=$this->add->getWA();
+    $this->user=$this->db->get_where('tb_user',['id_user'=>$this->session->userdata['id_login']])->row_array();
   }
 
   public function index()
@@ -57,12 +57,23 @@ class Ticket extends CI_Controller
         'status_pemesanan'=>'PENDING'
       ];
 
+       //     message in code, will be take effect on position WA. Don't give tab etc
+      if($this->wa['token']){
+        $message="*Order Id : ".$id_order."*
+Total Pembayaran : Rp".number_format($total,0,",",".").",-
+Batas Pembayaran : ".date('D, d M Y ',strtotime($limit))."
+Silahkan bpk/ibu ".$this->user['nama_user']." lakukan transfer ke rekening : ".$this->payment['no_rek']." a/n ".$this->payment['an']." (".$this->payment['bank'].") Sejumlah Rp ".number_format($total,0,".",",").",- .
+Dengan mencatumkan
+*ID Konfirmasi : ".$id_konfirmasi."* 
+pada bagian keterangan transfer.
+Jika sudah melakukan pembayaran, silahkan untuk konfirmasi (upload bukti pembayaran) pada menu order.
+
+_Orderan akan otomatis digagalkan apabila anda tidak melakukan pembayaran sebelum batas waktu habis atau stok tiket habis_";
+        $this->notif->send_wa($this->wa['token'],$this->user['kontak'],$message);
+      }
       $this->db->insert('tb_pemesanan',$data);
 
-      // if($this->token){
-      //   $message="ORDER ID : ".$id_order.". Silahkan lakukan transfer ke rekening : ".$this->payment['no_rek']." a/n "."$this->payment['an']"." Sejumlah Rp. ".number_format($total,0,".",",").",- . Dengan mencatumkan ID Konfirmasi : ".$id_konfirmasi." pada bagian keterangan transfer. Orderan akan otomatis digagalkan apabila stok tiket habis atau waktu pembayaran telah melibihi batas, yakni ".date('d M Y ',strtotime($limit));
-      //   $this->notif->send_wa($this->token,$this->user['kontak'],$message);
-      // }
+
       echo json_encode($data);
     }else{
       redirect('event');

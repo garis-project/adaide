@@ -71,7 +71,8 @@ class Order_model extends CI_Model
     }
 
     public function getData($id){
-        $this->db->select('id_pemesanan,tanggal_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,tanggal_konfirmasi,total_harga,status_pemesanan,p.id_event,nama_event,nama_user,p.id_jenis_tiket,jenis_tiket,stok_tiket,status_tiket,jml_beli,harga_tiket');
+        // $this->db->select('id_pemesanan,tanggal_pemesanan,p.id_user,p.id_event,bukti_pembayaran,id_konfirmasi,tanggal_konfirmasi,total_harga,status_pemesanan,p.id_event,nama_event,nama_user,kontak,p.id_jenis_tiket,jenis_tiket,stok_tiket,status_tiket,jml_beli,harga_tiket');
+        $this->db->select('*');
         $this->db->from('tb_pemesanan as p');
         $this->db->join('tb_event e', 'p.id_event=e.id_event','left'); 
         $this->db->join('tb_user u', 'u.id_user=p.id_user','left'); 

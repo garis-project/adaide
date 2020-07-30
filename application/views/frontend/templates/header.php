@@ -31,7 +31,7 @@
 							<?php }else{ ?>
 								<a class="nav-link text-uppercase font-weight-bold" href="<?= base_url('auth/logout') ?>">Logout</a>
 								<a class="nav-link text-uppercase font-weight-bold" href="<?= base_url('order') ?>">Order</a>
-								<a class="nav-link text-uppercase font-weight-bold" href="<?= base_url('home/userprofile') ?>">Profile</a>
+								<a class="nav-link text-uppercase font-weight-bold" href="<?= base_url('home/user') ?>">Profile</a>
 							<?php } ?>
 						</nav>
 					</div>

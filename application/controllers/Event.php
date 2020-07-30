@@ -5,7 +5,6 @@ class Event extends CI_Controller
   var $token;
   function __construct(){
     parent::__construct();
-    $this->token='x';
   }
 
   public function index()

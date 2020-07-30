@@ -45,8 +45,8 @@
           <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
             <div>
               <h6 class="my-0">Order ID : <?= $value['id_pemesanan'] ?></h6>
-              <h5 class="text-light"><?= "Rp.".number_format($value['total_harga'],0,".",",").",-" ?></h5>
-              <p><?= $value['jml_beli']." Ticket @Rp.".$value['harga_tiket']?></p>
+              <h5 class="text-light"><?= "Rp".number_format($value['total_harga'],0,".",",").",-" ?></h5>
+              <p><?= $value['jml_beli']." Ticket @Rp".$value['harga_tiket']?></p>
               <p class="text-muted"><?= $value['nama_event'] ?></p>
               <?php if($value['status_pemesanan']=="PENDING" || $value['status_pemesanan']=="FAILED"){ ?>
                 <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
