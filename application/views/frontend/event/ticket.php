@@ -5,7 +5,7 @@
 			rgba(2, 2, 2, 0.8) 0%,
 			rgba(46, 46, 46, 0.8)
 			),
-		url('');
+		url('<?=base_url('assets/frontend/img/wall-press.jpg')?>');
 		background-size: cover;
 		background-position: top;
 		height: auto;
@@ -77,42 +77,42 @@
 							</div>
 						</div>
 					<?php } ?>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <p>Your Order</p>
-        <div class="card bg-black border-light">
-          <div class="card-body">
-            <div>
-              <h5 class="card-title">Ticket</h5>
-              <p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp".number_format($active['harga_tiket'],0,",",".").",-"; ?></span></p>
-              <p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light " id="qty1"></span></p>
-              <hr class="bg-light">
-              <p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light" id="totalTmp"></span></p>
-            </div>
-            <div class=""></div>
-          </div>
-        </div>
-        <input type="hidden" id="stock_ticket" value="<?= $active['stok_tiket'] ?>" />
-		<input type="hidden" id="harga_ticket" value="<?= $active['harga_tiket'] ?>" />
-        <input type="hidden" id="id_event" value="<?= $events['id_event'] ?>" />
-		<input type="hidden" id="id_ticket_type"  value="<?= $active['id_jenis_tiket'] ?>" />
-		<input type="hidden" id="ticket_type"  value="<?= $active['jenis_tiket'] ?>" />
-		<input type="hidden" id="total" id="total" />
-		<input type="hidden" id="qty"  id="qty" />
-		<button class="btn btn-danger px-3 py-2 mt-3 w-100" onclick="confirmOrder()">Confirmation</button>
-      </div>
-    </div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<p>Your Order</p>
+				<div class="card bg-black border-light">
+					<div class="card-body">
+						<div>
+							<h5 class="card-title">Ticket</h5>
+							<p class="card-subtitle mb-2 text-muted">Ticket price<span class="float-right text-light" id="price"><?= "Rp".number_format($active['harga_tiket'],0,",",".").",-"; ?></span></p>
+							<p class="card-subtitle mb-2 text-muted">Qty<span class="float-right text-light " id="qty1"></span></p>
+							<hr class="bg-light">
+							<p class="card-subtitle mb-2 text-muted">Total<span class="float-right text-light" id="totalTmp"></span></p>
+						</div>
+						<div class=""></div>
+					</div>
+				</div>
+				<input type="hidden" id="stock_ticket" value="<?= $active['stok_tiket'] ?>" />
+				<input type="hidden" id="harga_ticket" value="<?= $active['harga_tiket'] ?>" />
+				<input type="hidden" id="id_event" value="<?= $events['id_event'] ?>" />
+				<input type="hidden" id="id_ticket_type"  value="<?= $active['id_jenis_tiket'] ?>" />
+				<input type="hidden" id="ticket_type"  value="<?= $active['jenis_tiket'] ?>" />
+				<input type="hidden" id="total" id="total" />
+				<input type="hidden" id="qty"  id="qty" />
+				<button class="btn btn-danger px-3 py-2 mt-3 w-100" onclick="confirmOrder()">Confirmation</button>
+			</div>
+		</div>
 
-  </div>
-  <!-- Footer -->
-  <section class="container-fluid mt-5">
-    <div class="footer container-xl">
-      <h1 class="display-5 text-uppercase">find us</h1>
-      <h2 class="display-5 text-uppercase">ada ide HQ</h2>
-      <p>Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
-    </div>
-  </section>
+	</div>
+	<!-- Footer -->
+	<section class="container-fluid mt-5">
+		<div class="footer container-xl">
+			<h1 class="display-5 text-uppercase">find us</h1>
+			<h2 class="display-5 text-uppercase">ada ide HQ</h2>
+			<p>Layungsari 67B <br>Jalan Lingkar Dadaha<br> Tasikmalaya<br>46124</p>
+		</div>
+	</section>
 </div>
 
 <!-- modal -->
@@ -130,21 +130,21 @@
 				<img src="<?=base_url('assets/frontend/img/')?>money.svg" class="card-img" style="height: 100px; margin-bottom: 1rem;">
 				<p class="lead">Amount Payment</p>
 				<h4 id="payment"></h4>
-        		<hr class="bg-light">
-        		<div class="mt-3">
+				<hr class="bg-light">
+				<div class="mt-3">
 					<p>ORDER ID : <label id="orderId"></label><br>CONFIRMATION ID : <label id="confirmId"></p>
+					</div>
+					<p>Please transfer to the account below by confirming the confirmation id in the transfer information section</p>
+					<h5 class="text-info">
+						<?= $payment['no_rek'] ?><br>
+						<?= $payment['bank'] ?> a/n <?= $payment['an'] ?>
+					</h5>
+					<h6>Before</h6>
+					<h6 id="confirmDate"></h6>
+					<p class="text-danger">Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
 				</div>
-				<p>Please transfer to the account below by confirming the confirmation id in the transfer information section</p>
-				<h5 class="text-info">
-					<?= $payment['no_rek'] ?><br>
-					<?= $payment['bank'] ?> a/n <?= $payment['an'] ?>
-				</h5>
-				<h6>Before</h6>
-        		<h6 id="confirmDate"></h6>
-        		<p class="text-danger">Order will be autimatically canceled if the ticket stock runs out Or You Don't Confirm Before The Deadline</p>
-			</div>
-			<div class="modal-footer text-right">
-				<button type="button" class="btn btn-danger" onclick="window.location='<?= base_url('order') ?>'">OK</button>
+				<div class="modal-footer text-right">
+					<button type="button" class="btn btn-danger" onclick="window.location='<?= base_url('order') ?>'">OK</button>
+				</div>
 			</div>
 		</div>
-	</div>

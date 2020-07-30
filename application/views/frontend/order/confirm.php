@@ -5,7 +5,7 @@
       rgba(2, 2, 2, 0.8) 0%,
       rgba(46, 46, 46, 0.8)
       ),
-    url('<?=base_url('assets/frontend/img/concert.jpg')?>');
+    url('<?=base_url('assets/frontend/img/wall-press.jpg')?>');
     background-size: cover;
     background-position: center;
     height: auto;

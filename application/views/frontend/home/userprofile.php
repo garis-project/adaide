@@ -5,7 +5,7 @@
       rgba(2, 2, 2, 0.8) 0%,
       rgba(46, 46, 46, 0.8)
       ),
-    url('<?=base_url('assets/frontend/img/concert.jpg')?>');
+    url('<?=base_url('assets/frontend/img/wall-press.jpg')?>');
     background-size: cover;
     background-position: center;
     height: auto;
@@ -67,7 +67,7 @@
             <h5 class="font-weight-bold">Event</h5>
             <?php foreach($order as $value){ ?>
               <p> <?= $value['jml_beli']." Ticket".$value['nama_event'] ?></p>
-           <?php } ?>
+            <?php } ?>
             <a href="<?= base_url('order') ?>">
               <p class="font-weight-bold">Load More...</p>
             </a>
@@ -75,7 +75,7 @@
         </div>
         <div class="d-flex justify-content-between">
           <div>
-            
+
           </div>
         </div>
         <hr class="border-light">

@@ -51,14 +51,15 @@
 		letter-spacing: 1.4px;
 	}
 	#menu-mobile {
-		font-size: .8rem;
+		font-size: .9rem;
+		padding: 0 !important;
 	}
 	.bg-red {
 		background-color: #ef233c;
 	}
 
 	.header-text {
-		margin-top: 8.5rem;
+		margin-top: 8rem;
 	}
 
 	.rotate {
@@ -312,6 +313,7 @@
 			position: absolute;
 			width: 100%;
 			margin-top: 1rem;
+			z-index: 100;
 		}
 		.modal-header {
 			border-bottom: 0px !important;
@@ -320,7 +322,7 @@
 			width: 100% !important;
 		}
 		.logo {
-			height: 20px;
+			height: 25px;
 		}
 		#logo-image {
 			display: none;

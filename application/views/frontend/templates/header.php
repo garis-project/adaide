@@ -103,7 +103,9 @@
 	<a class="navbar-brand" href="<?=base_url('home')?>">
 		<img src="<?= base_url('assets/frontend/')?>img/logo-putih.png" class="logo">
 	</a>
-	<img src="<?= base_url('assets/frontend/')?>img/icons8-menu.svg" data-toggle="modal" data-target="#menu-mobile" style="height: 25px;">
+	<a>
+		<img src="<?= base_url('assets/frontend/')?>img/icons8-menu.svg" data-toggle="modal" data-target="#menu-mobile" style="height: 25px; width: 25px;">
+	</a>
 </nav>
 
 <!-- Modal menu mobile-->

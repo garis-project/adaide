@@ -5,7 +5,7 @@
 			rgba(2, 2, 2, 0.8) 0%,
 			rgba(46, 46, 46, 0.8)
 			),
-		url('<?=base_url('assets/frontend/img/tangan.jpg')?>');
+		url('<?=base_url('assets/frontend/img/wall-press2.jpg')?>');
 		background-size: cover;
 		background-position: center;
 		height: 100vh;
@@ -33,7 +33,7 @@
 			<h1 class="judul text-center mt-n4 display-3 font-blom rotate">We do <br>What You Want</h1>
 		</div>
 		<div class="d-flex justify-content-center mt-5">
-			<button class="btn btn-light">GET TICKET</button>
+			<a class="btn btn-light font-weight-bold rounded-pill text-dark" href="<?=base_url('/ticket')?>">GET TICKET</a>
 		</div>
 	</div>
 	<nav class="navbar navbar-light fixed-bottom mb-3 container-xl">

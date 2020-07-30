@@ -5,7 +5,7 @@
       rgba(2, 2, 2, 0.8) 0%,
       rgba(46, 46, 46, 0.8)
       ),
-    url('<?=base_url('assets/frontend/img/podcast.jpg')?>');
+    url('<?=base_url('assets/frontend/img/wall-press.jpg')?>');
     background-size: cover;
     background-position: center;
     height: auto;
@@ -41,36 +41,36 @@
     <div class="row">
       <?php foreach($order as $value){ ?>
         <div class="col-lg-4 col-md-6 col-sm-12">
-        <ul class="list-group mb-3 border border-light rounded">
-          <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
-            <div>
-              <h6 class="my-0">Order ID : <?= $value['id_pemesanan'] ?></h6>
-              <h5 class="text-light"><?= "Rp".number_format($value['total_harga'],0,".",",").",-" ?></h5>
-              <p><?= $value['jml_beli']." Ticket @Rp".$value['harga_tiket']?></p>
-              <p class="text-muted"><?= $value['nama_event'] ?></p>
-              <?php if($value['status_pemesanan']=="PENDING" || $value['status_pemesanan']=="FAILED"){ ?>
-                <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
-              <?php }elseif($value['status_pemesanan']=="SUCCESS"){ ?>
-                <h3 class=" text-info"> <?= $value['status_pemesanan'] ?></h3>
-              <?php }elseif($value['status_pemesanan']=="AWAITING"){ ?>
-                <h3 class=" text-warning"> <?= $value['status_pemesanan'] ?></h3>
-              <?php } ?>
-              
-            </div>
-                <?php $id= "'".$value['id_pemesanan']."'";
-                $status="'".$value['status_pemesanan']."'" ;
-                ?>
+          <ul class="list-group mb-3 border border-light rounded">
+            <li class="list-group-item d-flex justify-content-between lh-condensed bg-black">
+              <div>
+                <h6 class="my-0">Order ID : <?= $value['id_pemesanan'] ?></h6>
+                <h5 class="text-light"><?= "Rp".number_format($value['total_harga'],0,".",",").",-" ?></h5>
+                <p><?= $value['jml_beli']." Ticket @Rp".$value['harga_tiket']?></p>
+                <p class="text-muted"><?= $value['nama_event'] ?></p>
+                <?php if($value['status_pemesanan']=="PENDING" || $value['status_pemesanan']=="FAILED"){ ?>
+                  <h3 class=" text-danger"> <?= $value['status_pemesanan'] ?></h3>
+                <?php }elseif($value['status_pemesanan']=="SUCCESS"){ ?>
+                  <h3 class=" text-info"> <?= $value['status_pemesanan'] ?></h3>
+                <?php }elseif($value['status_pemesanan']=="AWAITING"){ ?>
+                  <h3 class=" text-warning"> <?= $value['status_pemesanan'] ?></h3>
+                <?php } ?>
 
-                <span class="align-items-center">
-                  <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
-                </span>
-                <!-- </form> -->
+              </div>
+              <?php $id= "'".$value['id_pemesanan']."'";
+              $status="'".$value['status_pemesanan']."'" ;
+              ?>
 
-              </li>
-            </ul>
-          </div>
-        <?php }?>
+              <span class="align-items-center">
+                <button class="btn btn-danger" onclick="cekStatus(<?= $id.','.$status ?>)">Open</button>
+              </span>
+              <!-- </form> -->
 
-      </div>
+            </li>
+          </ul>
+        </div>
+      <?php }?>
+
     </div>
-  </body>
+  </div>
+</body>
