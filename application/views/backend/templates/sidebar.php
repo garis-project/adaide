@@ -38,7 +38,13 @@
           <li><a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="exhange" && $this->uri->segment(3)=="ticket"){echo "active";}?>" href="<?= base_url('admin/exchange/ticket'); ?>">Ticket</a></li>
         </ul>
       </li>
-
+      <li class="menu-header">Settings</li>
+      <li class="nav-item dropdown">
+        <a href="<?= base_url('admin/notification'); ?>" class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="wa"){echo "active";}?>"><i class="fas fa-envelope"></i> <span>Whatsapp</span></a>
+      </li>
+      <li class="nav-item dropdown" onclick="payment()" >
+        <a class="nav-link <?php if($this->uri->segment(1)=="admin" && $this->uri->segment(2)=="payment"){echo "active";}?>"><i class="fas fa-university"></i><span>Payment</span></a>
+      </li>
     </ul>
   </aside>
 </div>
